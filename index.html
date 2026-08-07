@@ -53,6 +53,8 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #00205b; }
+  [data-weather][data-wx-faded="yes"] { opacity: 0; }
+  [data-float-cta][data-cta-shown="yes"] { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; }
   ::selection { background: var(--accent, #4D7EA8); color: #00205b; }
   html { scroll-behavior: smooth; }
   .nav-links { display: flex; gap: 40px; align-items: center; }
@@ -84,17 +86,31 @@
     [data-tour-videos] iframe { height: auto !important; aspect-ratio: 16 / 9; }
     [data-dest-grid] { grid-template-columns: 1fr !important; max-width: 420px; }
     [data-dest-grid] article > div:first-child { aspect-ratio: 4 / 3 !important; }
-    [data-stats] > div { padding: 24px 16px !important; }
+    [data-stats] > div { padding: 8px 16px !important; }
+    [data-stats] > div:nth-child(-n+2) { padding-top: 16px !important; }
+    [data-stats] > div:nth-child(n+3) { padding-bottom: 16px !important; }
     [data-stats] > div > div:first-child { font-size: 34px !important; }
     [data-gallery-stage] { width: 100vw; max-width: 100vw; margin-left: 50%; transform: translateX(-50%); }
-    header { align-items: center !important; }
-    header > div:last-child { padding: 0 24px !important; }
+    header { align-items: center !important; height: 67vh !important; min-height: 470px !important; padding-top: 100px !important; }
+    header > img { object-position: center bottom !important; }
+    [data-hero-copy] { padding: 0 24px !important; }
+    footer { justify-content: center !important; text-align: center; padding: 36px 24px 96px !important; }
+    [data-float-cta] { flex-direction: row !important; left: 0; right: 0; bottom: 0 !important; }
+    [data-float-cta] > a { flex: 1; min-width: 0 !important; padding: 20px 12px !important; letter-spacing: 3px !important; }
+    [data-weather] { border-left: none !important; border-right: none !important; border-top: 1px solid rgba(236,230,214,0.18) !important; border-bottom: 1px solid rgba(236,230,214,0.18) !important; padding: 16px 0 !important; width: 100%; justify-content: center; }
+
+    [data-hero-badge] { font-size: 11px !important; letter-spacing: 3px !important; }
     section { grid-template-columns: repeat(2, 1fr) !important; }
     [data-yacht-features] > div { flex-direction: column; align-items: center; text-align: center; }
     [data-yacht-features] > div > img { margin-bottom: 20px; align-self: center; }
   }
   @media (max-width: 480px) {
     section { grid-template-columns: 1fr !important; }
+    [data-stats] > div { padding: 8px 16px !important; }
+    [data-stats] > div:not(:first-child) { padding-top: 8px !important; }
+    [data-stats] > div:not(:last-child) { padding-bottom: 8px !important; }
+    [data-stats] > div:first-child { padding-top: 16px !important; }
+    [data-stats] > div:last-child { padding-bottom: 16px !important; }
   }
   }
   @media (max-width: 768px) {
@@ -150,19 +166,19 @@
       <a href="#gallery" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Gallery</a>
       <a href="#crew" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Crew</a>
       <a href="#rates" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Rates</a>
-      <a href="https://cyaeb.com/3027/dypr/xrn/10317/#availability" target="_blank" rel="noopener" style="color: #00205b; background: var(--accent, #4D7EA8); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 26px; margin-top: 10px;">Charter</a>
+      <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="color: #00205b; background: var(--accent, #4D7EA8); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 26px; margin-top: 10px;">Charter</a>
     </div>
   </sc-if>
 
   <!-- HERO -->
-  <header style="position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; padding-top: 120px;">
+  <header style="position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; padding-top: 120px;">
     <img src="{{ heroImage }}" alt="S/Y Celestine under sail" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
-    <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0, 0, 0, 0.88) 100%);"></div>
-    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,32,91,0.68) 0%, rgba(0,32,91,0.35) 55%, rgba(0,32,91,0.45) 100%);"></div>
-    <div style="position: relative; z-index: 10; padding: 0 56px 90px;">
+    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.32);"></div>
+    <div style="position: absolute; inset: 0; background: rgba(0, 32, 91, 0.2);"></div>
+    <div data-hero-copy="" style="position: relative; z-index: 10; padding: 0 56px;">
       <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; color: #ece6d6; max-width: 900px; text-wrap: balance; text-shadow: 0 4px 24px rgba(0,16,45,0.65), 0 1px 4px rgba(0,16,45,0.5);">Catch the breeze, find your ease.</h1>
       <p style="display: none; margin-top: 26px; max-width: 480px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(16px, 4vw, 18px); line-height: 1.6; color: rgba(236,230,214,0.92); text-shadow: 0 2px 12px rgba(0,16,45,5); padding: 1em; background: rgba(0, 32, 91, 0.5)">A 59-foot sailing yacht and her seasoned crew, at your service for bespoke voyages across the world's most beautiful waters.</p>
-      <div style="display: inline-block; background: #00205b; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent, #4D7EA8); margin-top: 26px; padding: 10px 18px;">PRIVATE CHARTER · US AND BRITISH VIRGIN ISLANDS</div>
+      <div data-hero-badge="" style="display: inline-block; margin-top: 26px; background: #00205b; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent, #4D7EA8); padding: 10px 18px;">PRIVATE CHARTER · US AND BRITISH VIRGIN ISLANDS</div>
     </div>
   </header>
 
@@ -267,7 +283,7 @@
     <div class="reveal" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 24px;">
       <div>
         <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent, #4D7EA8); margin-bottom: 20px;">Destinations</div>
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Where <i>Celestine</i> will take you</h2>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Where will&nbsp;<i>Celestine</i>&nbsp;take you?</h2>
       </div>
       <p style="max-width: 320px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; line-height: 1.65; opacity: 0.8;">Every itinerary is planned around you — hidden coves, pristine harbors, and the best food in the islands.</p>
     </div>
@@ -415,7 +431,7 @@
     <div data-rate-cards="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px;">
       <sc-for list="{{ rates }}" as="r" hint-placeholder-count="3">
         <div class="reveal" style="background: #ece6d6; border-top: 3px solid {{ r.border }}; padding: 40px 36px; display: flex; flex-direction: column; transition-delay: {{ $index }}00ms;">
-          <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E);">{{ r.season }}</div>
+          <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); font-family: 'Jost', sans-serif;">{{ r.season }}</div>
           <div style="font-size: 14px; font-weight: 300; color: #273f54; margin-top: 8px; font-family: 'Jost', sans-serif">{{ r.months }}</div>
           <div style="margin-top: 28px; font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: #00102d;">{{ r.price }}</div>
           <div style="font-size: 13px; letter-spacing: 1px; color: #273f54; margin-top: 8px; font-family: 'Cormorant Garamond', serif;">per week · up to 10 guests</div>
@@ -432,7 +448,7 @@
       <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(30px, 7vw, 42px); line-height: 1.1; color: #00102d; margin-bottom: 40px;">Optional Dining Enhancements</h3>
       <div data-meal-plans="" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
         <div style="background: #d4e8f7; padding: 24px; border-radius: 4px;">
-          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 16px;">Half-Board Plan</h4>
+          <h4 style="font-family: 'Jost', sans-serif; font-weight: 400; font-size: 22px; color: #00102d; margin-bottom: 16px;">Half-Board Plan</h4>
           <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54; margin-bottom: 16px;">Ideal for guests who enjoy dining ashore</p>
           <ul style="font-weight: 300; font-size: 14px; line-height: 1.8; color: #273f54; margin: 0 0 20px; padding-left: 20px;">
             <li>7 breakfasts, 4 lunches and 3 dinners onboard</li>
@@ -441,7 +457,7 @@
           <p style="font-weight: 400; font-size: 15px; color: #00102d;">$150 per person discount</p>
         </div>
         <div style="background: #d4e8f7; padding: 24px; border-radius: 4px;">
-          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 16px;">Local Fare Meal Plan</h4>
+          <h4 style="font-family: 'Jost', sans-serif; font-weight: 400; font-size: 22px; color: #00102d; margin-bottom: 16px;">Local Fare Meal Plan</h4>
           <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54; margin-bottom: 16px;">A taste of Caribbean cuisine</p>
           <ul style="font-weight: 300; font-size: 14px; line-height: 1.8; color: #273f54; margin: 0 0 20px; padding-left: 20px;">
             <li>7 breakfasts, 5 lunches and 6 dinners onboard</li>
@@ -465,18 +481,18 @@
         
         
       </div><div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://cyaeb.com/QUd8BuGCCv/xrn/69f3949c3c03330912dce943#availability" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--accent, #4D7EA8); color: #00205b; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">AVAILABILITY</a>
+        <a href="https://cyaeb.com/QUd8BuGCCv/xrn/69f3949c3c03330912dce943#calendar" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--accent, #4D7EA8); color: #00205b; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">AVAILABILITY</a>
         <a href="tel:+18442049846" style="font-family: 'Jost', sans-serif; border: 1px solid rgba(236,230,214,0.5); color: #ece6d6; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">(844) 204-9846</a>
-      </div><div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://www.crewedyachtsbvi.com/accredited-brokers" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--accent, #4D7EA8); color: #00205b; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px; margin: 1rem">GET STARTED</a>
-        
+      </div><div style="display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 1rem;">
+        <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--accent, #4D7EA8); color: #00205b; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">GET STARTED</a>
+        <a href="https://www.crewedyachtsbvi.com/accredited-brokers" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 1px; color: rgba(236,230,214,0.75); text-decoration: none; border-bottom: 1px solid rgba(236,230,214,0.35); padding-bottom: 3px; text-transform: uppercase; margin-top: 2rem" style-hover="color: #ece6d6; border-bottom-color: #ece6d6;">Find an expert broker to start your journey</a>
       </div>
       
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer style="background: #00102d; color: rgba(236,230,214,0.6); padding: 40px 56px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+  <footer style="background: #00102d; color: rgba(236,230,214,0.6); padding: 40px 200px 40px 56px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
     <img src="{{ celestineLogo }}" alt="Celestine" style="height: 46px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
     <div style="display: flex; gap: 20px; align-items: center;">
       <a href="https://facebook.com/YachtCelestine" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; color: rgba(236,230,214,0.6); text-decoration: none; transition: color 0.2s; width: 24px; height: 24px;">
@@ -486,14 +502,67 @@
         <svg viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.117.63c-.789.306-1.459.717-2.126 1.384S.957 3.328.65 4.117c-.297.788-.5 1.659-.56 2.948C.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.288.262 2.159.56 2.948.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.788.297 1.659.5 2.948.56C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.288-.06 2.159-.262 2.948-.56.788-.306 1.459-.717 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.297-.789.5-1.659.56-2.948.058-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.288-.262-2.159-.56-2.948-.306-.788-.717-1.459-1.384-2.126C21.319 1.347 20.651.935 19.863.63c-.788-.297-1.659-.499-2.948-.559C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.009 4.849.070 1.171.054 1.805.244 2.227.408.561.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.355 1.056.41 2.223.061 1.265.07 1.645.07 4.849 0 3.205-.009 3.584-.07 4.849-.054 1.171-.244 1.805-.408 2.227-.217.561-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.056.355-2.223.41-1.265.061-1.645.07-4.849.07-3.205 0-3.584-.009-4.849-.07-1.171-.054-1.805-.244-2.227-.408-.561-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.355-1.056-.41-2.223-.061-1.265-.07-1.645-.07-4.849 0-3.205.009-3.584.07-4.849.054-1.171.244-1.805.408-2.227.217-.561.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.056-.355 2.223-.41 1.265-.061 1.645-.07 4.849-.07zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"></path></svg>
       </a>
     </div>
+    <div data-weather="" data-wx-faded="{{ wxFaded }}" style="display: flex; align-items: center; gap: 14px; padding: 0 22px; transition: opacity 0.5s ease;">
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: var(--accent, #4D7EA8);">{{ wxTemp }}</div>
+      <div style="display: flex; flex-direction: column; gap: 4px; font-family: 'Jost', sans-serif;">
+        <div style="font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(236,230,214,0.45); white-space: nowrap;">{{ wxPlace }}</div>
+        <div style="font-size: 12px; letter-spacing: 1px; color: rgba(236,230,214,0.7); white-space: nowrap;">{{ wxDesc }}</div>
+      </div>
+    </div>
     <div style="font-size: 12px; letter-spacing: 1px; font-family: 'Jost', sans-serif;">© 2026 Jamie Still</div>
   </footer>
+
+  <div data-float-cta="" data-cta-shown="{{ ctaShown }}" style="position: fixed; right: 0; bottom: 40px; z-index: 90; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease;">
+    <a href="tel:+18442049846" style="font-family: 'Jost', sans-serif; background: rgba(0,16,45,0.92); color: #ece6d6; text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s, color 0.25s;" style-hover="background: #ece6d6; color: #00102d;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 15px; height: 15px; flex: none;"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"></path></svg>
+      <span>Call</span>
+    </a>
+    <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--accent, #4D7EA8); color: #00102d; text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s;" style-hover="background: #ece6d6;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 15px; height: 15px; flex: none;"><rect x="3" y="5" width="18" height="16" rx="1.5"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+      <span>Book</span>
+    </a>
+  </div>
 
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4D7EA8&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;accentDeep&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#3A5E7E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
 class Component extends DCLogic {
-  state = { lightboxOpen: false, lightboxIndex: 0, slideIndex: 0, menuOpen: false, navScrolled: false };
+  state = { lightboxOpen: false, lightboxIndex: 0, slideIndex: 0, menuOpen: false, navScrolled: false, weather: null, weatherList: [], wxIndex: 0, wxFade: false, ctaVisible: false };
+
+  wxSpots = [
+    { name: "Tortola, BVI", lat: 18.4286, lon: -64.6185 },
+    { name: "St Thomas, USVI", lat: 18.3381, lon: -64.8941 },
+    { name: "St John, USVI", lat: 18.3358, lon: -64.7281 }
+  ];
+
+  fetchWeather() {
+    const q = this.wxSpots.map(s => s.lat).join(",");
+    const r = this.wxSpots.map(s => s.lon).join(",");
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + q + '&longitude=' + r + '&current=temperature_2m,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=kn&timezone=America%2FPuerto_Rico';
+    fetch(url)
+      .then(res => res.ok ? res.json() : Promise.reject(res.status))
+      .then(d => {
+        const list = Array.isArray(d) ? d : [d];
+        const out = this.wxSpots.map((s, i) => {
+          const c = list[i] && list[i].current;
+          return c ? { name: s.name, temp: Math.round(c.temperature_2m), wind: Math.round(c.wind_speed_10m), code: c.weather_code } : null;
+        }).filter(Boolean);
+        if (out.length) this.setState({ weatherList: out, weather: out[0] });
+      })
+      .catch(() => {});
+  }
+
+  cycleWeather() {
+    this.setState({ wxFade: true });
+    setTimeout(() => {
+      this.setState(s => {
+        const list = s.weatherList || [];
+        if (!list.length) return { wxFade: false };
+        const next = (s.wxIndex + 1) % list.length;
+        return { wxIndex: next, weather: list[next], wxFade: false };
+      });
+    }, 500);
+  }
 
   componentDidMount() {
     this._observer = new IntersectionObserver((entries) => {
@@ -508,6 +577,9 @@ class Component extends DCLogic {
       document.querySelectorAll(".reveal").forEach((el) => this._observer.observe(el));
     }, 50);
     window.addEventListener("scroll", this.handleScroll);
+    this.fetchWeather();
+    this._wxTimer = setInterval(() => this.fetchWeather(), 900000);
+    this._wxCycle = setInterval(() => this.cycleWeather(), 20000);
   }
 
   handleScroll = () => {
@@ -520,15 +592,33 @@ class Component extends DCLogic {
         else nav.classList.remove("scrolled");
       }
     }
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    const showCta = max > 0 && window.scrollY / max >= 0.25;
+    if (showCta !== this.state.ctaVisible) this.setState({ ctaVisible: showCta });
   }
 
   componentWillUnmount() {
     if (this._observer) this._observer.disconnect();
+    if (this._wxTimer) clearInterval(this._wxTimer);
+    if (this._wxCycle) clearInterval(this._wxCycle);
     window.removeEventListener("scroll", this.handleScroll);
   }
 
   renderVals() {
     const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+    const ctaShown = this.state.ctaVisible ? "yes" : "no";
+    const wx = this.state.weather;
+    const wxCodes = {
+      0: "Clear", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+      45: "Fog", 48: "Fog", 51: "Light drizzle", 53: "Drizzle", 55: "Drizzle",
+      61: "Light rain", 63: "Rain", 65: "Heavy rain", 80: "Passing showers",
+      81: "Showers", 82: "Heavy showers", 95: "Thunderstorms", 96: "Thunderstorms", 99: "Thunderstorms"
+    };
+    const wxTemp = wx ? wx.temp + "\u00B0F" : "\u2014";
+    const wxDesc = wx ? (wxCodes[wx.code] || "Fair") + " \u00B7 " + "Wind " + wx.wind + " kn" : "Loading conditions";
+    const wxPlace = wx ? wx.name : "Tortola, BVI";
+    const wxFaded = this.state.wxFade ? "yes" : "no";
     const galleryImages = () => Array.from({ length: 17 }, (_, i) => {
       const id = "gal" + String(i + 1).padStart(2, "0");
       return window.__resources?.[id] || ("assets/gallery/" + String(i + 1).padStart(2, "0") + ".jpg");
@@ -545,6 +635,11 @@ class Component extends DCLogic {
       toggleMenu,
       menuOpen: this.state.menuOpen,
       toggleMenu,
+      wxTemp,
+      wxDesc,
+      wxPlace,
+      wxFaded,
+      ctaShown,
       accent: this.props.accent ?? "#4D7EA8",
       accentDeep: this.props.accentDeep ?? "#3A5E7E",
       celestineLogo: window.__resources?.celestineLogo || "assets/Celestine-Logo.svg",

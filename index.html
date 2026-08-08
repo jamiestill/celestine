@@ -38,12 +38,11 @@
 <meta name="ext-resource-dependency" content="assets/gallery/16.jpg" data-resource-id="gal16">
 <meta name="ext-resource-dependency" content="uploads/imgi_60_Captain_20260630143518_1b792f2d.jpg" data-resource-id="captainPhoto">
 <meta name="ext-resource-dependency" content="assets/Celestine-Logo.svg" data-resource-id="celestineLogo">
-<meta name="ext-resource-dependency" content="uploads/34798895-31EC-4C3B-BC10-5CE99D54AB17_1_201_a.jpeg" data-resource-id="heroImage">
 <meta name="ext-resource-dependency" content="uploads/motoryacht_vector-2ecab481.svg" data-resource-id="yachtVector">
 <meta name="ext-resource-dependency" content="uploads/imgi_48_1784560611_6a5e3be396523_69f3949c3c03330912dce943_deck.jpg" data-resource-id="queenCabin">
 <meta name="ext-resource-dependency" content="uploads/imgi_18_1784560091_6a5e39db691ec_69f3949c3c03330912dce943_deck.jpg" data-resource-id="indoorOutdoor">
 <meta name="ext-resource-dependency" content="uploads/imgi_10_1784559895_6a5e3917cf2af_69f3949c3c03330912dce943_deck.jpg" data-resource-id="aftDeck">
-<meta name="ext-resource-dependency" content="uploads/a1b73513-890e-4363-b25c-71dd4655d610-277b2575.jpg" data-resource-id="heroImage">
+<meta name="ext-resource-dependency" content="assets/hero-wide.jpg" data-resource-id="heroImage">
 <meta name="ext-resource-dependency" content="assets/chart_blueprint.png" data-resource-id="chartBlueprint">
 <meta name="ext-resource-dependency" content="uploads/karl-callwood-P5pE5Slj-ws-unsplash-d6fb3d7a.jpg" data-resource-id="crewBackground">
 <meta name="ext-resource-dependency" content="uploads/layout_crew.png" data-resource-id="layoutDeck">
@@ -54,6 +53,29 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #00205b; }
   [data-weather][data-wx-faded="yes"] { opacity: 0; }
+  @keyframes palmSway {
+    0% { transform: rotate(-5deg) translateX(0) scale(1); }
+    35% { transform: rotate(3.5deg) translateX(-8px) scale(1.02); }
+    65% { transform: rotate(6.5deg) translateX(-14px) scale(1.03); }
+    100% { transform: rotate(-5deg) translateX(0) scale(1); }
+  }
+  [data-hero-img] { opacity: 0; transition: opacity 1.2s ease; }
+  [data-hero-img][data-loaded="yes"] { opacity: 1; }
+  [data-palm] { animation: palmSway 9s ease-in-out infinite; }
+  @keyframes palmSwayAlt {
+    0% { transform: scale(-1, -1) rotate(-5deg) translateX(0); }
+    35% { transform: scale(-1, -1) rotate(3.5deg) translateX(-8px); }
+    65% { transform: scale(-1, -1) rotate(6.5deg) translateX(-14px); }
+    100% { transform: scale(-1, -1) rotate(-5deg) translateX(0); }
+  }
+  [data-palm-alt] { animation: palmSwayAlt 11s ease-in-out infinite; animation-delay: -3s; }
+  @keyframes planeFly {
+    0% { transform: translate(0, 0) rotate(30deg) scale(0.85); opacity: 0; }
+    12% { opacity: 0.75; }
+    68% { opacity: 0.6; }
+    100% { transform: translate(115vw, -60vh) rotate(30deg) scale(1.25); opacity: 0; }
+  }
+  [data-plane-run="yes"] [data-plane] { animation: planeFly 7s linear 1.5s forwards; }
   [data-float-cta][data-cta-shown="yes"] { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; }
   ::selection { background: var(--accent, #4D7EA8); color: #00205b; }
   html { scroll-behavior: smooth; }
@@ -92,14 +114,14 @@
     [data-stats] > div > div:first-child { font-size: 34px !important; }
     [data-gallery-stage] { width: 100vw; max-width: 100vw; margin-left: 50%; transform: translateX(-50%); }
     header { align-items: center !important; height: 67vh !important; min-height: 470px !important; padding-top: 100px !important; }
-    header > img { object-position: center bottom !important; }
+    header > img { object-position: 72% bottom !important; }
     [data-hero-copy] { padding: 0 24px !important; }
     footer { justify-content: center !important; text-align: center; padding: 36px 24px 96px !important; }
     [data-float-cta] { flex-direction: row !important; left: 0; right: 0; bottom: 0 !important; }
     [data-float-cta] > a { flex: 1; min-width: 0 !important; padding: 20px 12px !important; letter-spacing: 3px !important; }
     [data-weather] { border-left: none !important; border-right: none !important; border-top: 1px solid rgba(236,230,214,0.18) !important; border-bottom: 1px solid rgba(236,230,214,0.18) !important; padding: 16px 0 !important; width: 100%; justify-content: center; }
 
-    [data-hero-badge] { font-size: 11px !important; letter-spacing: 3px !important; }
+    [data-hero-badge] { left: 24px !important; right: 24px !important; font-size: 11px !important; letter-spacing: 3px !important; text-align: center; }
     section { grid-template-columns: repeat(2, 1fr) !important; }
     [data-yacht-features] > div { flex-direction: column; align-items: center; text-align: center; }
     [data-yacht-features] > div > img { margin-bottom: 20px; align-self: center; }
@@ -130,9 +152,13 @@
   @media (min-width: 1000px) {
     [data-yacht-features] { display: grid !important; grid-template-columns: 1fr 1fr; max-width: 1240px !important; column-gap: 56px; }
   }
+  [data-gallery-stage].reveal { opacity: 1 !important; transform: none !important; filter: grayscale(1) blur(10px); transition: filter 5s ease; }
+  [data-gallery-stage][data-revealed="yes"] { filter: grayscale(0) blur(0); }
+  [data-polaroid] { opacity: 0; transform: translateX(-70px) rotate(var(--rot, 0deg)) !important; transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  [data-polaroid][data-revealed="yes"] { opacity: 1; transform: translateX(0) rotate(var(--rot, 0deg)) !important; }
   .reveal.reveal-left { transform: translateX(-40px); }
   .reveal.reveal-right { transform: translateX(40px); }
-  .reveal.reveal-visible { opacity: 1; transform: translate(0, 0); }
+  .reveal.reveal-visible, .reveal[data-revealed="yes"] { opacity: 1; transform: translate(0, 0); }
 </style>
 </helmet>
 
@@ -172,45 +198,46 @@
 
   <!-- HERO -->
   <header style="position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; padding-top: 120px;">
-    <img src="{{ heroImage }}" alt="S/Y Celestine under sail" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
-    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.32);"></div>
-    <div style="position: absolute; inset: 0; background: rgba(0, 32, 91, 0.2);"></div>
+    <img data-hero-img="" onLoad="{{ heroLoaded }}" src="{{ heroImage }}" alt="S/Y Celestine under sail" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.16);"></div>
+    <div style="position: absolute; inset: 0; background: rgba(0, 32, 91, 0.1);"></div>
     <div data-hero-copy="" style="position: relative; z-index: 10; padding: 0 56px;">
       <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; color: #ece6d6; max-width: 900px; text-wrap: balance; text-shadow: 0 4px 24px rgba(0,16,45,0.65), 0 1px 4px rgba(0,16,45,0.5);">Catch the breeze, find your ease.</h1>
       <p style="display: none; margin-top: 26px; max-width: 480px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(16px, 4vw, 18px); line-height: 1.6; color: rgba(236,230,214,0.92); text-shadow: 0 2px 12px rgba(0,16,45,5); padding: 1em; background: rgba(0, 32, 91, 0.5)">A 59-foot sailing yacht and her seasoned crew, at your service for bespoke voyages across the world's most beautiful waters.</p>
-      <div data-hero-badge="" style="display: inline-block; margin-top: 26px; background: #00205b; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent, #4D7EA8); padding: 10px 18px;">PRIVATE CHARTER · US AND BRITISH VIRGIN ISLANDS</div>
     </div>
+    <div data-hero-badge="" style="position: absolute; left: 56px; bottom: 2rem; z-index: 10; background: #00205b; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent, #4D7EA8); padding: 10px 18px;">PRIVATE CHARTER · US AND BRITISH VIRGIN ISLANDS</div>
   </header>
 
   <!-- STATS STRIP -->
   <section data-stats="" style="background: #00205b; color: #ece6d6; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;">
     <div style="padding: 46px 40px; border-right: 1px solid rgba(236,230,214,0.12);">
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">59 ft</div>
-      <div style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Length overall</div>
+      <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">59 ft</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Length overall</div>
     </div>
     <div style="padding: 46px 40px; border-right: 1px solid rgba(236,230,214,0.12);">
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">10</div>
-      <div style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Guests in 5 cabins</div>
+      <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">5</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">COUPLES / CABINS</div>
     </div>
     <div style="padding: 46px 40px; border-right: 1px solid rgba(236,230,214,0.12);">
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">3</div>
-      <div style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Professional crew</div>
+      <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">3</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Professional crew</div>
     </div>
     <div style="padding: 46px 40px;">
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">2020</div>
-      <div style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Year built</div>
+      <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, #4D7EA8); line-height: 1;">2020</div>
+      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Year built</div>
     </div>
   </section>
 
   <!-- THE YACHT -->
-  <section id="yacht" style="padding: 56px 56px; position: relative">
-    <div style="position: absolute; width: 726px; height: 606px; opacity: 0.5; background-image: url('{{ yachtVector }}'); background-size: contain; background-repeat: no-repeat; background-position: center; pointer-events: none; right: 0; bottom: 0px"></div>
+  <section id="yacht" style="padding: 56px 56px; position: relative; overflow: hidden;">
+    <img data-palm="" src="assets/palm-shadow.png" alt="" style="position: absolute; top: -10%; right: -8%; width: min(46%, 620px); opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform-origin: 85% 0%; z-index: 0;">
+    <img data-palm="" data-palm-alt="" src="assets/palm-shadow.png" alt="" style="position: absolute; bottom: -10%; right: 18%; width: min(46%, 620px); opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform-origin: 50% 50%; z-index: 0;">
     <div class="reveal" style="margin-bottom: 60px;">
       <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px;">The Yacht</div>
       <div data-yacht-head="" style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
         <div style="flex: 1 1 340px; min-width: 0;">
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1.02; margin-bottom: 24px;">Sailboat fun. Amenities you expect. Luxury you want.</h2>
-        <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.75; color: #273f54; max-width: 680px;">Built in South Africa and lovingly maintained, <i>Celestine</i> pairs the romance of a sailing yacht with the modern amenities you expect, all in an irresistibly luxurious package.</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.75; color: #273f54; max-width: 680px; text-shadow: 0 0 12px rgba(236,230,214,0.95), 0 0 4px rgba(236,230,214,0.9);">Built in South Africa and lovingly maintained, <i>Celestine</i> pairs the romance of a sailing yacht with the modern amenities you expect, all in an irresistibly luxurious package.</p>
         </div>
         <img src="{{ sailboatPhoto }}" alt="Celestine at anchor" style="width: 240px; height: 240px; border-radius: 999px; flex-shrink: 0; object-fit: cover; object-position: left; box-shadow: 0 8px 32px rgba(0,0,0,0.12); order: 2;">
       </div>
@@ -230,7 +257,7 @@
       </style>
       <div style="display: flex; flex-direction: column; gap: 48px; max-width: 600px; margin: 0 auto;" data-yacht-features="">
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img src="{{ queenCabin }}" alt="Queen cabin interior" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-1.5deg)">
+          <img data-polaroid="" class="reveal" src="{{ queenCabin }}" alt="Queen cabin interior" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-1.5deg); --rot: -1.5deg">
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Five Queen Cabins</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54; position: relative">Five similarly sized upscale staterooms, each with its own private ensuite head (electric toilet), private shower, sink, vanity, and dedicated under-bed storage and wardrobe.</p>
@@ -238,7 +265,7 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img src="{{ indoorOutdoor }}" alt="Salon with open doors to cockpit" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.2deg)">
+          <img data-polaroid="" class="reveal" src="{{ indoorOutdoor }}" alt="Salon with open doors to cockpit" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.2deg); --rot: 1.2deg">
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Seamless Indoor-Outdoor Flow</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">An electronic window and door connect the indoor salon directly to the forward bow cockpit.</p>
@@ -246,7 +273,7 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img src="{{ aftDeck }}" alt="Aft deck with seating" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-0.8deg)">
+          <img data-polaroid="" class="reveal" src="{{ aftDeck }}" alt="Aft deck with seating" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-0.8deg); --rot: -0.8deg">
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Four Social Zones</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Guests can gather across a sun-drenched forward cockpit, a shaded aft deck for open-air dining, a bright panoramic salon, and a spacious flybridge with sunset views.</p>
@@ -254,7 +281,7 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img src="{{ kitchenComforts }}" alt="Salon kitchen with views" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.6deg)">
+          <img data-polaroid="" class="reveal" src="{{ kitchenComforts }}" alt="Salon kitchen with views" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.6deg); --rot: 1.6deg">
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">High-End Comforts</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Equipped with full air conditioning (11 total units), a watermaker, an icemaker, a salon TV/audio entertainment system, two dishwashers, and seven refrigerators.</p>
@@ -262,7 +289,7 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img src="{{ waterToys }}" alt="Water toys and equipment" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); object-fit: cover; object-position: center; transform: rotate(-2.1deg);">
+          <img data-polaroid="" class="reveal" src="{{ waterToys }}" alt="Water toys and equipment" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); object-fit: cover; object-position: center; transform: rotate(-2.1deg); --rot: -2.1deg;">
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Water Toys</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Two paddleboards, an e-foil, an underwater Seabob, an inflatable Hangout, and a tender make exploration and adventure effortless. Every anchorage becomes your playground.</p>
@@ -310,13 +337,13 @@
       <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px;">Gallery</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Meet <i>Celestine</i></h2>
     </div>
-      <div data-gallery-stage="" style="position: relative; aspect-ratio: 16/10; background: #ded4c0; overflow: hidden; cursor: zoom-in;" onClick="{{ openCurrent }}">
+      <div data-gallery-stage="" class="reveal" style="position: relative; aspect-ratio: 16/10; background: #ded4c0; overflow: hidden; cursor: zoom-in;" onClick="{{ openCurrent }}">
         <img src="{{ currentSlideSrc }}" alt="Celestine" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         <button onClick="{{ prevSlide }}" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); background: rgba(0,32,91,0.45); border: 1px solid rgba(236,230,214,0.4); color: #ece6d6; width: 52px; height: 52px; border-radius: 999px; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;">‹</button>
         <button onClick="{{ nextSlide }}" style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); background: rgba(0,32,91,0.45); border: 1px solid rgba(236,230,214,0.4); color: #ece6d6; width: 52px; height: 52px; border-radius: 999px; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;">›</button>
         <div style="position: absolute; bottom: 16px; right: 18px; background: rgba(0,32,91,0.6); color: #ece6d6; font-size: 12px; letter-spacing: 2px; padding: 6px 12px;">{{ slideCounter }}</div>
       </div>
-      <div style="display: flex; gap: 10px; margin-top: 16px; overflow-x: auto; padding-bottom: 4px;">
+      <div data-thumbs="" style="display: flex; gap: 10px; margin-top: 16px; overflow-x: auto; padding-bottom: 4px;">
         <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="9">
           <img src="{{ g.src }}" alt="Celestine" loading="lazy" onClick="{{ g.select }}" style="height: 62px; width: 92px; flex: none; object-fit: cover; cursor: pointer; opacity: {{ g.opacity }}; border-bottom: 3px solid {{ g.border }};">
         </sc-for>
@@ -399,13 +426,14 @@
   </section>
 
   <!-- LAYOUT -->
-  <section id="layout" style="padding: 56px 56px; background: #ece6d6;">
-    <div class="reveal" style="margin-bottom: 60px;">
+  <section id="layout" style="position: relative; overflow: hidden; padding: 56px 56px; background: #ece6d6;">
+    <div style="position: absolute; inset: 0; opacity: 0.35; background-image: url('assets/orthographic-views.svg'); background-size: cover; background-repeat: no-repeat; background-position: center; pointer-events: none;"></div>
+    <div class="reveal" style="position: relative; z-index: 1; margin-bottom: 60px;">
       <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px">Layout</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1.02; margin-bottom: 24px; color: #273f54;">Thoughtfully designed spaces</h2>
-      <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.75; color: #273f54; max-width: 680px;">Every cabin, salon, and gathering space flows naturally, maximizing comfort and natural light across all decks. Equal-sized cabins are ideal for couples traveling together.</p>
+      <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.75; color: #273f54; max-width: 680px;">Every cabin, salon, and gathering space flows naturally, maximizing comfort and natural light. Equal-sized cabins are ideal for couples traveling together.</p>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 40px; max-width: 1100px; margin: 0 auto;">
+    <div style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 40px; max-width: 1100px; margin: 0 auto;">
       <div class="reveal">
         <img src="{{ layoutDeck }}" alt="Main deck layout" style="width: 100%; height: auto; display: block;">
       </div>
@@ -471,7 +499,10 @@
   
 
   <!-- BOOK / CTA -->
-  <section id="book" style="position: relative; color: #ece6d6; padding: 130px 56px; text-align: center; background: #00205b url('{{ chartBlueprint2 }}') center/cover; background-attachment: scroll;">
+  <section id="book" data-plane-run="{{ planeRun }}" style="position: relative; color: #ece6d6; padding: 130px 56px; text-align: center; background: #00205b url('{{ chartBlueprint2 }}') center/cover; background-attachment: scroll; overflow: hidden;">
+    <div data-plane="" style="position: absolute; left: -14%; top: 62%; width: 150px; opacity: 0; pointer-events: none; z-index: 1; filter: blur(14px);">
+      <img src="assets/plane-shadow.png" alt="" style="display: block; width: 100%; height: auto;">
+    </div>
     <div style="position: absolute; inset: 0; background: rgba(0,32,91,0.85)"></div>
     <div style="position: relative;">
       <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent, #4D7EA8); margin-bottom: 22px;">WATER YOU WAITING FOR?</div>
@@ -527,7 +558,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4D7EA8&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;accentDeep&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#3A5E7E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
 class Component extends DCLogic {
-  state = { lightboxOpen: false, lightboxIndex: 0, slideIndex: 0, menuOpen: false, navScrolled: false, weather: null, weatherList: [], wxIndex: 0, wxFade: false, ctaVisible: false };
+  state = { lightboxOpen: false, lightboxIndex: 0, slideIndex: 0, menuOpen: false, navScrolled: false, weather: null, weatherList: [], wxIndex: 0, wxFade: false, ctaVisible: false, planeFlown: false };
 
   wxSpots = [
     { name: "Tortola, BVI", lat: 18.4286, lon: -64.6185 },
@@ -557,29 +588,46 @@ class Component extends DCLogic {
     setTimeout(() => {
       this.setState(s => {
         const list = s.weatherList || [];
-        if (!list.length) return { wxFade: false };
+        if (!list.length) return {};
         const next = (s.wxIndex + 1) % list.length;
-        return { wxIndex: next, weather: list[next], wxFade: false };
+        return { wxIndex: next, weather: list[next] };
       });
-    }, 500);
+      requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ wxFade: false })));
+    }, 550);
+  }
+
+  _revealed = new Set();
+
+  syncReveals() {
+    if (!this._observer) return;
+    document.querySelectorAll(".reveal").forEach((el) => {
+      if (this._revealed.has(el)) {
+        if (el.getAttribute("data-revealed") !== "yes") {
+          el.classList.add("reveal-visible");
+          el.setAttribute("data-revealed", "yes");
+        }
+      } else if (!el.hasAttribute("data-revealed")) {
+        this._observer.observe(el);
+      }
+    });
   }
 
   componentDidMount() {
     this._observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          this._revealed.add(entry.target);
           entry.target.classList.add("reveal-visible");
+          entry.target.setAttribute("data-revealed", "yes");
           this._observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
-    setTimeout(() => {
-      document.querySelectorAll(".reveal").forEach((el) => this._observer.observe(el));
-    }, 50);
+    setTimeout(() => this.syncReveals(), 50);
     window.addEventListener("scroll", this.handleScroll);
     this.fetchWeather();
     this._wxTimer = setInterval(() => this.fetchWeather(), 900000);
-    this._wxCycle = setInterval(() => this.cycleWeather(), 20000);
+    this._wxCycle = setInterval(() => this.cycleWeather(), 10000);
   }
 
   handleScroll = () => {
@@ -596,6 +644,39 @@ class Component extends DCLogic {
     const max = doc.scrollHeight - window.innerHeight;
     const showCta = max > 0 && window.scrollY / max >= 0.25;
     if (showCta !== this.state.ctaVisible) this.setState({ ctaVisible: showCta });
+    const atBottom = max > 0 && max - window.scrollY < 600;
+    if (atBottom && !this.state.planeFlown) {
+      this.setState({ planeFlown: true });
+      setTimeout(() => this.setState({ planeFlown: false }), 15000);
+    }
+  }
+
+  componentDidUpdate() {
+    this.syncReveals();
+    const hero = document.querySelector("[data-hero-img]");
+    if (hero && hero.complete && hero.naturalWidth) hero.setAttribute("data-loaded", "yes");
+  }
+
+  scrollThumbs(i) {
+    setTimeout(() => {
+      const strip = document.querySelector("[data-thumbs]");
+      if (!strip) return;
+      const thumb = strip.children[i];
+      if (!thumb) return;
+      const max = strip.scrollWidth - strip.clientWidth;
+      const target = Math.max(0, Math.min(max, thumb.offsetLeft - (strip.clientWidth - thumb.offsetWidth) / 2));
+      const from = strip.scrollLeft;
+      if (Math.abs(target - from) < 1) return;
+      const t0 = performance.now();
+      const dur = 420;
+      const tween = (now) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+        strip.scrollLeft = from + (target - from) * e;
+        if (p < 1) requestAnimationFrame(tween);
+      };
+      requestAnimationFrame(tween);
+    }, 30);
   }
 
   componentWillUnmount() {
@@ -617,6 +698,7 @@ class Component extends DCLogic {
     };
     const wxTemp = wx ? wx.temp + "\u00B0F" : "\u2014";
     const wxDesc = wx ? (wxCodes[wx.code] || "Fair") + " \u00B7 " + "Wind " + wx.wind + " kn" : "Loading conditions";
+    const planeRun = this.state.planeFlown ? "yes" : "no";
     const wxPlace = wx ? wx.name : "Tortola, BVI";
     const wxFaded = this.state.wxFade ? "yes" : "no";
     const galleryImages = () => Array.from({ length: 17 }, (_, i) => {
@@ -626,9 +708,16 @@ class Component extends DCLogic {
     const getRandomRotation = () => (Math.random() > 0.5 ? 1 : -1) * (15 + Math.random() * 10);
     const imgs = galleryImages();
     const open = (i) => () => this.setState({ lightboxOpen: true, lightboxIndex: i });
-    const select = (i) => () => this.setState({ slideIndex: i });
+    const select = (i) => () => { this.setState({ slideIndex: i }); this.scrollThumbs(i); };
     const step = (d) => (e) => { if (e) e.stopPropagation(); this.setState(s => ({ lightboxIndex: (s.lightboxIndex + d + imgs.length) % imgs.length })); };
-    const slideStep = (d) => (e) => { if (e) e.stopPropagation(); this.setState(s => ({ slideIndex: (s.slideIndex + d + imgs.length) % imgs.length })); };
+    const slideStep = (d) => (e) => {
+      if (e) e.stopPropagation();
+      this.setState(s => {
+        const next = (s.slideIndex + d + imgs.length) % imgs.length;
+        this.scrollThumbs(next);
+        return { slideIndex: next };
+      });
+    };
     const cur = this.state.slideIndex;
     return {
       menuOpen: this.state.menuOpen,
@@ -637,14 +726,15 @@ class Component extends DCLogic {
       toggleMenu,
       wxTemp,
       wxDesc,
+      heroLoaded: (e) => { if (e && e.target) e.target.setAttribute("data-loaded", "yes"); },
       wxPlace,
       wxFaded,
+      planeRun,
       ctaShown,
       accent: this.props.accent ?? "#4D7EA8",
       accentDeep: this.props.accentDeep ?? "#3A5E7E",
       celestineLogo: window.__resources?.celestineLogo || "assets/Celestine-Logo.svg",
-      heroImage: window.__resources?.heroImage || "uploads/34798895-31EC-4C3B-BC10-5CE99D54AB17_1_201_a.jpeg",
-      yachtVector: window.__resources?.yachtVector || "uploads/motoryacht_vector-2ecab481.svg",
+            yachtVector: window.__resources?.yachtVector || "uploads/motoryacht_vector-2ecab481.svg",
       queenCabin: window.__resources?.queenCabin || "uploads/imgi_48_1784560611_6a5e3be396523_69f3949c3c03330912dce943_deck.jpg",
       indoorOutdoor: window.__resources?.indoorOutdoor || "uploads/imgi_18_1784560091_6a5e39db691ec_69f3949c3c03330912dce943_deck.jpg",
       aftDeck: window.__resources?.aftDeck || "uploads/imgi_10_1784559895_6a5e3917cf2af_69f3949c3c03330912dce943_deck.jpg",
@@ -658,7 +748,7 @@ class Component extends DCLogic {
       waterToys: window.__resources?.waterToys || "uploads/imgi_52_1784560649_6a5e3c09c55d5_69f3949c3c03330912dce943_deck.jpg",
       sailboatPhoto: window.__resources?.sailboatPhoto || "uploads/imgi_3_1784559849_6a5e38e9df9df_69f3949c3c03330912dce943_deck.jpg",
       heroVideo: window.__resources?.heroVideo || "uploads/cc7c8e3c-861a-4cad-a0e3-e2abc48078a7-ef576fdf.mp4",
-      heroImage: window.__resources?.heroImage || "uploads/a1b73513-890e-4363-b25c-71dd4655d610-277b2575.jpg",
+      heroImage: window.__resources?.heroImage || "assets/hero-wide.jpg",
       gallery: imgs.map((src, i) => ({ src, open: open(i), select: select(i), opacity: i === cur ? "1" : "0.5", border: i === cur ? (this.props.accent ?? "#4D7EA8") : "transparent" })),
       currentSlideSrc: imgs[cur],
       slideCounter: (cur + 1) + " / " + imgs.length,

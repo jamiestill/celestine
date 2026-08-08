@@ -66,7 +66,6 @@
 <meta name="ext-resource-dependency" content="uploads/yacht_cutaway_white_nobg.png" data-resource-id="yachtCutaway">
 <meta name="ext-resource-dependency" content="uploads/marissa-rodriguez-2mKYEVGA4jE-unsplash.jpg" data-resource-id="ratesBackground">
 <meta name="ext-resource-dependency" content="uploads/chart_blueprint_2.png" data-resource-id="chartBlueprint2">
-<meta name="ext-resource-dependency" content="uploads/6143D568-9742-4B5C-9AF3-D9229A14E94C_1_105_c.jpeg" data-resource-id="chefPlating">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #00205b; }
@@ -235,7 +234,7 @@
   <!-- HERO -->
   <header style="position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; padding-top: 120px; overflow: hidden;">
     <picture>
-      <source type="image/webp" srcSet="assets/opt/hero-640.webp 640w, assets/opt/hero-1280.webp 1280w, assets/opt/hero-1920.webp 1920w" sizes="100vw">
+      <source type="image/webp" srcSet="{{ heroSrcSet }}" sizes="100vw">
       <img data-hero-img="" src="{{ heroImage }}" alt="S/Y Celestine under sail" fetchPriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% bottom;">
     </picture>
     <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.16);"></div>
@@ -330,7 +329,7 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img data-polaroid="" class="reveal" src="{{ chefPlating }}" loading="lazy" decoding="async" alt="Onboard chef plating a steak dinner" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center 30%; transform: rotate(1.1deg); --rot: 1.1deg">
+          <img data-polaroid="" class="reveal" src="assets/opt/chefPlating-480.webp" srcSet="assets/opt/chefPlating-480.webp 480w, assets/opt/chefPlating-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Onboard chef plating a steak dinner" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center 30%; transform: rotate(1.1deg); --rot: 1.1deg">
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Onboard Private Chef</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">A dedicated chef prepares restaurant-quality meals tailored to your tastes, from plated dinners to casual island fare.</p>
@@ -659,7 +658,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4D7EA8&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;accentDeep&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#3A5E7E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
 class Component extends DCLogic {
-  state = { lightboxOpen: false, lightboxIndex: 0, slideIndex: 0, menuOpen: false, navScrolled: false, weather: null, weatherList: [], wxIndex: 0, wxFade: false, ctaVisible: false, planeFlown: false, zoomSrc: null, zoomIn: false, vid1: false, vid2: false };
+  state = { lightboxOpen: false, lightboxIndex: 0, slideIndex: 0, menuOpen: false, navScrolled: false, weather: null, weatherList: [], wxIndex: 0, wxFade: false, ctaVisible: false, planeFlown: false, zoomSrc: null, zoomIn: false, vid1: false, vid2: false, heroHiRes: false };
 
   wxSpots = [
     { name: "Tortola, BVI", lat: 18.4286, lon: -64.6185 },
@@ -792,6 +791,9 @@ class Component extends DCLogic {
       hero.addEventListener("load", this.markHeroLoaded);
       this.markHeroLoaded();
     }
+    const upgradeHero = () => this.setState({ heroHiRes: true });
+    if (document.readyState === "complete") upgradeHero();
+    else window.addEventListener("load", upgradeHero, { once: true });
     this._observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -925,7 +927,6 @@ class Component extends DCLogic {
       indoorOutdoor: window.__resources?.indoorOutdoor || "uploads/imgi_18_1784560091_6a5e39db691ec_69f3949c3c03330912dce943_deck.jpg",
       aftDeck: window.__resources?.aftDeck || "uploads/imgi_10_1784559895_6a5e3917cf2af_69f3949c3c03330912dce943_deck.jpg",
       kitchenComforts: window.__resources?.kitchenComforts || "uploads/pasted-1785992814094-0.png",
-      chefPlating: window.__resources?.chefPlating || "uploads/6143D568-9742-4B5C-9AF3-D9229A14E94C_1_105_c.jpeg",
       chartBlueprint: window.__resources?.chartBlueprint || "assets/chart_blueprint.png",
       crewBackground: window.__resources?.crewBackground || "uploads/karl-callwood-P5pE5Slj-ws-unsplash-d6fb3d7a.jpg",
       layoutDeck: window.__resources?.layoutDeck || "assets/opt/layoutDeck-1400.png",
@@ -936,6 +937,9 @@ class Component extends DCLogic {
       sailboatPhoto: window.__resources?.sailboatPhoto || "uploads/imgi_3_1784559849_6a5e38e9df9df_69f3949c3c03330912dce943_deck.jpg",
       heroVideo: window.__resources?.heroVideo || "uploads/cc7c8e3c-861a-4cad-a0e3-e2abc48078a7-ef576fdf.mp4",
       heroImage: window.__resources?.heroImage || "assets/opt/hero-1920.jpg",
+      heroSrcSet: this.state.heroHiRes
+        ? "assets/opt/hero-640.webp 640w, assets/opt/hero-1280.webp 1280w, assets/opt/hero-1920.webp 1920w, assets/opt/hero-2560.webp 2560w, assets/opt/hero-3840.webp 3840w"
+        : "assets/opt/hero-640.webp 640w, assets/opt/hero-1280.webp 1280w, assets/opt/hero-1920.webp 1920w",
       menuExpanded: this.state.menuOpen ? "true" : "false",
       vid1: this.state.vid1,
       vid1Off: !this.state.vid1,

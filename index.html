@@ -182,6 +182,9 @@
   @media (min-width: 1000px) {
     [data-yacht-features] { display: grid !important; grid-template-columns: 1fr 1fr; max-width: 1240px !important; column-gap: 56px; }
   }
+  @media (min-width: 769px) {
+    #layout img[aria-label^="Enlarge"] { cursor: default !important; }
+  }
   [data-gallery-stage].reveal { opacity: 1 !important; transform: none !important; filter: grayscale(1) blur(10px); transition: filter 3.5s ease; }
   [data-gallery-stage][data-revealed="yes"] { filter: grayscale(0) blur(0); }
   [data-slide-in] { transition: opacity 1s ease, transform 1s cubic-bezier(0.22, 0.61, 0.36, 1) !important; }
@@ -297,7 +300,10 @@
       </style>
       <div style="display: flex; flex-direction: column; gap: 48px; max-width: 600px; margin: 0 auto;" data-yacht-features="">
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img data-polaroid="" class="reveal" src="assets/opt/queenCabin-480.webp" srcSet="assets/opt/queenCabin-480.webp 480w, assets/opt/queenCabin-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Queen cabin interior" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-1.5deg); --rot: -1.5deg">
+          <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
+          <img data-polaroid="" class="reveal" src="assets/opt/queenCabin-480.webp" srcSet="assets/opt/queenCabin-480.webp 480w, assets/opt/queenCabin-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Queen cabin interior" onClick="{{ zoomQueenCabin }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge queen cabin photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-4.9deg); --rot: -4.9deg; cursor: zoom-in;">
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Five Queen Cabins</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54; position: relative">Five similarly sized upscale staterooms, each with its own private ensuite head (electric toilet), private shower, sink, vanity, and dedicated under-bed storage and wardrobe.</p>
@@ -305,7 +311,10 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img data-polaroid="" class="reveal" src="assets/opt/indoorOutdoor-480.webp" srcSet="assets/opt/indoorOutdoor-480.webp 480w, assets/opt/indoorOutdoor-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon with open doors to cockpit" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.2deg); --rot: 1.2deg">
+          <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
+          <img data-polaroid="" class="reveal" src="assets/opt/indoorOutdoor-480.webp" srcSet="assets/opt/indoorOutdoor-480.webp 480w, assets/opt/indoorOutdoor-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon with open doors to cockpit" onClick="{{ zoomIndoorOutdoor }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge salon photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-1.8deg); --rot: -1.8deg; cursor: zoom-in;">
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Seamless Indoor-Outdoor Flow</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">An electronic window and door connect the indoor salon directly to the forward bow cockpit.</p>
@@ -313,7 +322,10 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img data-polaroid="" class="reveal" src="assets/opt/aftDeck-480.webp" srcSet="assets/opt/aftDeck-480.webp 480w, assets/opt/aftDeck-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Aft deck with seating" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-0.8deg); --rot: -0.8deg">
+          <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
+          <img data-polaroid="" class="reveal" src="assets/opt/aftDeck-480.webp" srcSet="assets/opt/aftDeck-480.webp 480w, assets/opt/aftDeck-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Aft deck with seating" onClick="{{ zoomAftDeck }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge aft deck photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.9deg); --rot: 1.9deg; cursor: zoom-in;">
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Four Social Zones</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Guests can gather across a sun-drenched forward cockpit, a shaded aft deck for open-air dining, a bright panoramic salon, and a spacious flybridge with sunset views.</p>
@@ -321,7 +333,10 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img data-polaroid="" class="reveal" src="assets/opt/kitchenComforts-480.webp" srcSet="assets/opt/kitchenComforts-480.webp 480w, assets/opt/kitchenComforts-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon kitchen with views" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.6deg); --rot: 1.6deg">
+          <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
+          <img data-polaroid="" class="reveal" src="assets/opt/kitchenComforts-480.webp" srcSet="assets/opt/kitchenComforts-480.webp 480w, assets/opt/kitchenComforts-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon kitchen with views" onClick="{{ zoomKitchenComforts }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge salon kitchen photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-2.1deg); --rot: -2.1deg; cursor: zoom-in;">
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">High-End Comforts</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Equipped with full air conditioning (11 total units), a watermaker, an icemaker, a salon TV/audio entertainment system, two dishwashers, and seven refrigerators.</p>
@@ -329,7 +344,10 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img data-polaroid="" class="reveal" src="assets/opt/chefPlating-480.webp" srcSet="assets/opt/chefPlating-480.webp 480w, assets/opt/chefPlating-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Onboard chef plating a steak dinner" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center 30%; transform: rotate(1.1deg); --rot: 1.1deg">
+          <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
+          <img data-polaroid="" class="reveal" src="assets/opt/chefPlating-480.webp" srcSet="assets/opt/chefPlating-480.webp 480w, assets/opt/chefPlating-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Onboard chef plating a steak dinner" onClick="{{ zoomChefPlating }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge chef plating photo" style="cursor: zoom-in; width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center 30%; transform: rotate(4.7deg); --rot: 4.7deg">
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Onboard Private Chef</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">A dedicated chef prepares restaurant-quality meals tailored to your tastes, from plated dinners to casual island fare.</p>
@@ -337,7 +355,10 @@
         </div>
 
         <div style="display: flex; gap: 32px; align-items: flex-start;">
-          <img data-polaroid="" class="reveal" src="assets/opt/waterToys-480.webp" srcSet="assets/opt/waterToys-480.webp 480w, assets/opt/waterToys-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Water toys and equipment" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); object-fit: cover; object-position: center; transform: rotate(-2.1deg); --rot: -2.1deg;">
+          <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
+          <img data-polaroid="" class="reveal" src="assets/opt/waterToys-480.webp" srcSet="assets/opt/waterToys-480.webp 480w, assets/opt/waterToys-960.webp 960w" sizes="240px" loading="lazy" onClick="{{ zoomWaterToys }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge water toys photo" decoding="async" alt="Water toys and equipment" style="cursor: zoom-in; width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); object-fit: cover; object-position: center; transform: rotate(2.2deg); --rot: 2.2deg;">
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Water Toys</h3>
             <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Two paddleboards, an e-foil, an underwater Seabob, an inflatable Hangout, and a tender make exploration and adventure effortless. Every anchorage becomes your playground.</p>
@@ -963,8 +984,14 @@ class Component extends DCLogic {
       zoomWidth: this.state.zoomIn ? "260%" : "100%",
       zoomCursor: this.state.zoomIn ? "zoom-out" : "zoom-in",
       zoomHint: this.state.zoomIn ? "Drag to pan · tap to fit" : "Tap image to zoom",
-      openLayoutDeck: () => this.setState({ zoomSrc: "assets/opt/layoutDeck-2052.webp", zoomIn: false }),
-      openLayoutCutaway: () => this.setState({ zoomSrc: "assets/opt/yachtCutaway-2048.webp", zoomIn: false }),
+      openLayoutDeck: () => { if (window.innerWidth <= 768) this.setState({ zoomSrc: "assets/opt/layoutDeck-2052.webp", zoomIn: false }); },
+      openLayoutCutaway: () => { if (window.innerWidth <= 768) this.setState({ zoomSrc: "assets/opt/yachtCutaway-2048.webp", zoomIn: false }); },
+      zoomQueenCabin: () => this.setState({ zoomSrc: "assets/opt/queenCabin-960.webp", zoomIn: false }),
+      zoomIndoorOutdoor: () => this.setState({ zoomSrc: "assets/opt/indoorOutdoor-960.webp", zoomIn: false }),
+      zoomAftDeck: () => this.setState({ zoomSrc: "assets/opt/aftDeck-960.webp", zoomIn: false }),
+      zoomKitchenComforts: () => this.setState({ zoomSrc: "assets/opt/kitchenComforts-960.webp", zoomIn: false }),
+      zoomChefPlating: () => this.setState({ zoomSrc: "assets/opt/chefPlating-960.webp", zoomIn: false }),
+      zoomWaterToys: () => this.setState({ zoomSrc: "assets/opt/waterToys-960.webp", zoomIn: false }),
       toggleZoom: (e) => { if (e) e.stopPropagation(); this.setState(st => ({ zoomIn: !st.zoomIn })); },
       closeZoom: () => this.setState({ zoomSrc: null, zoomIn: false }),
       openCurrent: () => this.setState({ lightboxOpen: true, lightboxIndex: cur }),

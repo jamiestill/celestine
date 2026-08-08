@@ -100,8 +100,8 @@
   @keyframes planeFly {
     0% { transform: translate(0, 0) rotate(30deg) scale(0.85); opacity: 0; }
     12% { opacity: 0.75; }
-    68% { opacity: 0.6; }
-    100% { transform: translate(115vw, -60vh) rotate(30deg) scale(1.25); opacity: 0; }
+    68% { transform: translate(78.2vw, -40.8vh) rotate(30deg) scale(1.25); opacity: 0.6; }
+    100% { transform: translate(115vw, -60vh) rotate(30deg) scale(0.1); opacity: 0; }
   }
   [data-plane-run="yes"] [data-plane] { animation: planeFly 7s linear 1.5s forwards; }
   [data-float-cta][data-cta-shown="yes"] { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; }
@@ -545,22 +545,22 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 24px;">
         <div>
           <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px">Rates</div>
-          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1; color: #00102d;">Weekly charter rates.</h2>
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1; color: #00102d;">Weekly charter rates</h2>
         </div>
         <p style="max-width: 340px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; line-height: 1.65; color: #273f54;">All-inclusive of crew, meals, standard beverages, fuel, and water toys. Priced per week for up to 10 guests.</p>
       </div>
 
-    <div data-rate-cards="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto;">
+    <ul data-rate-cards="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; list-style: none;">
       <sc-for list="{{ rates }}" as="r" hint-placeholder-count="3">
-        <div class="reveal" style="background: #ece6d6; border-top: 3px solid {{ r.border }}; padding: 40px 36px; display: flex; flex-direction: column; transition-delay: {{ $index }}00ms;">
+        <li class="reveal" style="background: #ece6d6; border-top: 3px solid {{ r.border }}; padding: 40px 36px; display: flex; flex-direction: column; transition-delay: {{ $index }}00ms;">
           <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); font-family: 'Jost', sans-serif;">{{ r.season }}</div>
           <div style="font-size: 14px; font-weight: 300; color: #273f54; margin-top: 8px; font-family: 'Jost', sans-serif">{{ r.months }}</div>
           <div style="margin-top: 28px; font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: #00102d;">{{ r.price }}</div>
           <div style="font-size: 13px; letter-spacing: 1px; color: #273f54; margin-top: 8px; font-family: 'Cormorant Garamond', serif;">per week · up to 10 guests</div>
           <p style="margin-top: 22px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 14px; line-height: 1.7; color: #273f54;">{{ r.note }}</p>
-        </div>
+        </li>
       </sc-for>
-    </div>
+    </ul>
 
     
     <p style="max-width: 1000px; margin: 22px auto 0; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 300; line-height: 1.6; color: #55575f; position: relative; z-index: 2;">Special Christmas and New Year's charter rates apply. <br>The low season runs from May to August during summer, while the high season is from December to April, covering winter and spring.</p>

@@ -131,6 +131,8 @@
   @media (max-width: 768px) {
     nav.scrolled { padding: 12px 24px; }
     #yacht > .reveal { text-align: center; }
+    [data-charter-smarter-card] { padding: 96px 32px 32px !important; justify-content: center; text-align: center; overflow: visible; }
+    [data-charter-smarter-mark] { position: absolute !important; left: 50% !important; top: -56px !important; height: 130px !important; width: 130px !important; transform: translate(-50%, 0) rotate(-15deg) !important; }
     [data-yacht-head] { justify-content: center; text-align: center; }
     [data-yacht-head] h2 { flex-basis: 100%; }
     [data-yacht-head] img { width: calc(100% + 112px) !important; margin-left: -56px !important; margin-right: -56px !important; height: 260px !important; border-radius: 0 !important; box-shadow: none !important; margin-bottom: 32px; object-position: center !important; }
@@ -148,11 +150,13 @@
     [data-stats] > div > div:first-child { font-size: 34px !important; }
     [data-gallery-stage] { width: 100vw; max-width: 100vw; margin-left: calc(-50vw + 50%); }
     header { align-items: flex-start !important; height: 67vh !important; min-height: 470px !important; padding-top: 100px !important; }
-    header > img, header > picture > [data-hero-img] { object-position: 63% bottom !important; height: 67vh !important; min-height: 470px !important; }
+    header > img, header > picture > [data-hero-img] { object-position: 78% bottom !important; height: 67vh !important; min-height: 470px !important; }
     [data-hero-copy] { padding: 0 24px !important; margin-top: 13vh !important; }
-    footer { justify-content: center !important; text-align: center; padding: 36px 24px 96px !important; }
+    footer { justify-content: center !important; text-align: center; padding: 36px 24px 96px !important; flex-direction: column !important; align-items: center !important; }
+    footer > div { width: 100%; justify-content: center !important; }
     [data-cal-grid] { grid-template-columns: repeat(2, 1fr) !important; gap: 28px 26px !important; }
     [data-copyright] { margin-top: 24px !important; order: 4; }
+    [data-copyright-break] { display: block; }
     [data-float-cta] { flex-direction: row !important; left: 0; right: 0; bottom: 0 !important; gap: 0 !important; }
     [data-float-cta] > a { flex: 1; min-width: 0 !important; padding: 20px 12px !important; letter-spacing: 3px !important; }
     [data-weather] { border-left: none !important; border-right: none !important; border-top: 1px solid rgba(236,230,214,0.18) !important; border-bottom: 1px solid rgba(236,230,214,0.18) !important; padding: 16px 0 !important; width: 100%; justify-content: center; order: 2; }
@@ -190,7 +194,10 @@
     [data-cal-grid] { grid-template-columns: 1fr !important; gap: 30px !important; }
   }
   @media (min-width: 900px) {
-    header > picture > [data-hero-img] { object-position: 20% bottom !important; }
+    header > picture > [data-hero-img] { object-position: center bottom !important; }
+  }
+  @media (max-aspect-ratio: 13/10) {
+    header > picture > [data-hero-img] { object-position: 78% bottom !important; }
   }
   @media (min-width: 1000px) {
     [data-yacht-features] { display: grid !important; grid-template-columns: 1fr 1fr; max-width: 1240px !important; column-gap: 56px; }
@@ -200,6 +207,8 @@
     header > picture > [data-hero-img] { height: 62vh !important; max-height: 760px !important; min-height: 520px !important; }
   }
   @media (min-width: 769px) {
+    footer { display: grid !important; grid-template-columns: repeat(5, max-content); justify-content: space-between; align-items: center; padding-right: 56px !important; }
+    footer > a[href^="mailto:"], footer > [data-copyright] { grid-column: 1 / -1; }
     #layout img[aria-label^="Enlarge"] { cursor: default !important; }
   }
   [data-gallery-stage].reveal { opacity: 1 !important; transform: none !important; filter: grayscale(1) blur(10px); transition: filter 3.5s ease; }
@@ -597,22 +606,26 @@
         </div>
       </div>
 
-      <div style="max-width: 700px; margin: 0 0 60px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.7; color: #273f54;"><div>A week aboard <i>Celestine</i>, split among couples, rivals upscale cruise ship cabin prices and is comparable to an Airbnb + dining for families. It's all-inclusive (covering crew, meals, drinks, fuel, water toys) and tailored to your itinerary.</div></div>
+      <div style="max-width: 700px; margin: 0 0 60px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.7; color: #273f54;"><div>A week aboard <i data-om-id="83a5e8da:321">Celestine</i>, split among couples, rivals upscale cruise ship cabin prices and is comparable to hotels/vacation rentals + dining for families. It's all-inclusive (covering crew, meals, drinks, fuel, water toys) and tailored to your itinerary.</div></div>
 
     <ul data-rate-cards="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; list-style: none;">
       <sc-for list="{{ rates }}" as="r" hint-placeholder-count="3">
         <li class="reveal" style="background: #ece6d6; border-top: 3px solid {{ r.border }}; padding: 40px 36px; display: flex; flex-direction: column; transition-delay: {{ $index }}00ms;">
           <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); font-family: 'Jost', sans-serif;">{{ r.season }}</div>
           <div style="font-size: 14px; font-weight: 300; color: #273f54; margin-top: 8px; font-family: 'Jost', sans-serif">{{ r.months }}</div>
-          <div style="margin-top: 28px; font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: #00102d;">{{ r.perCouple }}</div>
-          <div style="font-size: 13px; letter-spacing: 1px; color: #273f54; margin-top: 6px; font-family: 'Cormorant Garamond', serif;">per couple, for the week</div>
+          <div style="margin-top: 28px; font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: #00102d;">{{ r.perPerson }}</div>
+          <div style="font-size: 13px; letter-spacing: 1px; color: #273f54; margin-top: 6px; font-family: 'Cormorant Garamond', serif;">per person, for the week</div>
           <div style="font-size: 17px; color: #273f54; margin-top: 10px; font-family: 'Jost', sans-serif; font-weight: 400;">{{ r.price }} total per week</div>
           <p style="margin-top: 22px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; line-height: 1.7; color: #273f54;">{{ r.note }}</p>
         </li>
       </sc-for>
     </ul>
 
-    <p style="max-width: 1000px; margin: 22px auto 0; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 300; line-height: 1.6; color: #55575f; position: relative; z-index: 2;">Special Christmas and New Year's charter rates apply. <br>The low season runs from May to August during summer, while the high season is from December to April, covering winter and spring. <br>A 20% crew gratuity is customary and not included in the base charter rate.</p>
+    <ul style="max-width: 1000px; margin: 22px auto 0; padding-left: 20px; list-style: disc; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 300; line-height: 1.6; color: #55575f; position: relative; z-index: 2; display: flex; flex-direction: column; gap: 6px;">
+      <li>Special Christmas and New Year's charter rates apply.</li>
+      <li>The low season runs from May to August during summer, while the high season is from December to April, covering winter and spring.</li>
+      <li>A 20% crew gratuity is customary and not included in the base charter rate.</li>
+    </ul>
     
     <div style="margin-top: 56px; max-width: 900px; margin-left: auto; margin-right: auto; position: relative; z-index: 2;font-family: 'Cormorant Garamond', serif">
       <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px; font-family: 'Jost', sans-serif">Meal Plans</div>
@@ -639,8 +652,8 @@
       </div>
     </div>
 
-    <div style="margin-top: 56px; max-width: 900px; margin-left: auto; margin-right: auto; position: relative; z-index: 2; background: #00102d; border-radius: 16px; padding: 40px 40px 40px 136px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap;">
-      <img src="assets/charter-smarter-mark.svg" alt="Charter Smarter" style="position: absolute; left: 0; top: 50%; transform: translate(-33%, -50%) rotate(-15deg); height: 140px; width: 140px; flex-shrink: 0; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));">
+    <div data-charter-smarter-card="" style="margin-top: 56px; max-width: 900px; margin-left: auto; margin-right: auto; position: relative; z-index: 2; background: #00102d; border-radius: 16px; padding: 40px 40px 40px 136px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap;">
+      <img data-charter-smarter-mark="" src="assets/charter-smarter-mark.svg" alt="Charter Smarter" style="position: absolute; left: 0; top: 50%; transform: translate(-33%, -50%) rotate(-15deg); height: 140px; width: 140px; flex-shrink: 0; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));">
       <div style="flex: 1 1 320px; min-width: 0;">
         <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #9DBFD9; margin-bottom: 10px;">In Partnership With Charter Smarter</div>
         <h4 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 26px; color: #ece6d6; margin-bottom: 10px;">Pay for your charter over time.</h4>
@@ -735,7 +748,7 @@
       </a>
     </div>
     <span style="width: 1px; height: 32px; background: rgba(236,230,214,0.3);"></span>
-    <div data-weather="" data-wx-faded="{{ wxFaded }}" style="display: flex; align-items: center; gap: 14px; padding: 0 22px; width: 260px; flex: none; box-sizing: border-box; transition: opacity 0.5s ease;">
+    <div data-weather="" data-wx-faded="{{ wxFaded }}" style="display: flex; align-items: center; gap: 14px; padding: 0 22px; width: 330px; flex: none; white-space: nowrap; box-sizing: border-box; transition: opacity 0.5s ease;">
       <div style="font-family: 'Jost', sans-serif; font-size: 24px; line-height: 1.15; color: #9DBFD9; white-space: nowrap;">{{ wxTemp }}<span style="font-size: 13px; opacity: 0.6;"> / {{ wxTempC }}</span></div>
       <div style="display: flex; flex-direction: column; gap: 4px; font-family: 'Jost', sans-serif;">
         <div style="font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(236,230,214,0.45); white-space: nowrap;">{{ wxPlace }}</div>
@@ -743,11 +756,11 @@
       </div>
     </div>
     
-    <a href="mailto:bookings@paradiseyachtmanagement.com?subject=Inquiry%20about%20S%2FY%20Celestine%20for%20charter" style="flex-basis: 100%; display: flex; align-items: center; gap: 10px; color: rgba(236,230,214,0.7); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 1px; transition: color 0.2s;" style-hover="color: #ece6d6;">
+    <a href="mailto:bookings@paradiseyachtmanagement.com?subject=Inquiry%20about%20S%2FY%20Celestine%20for%20charter" style="flex-basis: 100%; margin-top: 22px; display: flex; align-items: center; gap: 10px; color: rgba(236,230,214,0.7); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 1px; transition: color 0.2s;" style-hover="color: #ece6d6;">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 17px; height: 17px; flex: none;"><rect x="2" y="4.5" width="20" height="15" rx="2"></rect><path d="m2.6 6 9.4 6.6L21.4 6"></path></svg>
       <span>bookings@paradiseyachtmanagement.com</span>
     </a>
-    <div data-copyright="" style="width: 100%; margin-top: 12px; color: #9DBFD9; font-size: 12px; letter-spacing: 1px; font-family: 'Jost', sans-serif; font-weight: 300;">Copyright © {{ currentYear }}. Website designed and developed by <a href="https://www.linkedin.com/in/jamiestill/">Jamie Still</a>.</div>
+    <div data-copyright="" style="width: 100%; margin-top: -14px; color: #9DBFD9; font-size: 12px; letter-spacing: 1px; font-family: 'Jost', sans-serif; font-weight: 300;">Copyright © {{ currentYear }}. <span data-copyright-break=""></span>Website designed and developed by <a href="https://www.linkedin.com/in/jamiestill/">Jamie Still</a>.</div>
   </footer>
 
   <div data-float-cta="" data-cta-shown="{{ ctaShown }}" style="position: fixed; right: 0; bottom: 40px; z-index: 90; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease;">
@@ -847,7 +860,7 @@ class Component extends DCLogic {
           "offers": [
             { "@type": "Offer", "name": "Low season, 2 guests", "price": "35500", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://chartersmarter.com/step-form/?pid=1965" },
             { "@type": "Offer", "name": "Low season, 6 guests", "price": "37500", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://chartersmarter.com/step-form/?pid=1965" },
-            { "@type": "Offer", "name": "Low season, 10 guests", "price": "39500", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://chartersmarter.com/step-form/?pid=1965" }
+            { "@type": "Offer", "name": "Low season, 8 guests", "price": "39000", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://chartersmarter.com/step-form/?pid=1965" }
           ]
         },
         {
@@ -942,7 +955,13 @@ class Component extends DCLogic {
 
     const doc = document.documentElement;
     const max = doc.scrollHeight - window.innerHeight;
-    const showCta = max > 0 && window.scrollY / max >= 0.25;
+    const bookEl = document.getElementById("book");
+    const bookRect = bookEl && bookEl.getBoundingClientRect();
+    const bookInView = !!bookRect && bookRect.top < window.innerHeight * 0.85 && bookRect.bottom > 0;
+    const yachtEl = document.getElementById("yacht");
+    const yr = yachtEl && yachtEl.getBoundingClientRect();
+    const pastYachtHalf = !!yr && yr.top + yr.height / 2 <= window.innerHeight * 0.5;
+    const showCta = pastYachtHalf && !bookInView;
     if (showCta !== this.state.ctaVisible) this.setState({ ctaVisible: showCta });
     const atBottom = max > 0 && max - window.scrollY < 600;
     if (atBottom && !this.state.planeFlown) {
@@ -1141,9 +1160,9 @@ class Component extends DCLogic {
         { name: "British Virgin Islands", popular: true, region: "Caribbean", photo: "assets/opt/destBVI-900.jpg", webp: "assets/opt/destBVI-420.webp 420w, assets/opt/destBVI-640.webp 640w, assets/opt/destBVI-900.webp 900w, assets/opt/destBVI-1200.webp 1200w", blurb: "Celestine easily hops between Tortola, Virgin Gorda's granite Baths, Norman Island's Bight, and White Bay's white sands. Turquoise anchorages and beach bars accessible only by boat are within your reach." },
       ],
       rates: [
-        { season: "Low Season", months: "10 Guests, five couples", price: "$41,000", perCouple: "$8,200", border: "#cbbc96", note: "High Season / $46,000" },
-        { season: "Low Season", months: "6 Guests, three couples", price: "$37,500", perCouple: "$12,500", border: this.props.accent ?? "#4D7EA8", note: "High Season / $42,500" },
-        { season: "High Season", months: "6 Guests, three couples", price: "$42,500", perCouple: "$14,167", border: "#cbbc96", note: "Low Season / $37,500" },
+        { season: "Low Season", months: "8 Guests, four couples", price: "$39,000", perPerson: "$4,875", border: "#cbbc96", note: "High Season / $44,000" },
+        { season: "Low Season", months: "6 Guests, three couples", price: "$37,500", perPerson: "$6,250", border: this.props.accent ?? "#4D7EA8", note: "High Season / $42,500" },
+        { season: "High Season", months: "10 Guests, five couples", price: "$46,000", perPerson: "$4,600", border: "#cbbc96", note: "Low Season / $41,000" },
       ],
       rateIncludes: [
         "Full professional crew",

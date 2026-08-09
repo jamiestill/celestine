@@ -71,6 +71,7 @@
   body { background: #00205b; }
   a { color: #3A5E7E; }
   a:hover { color: #00205b; }
+  
   footer a, [data-menu] a, #destinations a, #book a { color: inherit; }
   footer a:hover, [data-menu] a:hover, #destinations a:hover, #book a:hover { color: #ece6d6; }
   :focus-visible { outline: 3px solid #4D7EA8; outline-offset: 3px; border-radius: 2px; }
@@ -116,7 +117,7 @@
   .nav-burger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
   .nav-burger.scrolled span { background: #ece6d6 !important; }
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 20; transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease; padding: 30px 56px; background: rgba(183, 187, 192, 0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-  nav.scrolled { background: #00205b; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); padding: 21px 56px; }
+  nav.scrolled { background: #00205b; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); padding: 21px 56px; border-bottom: 1px solid rgba(236,230,214,0.18); }
   nav a { text-shadow: 0 0 12px rgba(236,230,214,0.9), 0 0 4px rgba(236,230,214,0.8); }
   nav.scrolled a { text-shadow: none; }
   nav.scrolled a { color: #ece6d6 !important; opacity: 0.85 !important; }
@@ -147,6 +148,7 @@
     header > img, header > picture > [data-hero-img] { object-position: 78% bottom !important; height: 67vh !important; min-height: 470px !important; }
     [data-hero-copy] { padding: 0 24px !important; margin-top: 13vh !important; }
     footer { justify-content: center !important; text-align: center; padding: 36px 24px 96px !important; }
+    [data-cal-grid] { grid-template-columns: repeat(2, 1fr) !important; gap: 24px 16px !important; }
     [data-copyright] { margin-top: 24px !important; order: 4; }
     [data-float-cta] { flex-direction: row !important; left: 0; right: 0; bottom: 0 !important; gap: 0 !important; }
     [data-float-cta] > a { flex: 1; min-width: 0 !important; padding: 20px 12px !important; letter-spacing: 3px !important; }
@@ -169,7 +171,8 @@
     #yacht { grid-template-columns: 1fr !important; gap: 48px !important; }
     [data-palm] { width: min(60%, 280px) !important; right: -5% !important; top: -40px !important; bottom: auto !important; opacity: 0.7 !important; mix-blend-mode: normal !important; }
     [data-palm][data-palm-alt] { right: auto !important; left: -5% !important; top: auto !important; bottom: -40px !important; }
-    [data-layout-zoom] { display: flex !important; }
+    [data-layout-zoom] { display: flex !important; opacity: 0 !important; transition: opacity 0.6s ease !important; }
+    .reveal[data-revealed="yes"] > [data-layout-zoom] { opacity: 1 !important; transition-delay: 0.5s !important; }
     #destinations { padding: 80px 24px !important; }
     #destinations > div:nth-child(2) { grid-template-columns: 1fr !important; }
     #gallery { padding: 80px 24px !important; }
@@ -200,6 +203,8 @@
   [data-slide-in][data-revealed="yes"] { transform: translateX(0) !important; }
   [data-polaroid] { opacity: 0; transform: translateX(-70px) rotate(var(--rot, 0deg)) !important; transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1); }
   [data-polaroid][data-revealed="yes"] { opacity: 1; transform: translateX(0) rotate(var(--rot, 0deg)) !important; }
+  [data-polaroid] + div { transition: opacity 0.6s ease; }
+  [data-polaroid][data-revealed="yes"] + div { opacity: 1 !important; transition-delay: 0.5s; }
   .reveal.reveal-left { transform: translateX(-40px); }
   .reveal.reveal-right { transform: translateX(40px); }
   .reveal.reveal-visible, .reveal[data-revealed="yes"] { opacity: 1; transform: translate(0, 0); }
@@ -224,6 +229,7 @@
       <a href="#tour" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">360° Tour</a>
       <a href="#crew" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Crew</a>
       <a href="#rates" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Rates</a>
+      <a href="#availability" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Availability</a>
       
     </div>
   </nav>
@@ -237,6 +243,7 @@
       <a href="#gallery" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Gallery</a>
       <a href="#crew" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Crew</a>
       <a href="#rates" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Rates</a>
+      <a href="#availability" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Availability</a>
       <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="color: #00205b; background: var(--accent, #4D7EA8); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 26px; margin-top: 10px;">Charter</a>
     </div>
   </sc-if>
@@ -314,7 +321,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/queenCabin-480.webp" srcSet="assets/opt/queenCabin-480.webp 480w, assets/opt/queenCabin-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Queen cabin interior" onClick="{{ zoomQueenCabin }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge queen cabin photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-4.9deg); --rot: -4.9deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Five Queen Cabins</h3>
@@ -325,7 +332,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/indoorOutdoor-480.webp" srcSet="assets/opt/indoorOutdoor-480.webp 480w, assets/opt/indoorOutdoor-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon with open doors to cockpit" onClick="{{ zoomIndoorOutdoor }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge salon photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-1.8deg); --rot: -1.8deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Seamless Indoor-Outdoor Flow</h3>
@@ -336,7 +343,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/aftDeck-480.webp" srcSet="assets/opt/aftDeck-480.webp 480w, assets/opt/aftDeck-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Aft deck with seating" onClick="{{ zoomAftDeck }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge aft deck photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.9deg); --rot: 1.9deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Four Social Zones</h3>
@@ -347,7 +354,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/kitchenComforts-480.webp" srcSet="assets/opt/kitchenComforts-480.webp 480w, assets/opt/kitchenComforts-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon kitchen with views" onClick="{{ zoomKitchenComforts }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge salon kitchen photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-2.1deg); --rot: -2.1deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">High-End Comforts</h3>
@@ -358,7 +365,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/chefPlating-480.webp" srcSet="assets/opt/chefPlating-480.webp 480w, assets/opt/chefPlating-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Onboard chef plating a steak dinner" onClick="{{ zoomChefPlating }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge chef plating photo" style="cursor: zoom-in; width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center 78%; transform: rotate(4.7deg); --rot: 4.7deg">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Onboard Private Chef</h3>
@@ -369,7 +376,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/waterToys-480.webp" srcSet="assets/opt/waterToys-480.webp 480w, assets/opt/waterToys-960.webp 960w" sizes="240px" loading="lazy" onClick="{{ zoomWaterToys }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge water toys photo" decoding="async" alt="Water toys and equipment" style="cursor: zoom-in; width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); object-fit: cover; object-position: center; transform: rotate(2.2deg); --rot: 2.2deg;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Water Toys</h3>
@@ -627,6 +634,39 @@
     </div></section>
   
 
+
+  <!-- AVAILABILITY -->
+  <section aria-label="Availability calendar" style="padding: 90px 56px; background: #ece6d6;">
+      <div id="availability" style="max-width: 1000px; margin: 0 auto; text-align: left;">
+        <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: #3A5E7E; margin-bottom: 18px; text-align: center;">Availability</div>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 6vw, 44px); line-height: 1.1; margin: 0 0 14px; text-align: center; color: #00102d;">Open weeks at a glance</h3>
+        <p style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.6; color: #55575f; margin: 0 auto 40px; max-width: 460px; text-align: center;">Dates shown are current as of August 2026. <a href="mailto:bookings@paradiseyachtmanagement.com">Contact us</a> for the latest.</p>
+
+        <div style="display: flex; gap: 26px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #273f54;">
+          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: rgba(0,32,91,0.06); border: 1px solid rgba(0,32,91,0.25);"></span>Open</div>
+          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: #6E9CC2;"></span>Booked</div>
+          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: #d4e8f7;"></span>On hold</div>
+          
+        </div>
+
+        <div data-cal-grid="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 30px;">
+          <sc-for list="{{ calendarMonths }}" as="month" hint-placeholder-count="9">
+            <div style="min-width: 0;">
+              <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #3A5E7E; margin-bottom: 12px;">{{ month.name }}</div>
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 1px; color: rgba(0,16,45,0.45); margin-bottom: 4px; text-align: center;">
+                <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px;">
+                <sc-for list="{{ month.cells }}" as="day" hint-placeholder-count="35">
+                  <div style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; background: {{ day.bg }}; color: {{ day.fg }};">{{ day.label }}</div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+  </section>
+
   <!-- BOOK / CTA -->
   <section id="book" aria-label="Begin planning your voyage" data-plane-run="{{ planeRun }}" style="position: relative; color: #ece6d6; padding: 130px 56px; text-align: center; background: #00205b url('assets/opt/blueprint2-1280.webp') center/cover; background-attachment: scroll; overflow: hidden;">
     <div data-plane="" style="position: absolute; left: -14%; top: 62%; width: 150px; opacity: 0; pointer-events: none; z-index: 1; filter: blur(9px);">
@@ -636,18 +676,18 @@
     <div style="position: relative; z-index: 2;">
       <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: #9DBFD9; margin-bottom: 22px;">WATER YOU WAITING FOR?</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 68px); line-height: 1.02; max-width: 760px; margin: 0 auto;">Begin planning your <i>Celestine</i> voyage.</h2>
-      <div style="font-family: 'Jost', sans-serif; margin: 26px auto 40px; max-width: 480px; font-weight: 300; font-size: 18px; line-height: 1.65; opacity: 0.85;"><p data-pm-slice="0 0 []">Connect with a knowledgeable broker who can get you on board <i>Celestine</i> right away. Your future self thanks you.</p></div>
+      <div style="font-family: 'Jost', sans-serif; margin: 26px auto 40px; max-width: 480px; font-weight: 300; font-size: 18px; line-height: 1.65; opacity: 0.85;"><p data-pm-slice="0 0 []">Connect with a <a href="https://www.crewedyachtsbvi.com/accredited-brokers">knowledgeable broker</a> who can get you on board <i>Celestine</i> right away. Your future self thanks you.</p></div>
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         
         
       </div><div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://cyaeb.com/QUd8BuGCCv/xrn/69f3949c3c03330912dce943#calendar" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: #6E9CC2; color: #00102d; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">AVAILABILITY</a>
+        <a href="https://www.crewedyachtsbvi.com/accredited-brokers" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: #6E9CC2; color: #00102d; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">BROKER PARTNERS</a>
         <a href="tel:+18442049846" style="font-family: 'Jost', sans-serif; border: 1px solid rgba(236,230,214,0.5); color: #ece6d6; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">(844) 204-9846</a>
       </div><div style="display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 1rem;">
-        <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: #6E9CC2; color: #00102d; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">START DREAMING</a>
-        <div style="font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 1px; color: rgba(236,230,214,0.75); text-transform: uppercase; margin-top: 2rem;">Find an <a href="https://www.crewedyachtsbvi.com/accredited-brokers" target="_blank" rel="noopener" style="color: rgba(236,230,214,0.75); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;" style-hover="color: #ece6d6;">expert broker</a> to start your journey</div>
+        <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: #FF5A5F; color: #f5efe2; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">START DREAMING</a>
+        
       </div>
-      
+
     </div>
   </section>
 
@@ -655,7 +695,17 @@
 
   <!-- FOOTER -->
   <footer style="background: #00102d; color: rgba(236,230,214,0.6); padding: 40px 200px 40px 56px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+    <a href="#top" aria-label="Back to top" style="display: inline-flex;">
     <img src="{{ celestineLogo }}" alt="S/Y Celestine" loading="lazy" decoding="async" style="height: 46px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+    </a>
+    <a href="https://www.paradiseyachtmanagement.com" target="_blank" rel="noopener" aria-label="Paradise Yacht Management" style="display: inline-flex;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1319 1214" role="img" aria-label="Paradise Yacht Management" style="height: 46px; width: auto; opacity: 0.9;">
+  <title>Paradise Yacht Management</title>
+<title>Paradise Yacht Management</title><path fill="#fff" d="M954.6 1079.1c-1.6-2.5 4.3-5.3 11.6-5.4l7.3-.2-.3-20.3q-.3-20.2.8-21.7c.7-.9.8-21.9.4-69.8-.8-74.4-1-71.7 4.4-68.8 2.8 1.5 4.3 182.2 1.6 185.3-1.5 1.6-3.3 1.8-13.5 1.8a46 46 0 0 1-12.3-.9m-942-11.2-2.6-2V886.1l2.3-1.8c2.2-1.7 4.6-1.8 37.6-1.3 19.4.3 35.9.1 36.6-.3 3.6-2 20.6 4.2 29 10.6 32 24.3 33.2 68.1 2.7 96.8a64 64 0 0 1-12.7 9.3l-6 2.9-23.3-.2-23.2-.2v64l-2.6 2c-2.5 1.9-4 2.1-18.9 2.1s-16.4-.2-18.9-2.1m1167.1-.1c-2.6-2-2.7-181.1-.1-183.9 1.6-1.8 4.5-1.9 58.4-1.9h56.7l2.1 2.3c3.1 3.3 3.4 35.3.4 38-1.7 1.5-5.8 1.7-38.8 1.7h-36.9v30h61.4l2 2.6c3.1 3.9 3.2 32.2.2 36l-2 2.5-31-.1-31.1-.1v34.2l37.6-.1c27.7-.1 37.9.2 39 1.1 2.4 2 2 35-.4 37.2s-114.6 2.6-117.5.5M88.4 957.9c6.6-5.2 8.7-17.3 4.4-25.1-3.5-6.2-5.6-6.8-22.8-6.8H55v34h15.4c14 0 15.6-.2 18-2.1m795.1-294.2c-11.3-3-17-7.8-23.4-20.1-2.6-4.8-3.2-6.9-2.4-7.7 1.1-1.1 26.9.6 51.5 3.5 10.4 1.2 10.7 1.1 9.1-.6-.9-1-2.1-1.8-2.7-1.8s-2.2-.9-3.6-2-3-2-3.6-2c-1.1 0-12.7-7.8-25-16.8-11.2-8.2-35.4-32.6-35.4-35.7 0-.5-1.7-3.3-3.7-6.3-3.2-4.9-3.7-6.5-4.1-13.3-1.4-24.8 11.5-76.4 26.9-107.2 2.5-4.9 24.3-26.8 37.9-38.1 16.7-13.7 16.6-13.6 14.8-13.6-.9 0-2 .5-2.3 1s-1.6.8-2.8.5-5.8.1-10.2.9c-12.8 2.2-12.8 1.8-1-16.6a913 913 0 0 1 66.4-88.3c28.4-33.1 90.6-97.4 92.5-95.5q1 .9-.7 7.8c-16.7 67-27 145.7-25.3 195.7 2.8 89.6 29.1 150.1 81.1 187 5.3 3.7 9.7 7.1 10 7.5.6 1.1-3.7 3.6-23 13.5a438 438 0 0 1-148.5 47c-18.1 2.2-65.5 3-72.5 1.2m-735.7 413.6c-2.5-3-.2-3.6 15.7-4 21.2-.6 22.8-1.6 29.4-18l2.8-6.8h33.4c29 0 33.4.2 33.4 1.5s-3.9 1.5-27.7 1.8l-27.7.2-3.5 7.3c-1.8 3.9-4.1 9.6-5.1 12.4s-2.1 5.5-2.6 5.8c-1.9 1.3-47 1-48.1-.2m167.9 1.1c-1.3-1.3 1.4-4.4 3.9-4.4 8.2 0 8.3-2.9.6-22.7-3.1-8.1-3.4-9.6-2.3-11.9 1.6-3.6 2-3.1 9.2 13 9.9 22.3 9.3 26.6-3.5 26.6-4 0-7.6-.3-7.9-.6m460.9-.1c-37.8-.3-42.7-.7-41-3.4.3-.5 16.9-.9 37-.9 20 0 37.2-.4 38.2-.9s4.4-1.4 7.7-2a81 81 0 0 0 29-14.3c27.8-20.8 43.5-49.8 43.6-80.1 0-13.9-.4-16.1-4.4-29-2.3-7.7-2.7-10.1-1.8-11 1.6-1.5 3.1.4 7.6 9.8 5.2 10.7 6.6 17.9 7.2 36.5.9 29.5-6.2 46.1-30.9 71.6a64 64 0 0 1-40.3 22.3c-7.8 1.6-10.6 1.7-51.9 1.4m281.9-7.4c-29.1-5.6-42.3-11.6-46.9-21.3-1.4-3.1-1.4-3.8-.1-7.7a80 80 0 0 1 12.8-21.6c4.8-5.2 4.6-5.3 22 2.9 19.2 9 30.8 10 37.5 3.4 8.7-8.6 1.5-21.1-18-31.1-41.2-21.3-54.6-35.8-55.6-60.3-.2-5.2.1-11.4.8-14 5.2-20.8 24.4-36.3 50.1-40.3 21.5-3.3 63.1 8.3 70.5 19.7 4.1 6.1-1.6 19.5-12.6 29.8-6.8 6.4-8.5 6.2-26-2.6-12.7-6.5-15.1-7.3-21-7.6-10.7-.6-15 2.5-15 10.8s4.3 12.2 26 23.2c34.5 17.7 46.3 27.9 52.5 45.3 9.8 27.9-7.2 57.6-39.7 69.2a96 96 0 0 1-37.3 2.2m-285.4-52.8c-.8-1.4-1-16.1-.9-46.3l.3-44.3 16.5.1c17.7 0 24.5 1.5 23.8 5-.3 1.4-2.3 1.6-16.5 1.5l-16.3-.2-.2 42.8-.3 42.8-2.7.3q-2.7.4-3.7-1.7M219.5 996a58 58 0 0 1 9.1-18.8c1.9-.5 5.4 5.3 6 10q1.4 10-9.1 9.8c-3 0-5.7-.5-6-1m73.7-6.7c-1.2-1-8.5-15.1-16.3-31.3l-19.5-40.7c-5.7-11.9-6.3-14.3-4-16.2 1.2-1 2.4.6 7 9.1 9 16.9 37.3 75.9 37.9 79.2.3 1.8-2.9 1.7-5.1-.1m354.5-216.4c-23-1.5-49.7-8.8-75.1-20.4l-13.8-6.4-9.7 4.8a227 227 0 0 1-60.1 19.3 231 231 0 0 1-72-.5 168 168 0 0 1-54.8-22.1l-5.3-3.5-4.7 3.3a134 134 0 0 1-39.2 17c-35.7 10.6-82 9.8-118-2.1-16.7-5.5-17.8-6.3-13-10.5 46-39.6 122.1-74.9 198.5-91.7l20.5-4.6c15.6-3.5 51.9-8.7 75.5-11 109.8-10.3 234.6 1.5 327.5 31l14 4.5c27.6 8.6 73 29.1 99 44.6 16.1 9.6 35.2 23.2 34.8 24.7-1.4 4.4-36.6 16.1-61.1 20.3q-68.1 11.7-120.6-19.9l-9.1-5.5-5.3 3.5c-27 18.2-67.8 27.7-108 25.2m-297 294.3c-2.7-3-2.6-181.1.1-183.5s89.1-2.5 98.6-.1a54 54 0 0 1 26.1 15.9c27.8 27.9 21.8 70.9-12.7 90.9l-6.7 3.8 1.9 4.7a295 295 0 0 0 16.4 31.1c23 39.9 23.2 39-6.8 39-17.9 0-20-.2-22.4-1.9-1.9-1.3-8.1-12.5-19.7-35.5l-17-33.6H393v66.6l-3 2.2c-4.1 3.1-36.6 3.4-39.3.4m89.1-108.6c6.4-2.1 9.7-18.9 5.3-27.3-3.8-7.6-6.6-8.3-30.6-8.3H394v17.8c0 9.8.2 18.1.4 18.3.8.8 43 .3 45.4-.5M315.3 520.1a133 133 0 0 1-60.8-58c-3.6-7.4-8.5-21.2-8.6-24.5-.1-3.6-3.8 5.9-4.9 12.7-1.8 11.1-.6 37.1 2 45.1 4.3 13-11.1-6.9-17.5-22.6a98 98 0 0 1-7.3-38.7l-.5-16.3-8.6.4c-13.9.8-23.1 5.1-41.7 19.8a39 39 0 0 1-10.7 7.1c-1.7-1.7 10.2-23.8 19.9-36.7 9.4-12.6 26.8-27.5 35.3-30.5l3-1.1-4.8-5.8a107 107 0 0 1-19.2-92.2c3.7-14.2 13.9-36.4 16.6-36a68 68 0 0 1 1.6 17.4c1.2 32.4 8.8 55.4 24 72.8l3.9 4.5V324c0-52.1 16.3-89.4 47-107.6 7.6-4.5 20.1-9.1 21.9-8 1.3.8 1.4.6-8.2 22.1-17.5 39.5-25.7 64.5-25.7 78 0 6.3.5 6.6 4.6 2.4 4.4-4.6 19.4-14.4 26.1-16.9 20.6-7.8 42.7-5.6 64.8 6.4 9.6 5.2 10.1 6.8 2.5 7.8-41.1 5.6-66.2 16.4-73.9 32-2.4 5-1.8 5.6 5.5 5.7 5.3.1 23.4 4.7 30 7.6a78 78 0 0 1 31.6 25.8c4.4 6.8 3 7.2-9.7 2.7-36.2-12.8-65.7-14.3-81.4-4.3l-4.3 2.8.5 17.5a171 171 0 0 0 51.4 116.1c9.1 9.3 10.9 11.9 8.2 11.9-.4 0-6.1-2.7-12.6-5.9m424.3-215a55 55 0 0 1 4.8-12.7c19.4-43 24.5-76.7 16-106a106 106 0 0 0-15.6-31.4c-4.9-6.1-4.7-6.1-32.8-2.5-71.2 9-124.2 28.1-160.8 57.9-4.6 3.8-8.8 6.4-9.2 6-.8-.9 4.4-15.9 9.4-26.7l2.6-6.1c0-1 11-20.2 15.3-26.6 26.9-40.3 65.5-63.8 109.5-66.7l9.6-.6-10.2-9.8C654.8 57.5 625.1 44 599.3 44c-20.8 0 18.1-11.9 49.1-15.1 30-3 58.5 3.5 80 18.4l5 3.4 11.5-11.8c27.2-27.5 54.5-36.9 84.6-29 12.4 3.3 12.5 4.7.3 8.8-18.9 6.4-32.5 18.1-35.6 30.8-2.4 9.8-2.4 9.8-.6 9.1 14.5-5.6 55.9-8.5 78.7-5.6a174 174 0 0 1 120.3 71.7q9 12.2-3.4 3.8c-39.6-26.1-62.5-33.8-100.7-33.9-21.9-.1-27 .5-46.9 5.1l-10.8 2.5 11.3 3.7c57.7 19 95.4 57.9 102.4 105.6 1.8 12.3 1.7 29.6-.2 30.2-.6.2-3.6-3.9-6.7-9.1-23.5-39.8-52.5-59-89.6-59.1-16 0-19.4.8-18.6 4.3.4 1.5.9 11.3 1.2 21.7 1.1 35.9-6.8 57.9-27.9 78.2a99 99 0 0 1-48.5 25.3c-12.4 3.2-13.8 3.5-14.6 2.1"></path><path fill="#fff" d="M1072 1083c-8.7-1.1-22.2-5-22.1-6.5.1-.6 2.4-.9 5.4-.8 32.9 1.6 41.9.1 57.2-9 21-12.6 30.1-29.5 29.4-54.7-.5-16.7 3.3-16.9 7.5-.5a53 53 0 0 1-14.4 52.5q-24 23.7-63 19m-782.4-5.9c-2.7-2.9-.6-3.5 13.3-3.5 13.3-.1 16.7.8 14.2 3.8-2.2 2.6-25.1 2.3-27.5-.3m447.9.9q-.4-1 .7-1.5c2.6-1 77.3 0 77.1 1-.4 1.4-76.9 1.9-77.8.5m-598.7-11.5c-1.8-3.9 1.7-12.3 25.7-63L175 981c25.3-54.7 45.4-95.8 48.1-98.2 6.9-6.4 11.7-2.5 20.9 16.7l17.7 37q40.9 85.5 53.4 114.3c8 18.5 8.2 18.2-18.3 18.2-23.1 0-21 1.1-28.7-15.2l-5-10.8h-69.9l-3.8 9.7a62 62 0 0 1-6.7 13l-2.9 3.3H140zm177.4-25.3c-.5-.9-4.7-9.8-9.2-19.7s-9.8-21.1-11.7-24.9c-3.8-7.6-3.4-9.8 1.2-7.5 2.2 1.2 4.7 5.7 13.5 24.9 10.1 22.3 10.6 23.6 9.3 26.2-1.6 3.3-1.9 3.4-3.1 1m-72.2-39.7-2.6-6.2-6.5-15.8c-5.8-14.7-5-14.7-11.7-.5a245 245 0 0 0-10.2 22.4c0 .4 7 .6 15.5.6s15.5-.2 15.5-.5m870.4-58.8-2.6-2.3 5.4-4.1c6.6-5 11.4-11.3 16.9-22.2 2.2-4.4 4.4-8.1 4.9-8.1 1.8 0 8 8.4 8 10.9 0 6.6-11.2 23.1-18.1 26.6-4.4 2.3-11.3 1.9-14.5-.8m-50.6-4.5c-8.5-9.6 1.4-18.3 14.6-12.8 5.3 2.2 5.2 3.4-.6 5.9-3 1.4-6.3 3.8-7.6 5.6-2.6 3.5-4.2 3.9-6.4 1.3m-814.7-38.3c-2.8-6.2-3-7.9-1-7.9 1.9 0 6.9 8.3 6.3 10.4-1.3 4.4-2.4 3.9-5.3-2.5m186.7-257.5c-.3-.5-.9-6.8-1.2-13.9a279 279 0 0 0-87.7-190.9 363 363 0 0 0-69.7-49.5q-6-3-3.4-4.5a311 311 0 0 1 202 209c6.2 20.7 10.9 43.9 9.1 44.9-2.6 1.7-48.4 6.2-49.1 4.9m56.8-7.3a480 480 0 0 1 4.9-61.2c4.5-41 15-91.9 26.6-128.9a445 445 0 0 1 40-91.8c41.2-73.1 54.9-92.5 91.3-128.7 26.4-26.3 77.6-71.2 79.7-69.9.5.3-2.3 4.2-6.3 8.6-40.6 44.7-63.1 72.7-83.2 103.1a485 485 0 0 0-61.4 131.9c-10.4 36-15.6 62-20.4 102.3-2.9 24-3.3 98.8-.6 120.3 1 8.7 1.1 12.5.4 13.1-1.6 1.3-70.3 2.5-71 1.2m-302.8 571.6c-24.2-6.9-31.6-38.3-13-54.8 12.5-11 31.8-11.7 42.1-1.5l3.3 3.4-4.2 4.6c-4.8 5.2-5.5 5.4-11 2.6-11.4-5.8-23.4 1.6-23.4 14.6 0 12.6 12.5 19.6 24.2 13.5 4.9-2.5 6.6-1.9 11.6 4.5l2.8 3.6-2.8 2.9c-6.2 6.5-19.4 9.4-29.6 6.6m302.4-1.5a249 249 0 0 1-7.3-12.9c-3.2-6.1-5.6-9.8-6-9-.4.6-1.2 5.6-1.7 11a40 40 0 0 1-2.3 11.3c-1.8 2.1-13.8 1.9-14.6-.3-1.6-4.1 8.3-58.3 11.2-61.2 3-3 3.6-2.2 19.2 26.9l4.8 8.8c.2.2 3.7-5.9 7.8-13.5 16.6-30.4 16.8-30.5 21.6-3.3 8.3 47.3 8.4 44-1 44-5 0-6.1-.3-7.3-2.2a45 45 0 0 1-3.6-16.1c0-6.8-1.5-5.8-7.1 4.5-8.4 15.8-10.1 17.2-13.7 12m195.5-8.9-17.2-16.5-5-4.7-.3 14.6c-.3 17.4-.4 17.5-8.6 17.1l-6.1-.3V1175c0-30.7 0-31.5 2-31.8 1.4-.2 6.7 4.3 18.2 15.3 8.9 8.5 16.4 15.5 16.7 15.5s.6-6.2.6-13.9c0-16.3 0-16.3 9.2-15.9l6.3.3v31.5c0 29.3-.1 31.5-1.8 31.8q-1.8.3-14-11.5m156.9 10.1a37 37 0 0 1-22.1-19.7c-2.6-7-1.8-19.8 1.8-25.9 10.5-18 37.3-23.3 50.2-9.8l2.8 2.9-2.7 3.6c-4.8 6.3-6.7 7-11.8 4.4-12-6.2-23.8.9-23.8 14.3 0 10.1 8.1 16.9 18.2 15.2 4.2-.6 5.4-3.4 1.5-3.4-3.5 0-4.7-1.9-4.7-7.7 0-6.7.5-6.9 12.7-6.3l9.8.5.3 13.7.3 13.7-3.1 1.6a47 47 0 0 1-29.4 2.9m172-.6-7.4-13.7-6-11.4-.6 4.9c-1.7 14.2-2.5 18.6-3.6 19.9-1.9 2.3-13.8 2.1-14.7-.2-1.3-3.5 8.8-58.9 11.3-61.3 2.9-2.9 4.3-1 17.4 23.2a87 87 0 0 0 6.9 11.8c.4 0 4.4-6.9 9-15.2 10.6-19.3 11.3-20.3 14.2-20.3s2.7-.9 8.5 33.3c5.3 31.3 5.5 30.2-3.7 30.2-8 0-9.7-3.3-11.1-22-.3-3.3-.6-2.9-6.2 7.5-8 14.9-8.4 15.5-10.6 15.5-1.1 0-2.6-1-3.4-2.2m187.1-9.5-17.2-16.6-5-4.8-.5 15.8-.5 15.8h-14V1175c0-30.7 0-31.5 2-31.8 1.4-.2 6.9 4.4 18.5 15.5l16.5 15.7.3-13.9c.3-16.6.3-16.7 9.1-16.3l6.6.3v31.5c0 29.5-.1 31.5-1.8 31.8q-1.8.3-14-11.5m-1176 10c-.4-.3-.7-7-.7-14.8v-14.1l-8-11.9c-14.6-21.6-14.6-21.5-3.5-21.5 7.1 0 8.5 1.1 15.4 11.8 1.8 2.8 3.6 5.2 4 5.2a63 63 0 0 0 6.4-8.5l5.8-8.5h6.8c9.6 0 10.1 1 4.8 9.6a354 354 0 0 1-10 14.8l-5.7 7.9v14.1q0 14.4-1.2 15.4c-1.3 1.3-13 1.7-14.1.5m52 0c-1.5-1.4-.2-4.7 12.5-31.7 13.5-28.9 15.5-32.3 18.2-31.3 2.8 1.1 30.3 59.6 29.2 62.2-.5 1.3-1.9 1.5-7.8 1.3l-7.3-.3-2-4.3-1.9-4.2H98l-1.1 2.7c-2 5.3-3.7 6.3-10.4 6.3-3.4 0-6.5-.3-6.8-.7m174.5-1.1c-1.1-2.1-1-58.2.1-60s13.1-1.6 14.6.2q1.2 1.4.9 12l-.3 10.6h24.4l.3-11.8.3-11.7h13v62h-13l-.3-12.3-.3-12.2h-24.4l.3 11.1q.3 11.1-.9 12.5c-1.8 2.2-13.6 1.9-14.7-.4m102 .6c-.9-.9-1.2-7.6-1.2-24v-22.7l-6.8-.3-6.7-.3v-14l20.4-.3c23.3-.3 23.1-.3 23.1 7.2 0 6.7-1 7.6-8.7 7.6H370v46l-2.6 1c-3.5 1.4-9.8 1.2-11.2-.2m203-.1c-.9-1 .9-5.8 7.2-19.3 20.5-44.1 21-45 24.3-42.3 1.7 1.4 14.8 27.9 24.2 48.8 6 13.5 5.9 14.1-3.4 14.1-6.6 0-8-.8-10.3-6.2l-1.2-2.8h-22l-1.2 2.8c-2.3 5.4-3.7 6.2-10.3 6.2-3.9 0-6.7-.5-7.3-1.3m175.2-.2c-.7-1.7 2.3-8.5 17.9-41.4 9.5-19.9 11.5-22.8 14.2-20.1 1.3 1.4 24.3 48.8 27.4 56.7 2.2 5.4 1.1 6.3-6.9 6.3h-7l-2.2-4.5-2.2-4.5h-22.3l-1.9 4.2-1.9 4.3-7.3.3c-5.9.2-7.3 0-7.8-1.3m178.1.3c-.3-.7-.4-14.8-.3-31.3l.3-30h40v14l-12.3.3-12.2.3v3.9q0 4 1.5 4.1l9.3.3c9.7.1 11.2 1.1 11.2 7.6 0 7-1.6 8-12.8 8H928v8.9l12.2.3 12.3.3v14l-19.8.3c-15.3.2-19.9 0-20.2-1m178 0c-.3-.7-.4-14.8-.3-31.3l.3-30h40v14l-12.3.3-12.3.3.3 4.2.3 4.2h9c11.2 0 11.5.2 11.5 7.4 0 7.7-.6 8.1-11.7 8.1h-9.3v8.9l12.2.3 12.3.3v14l-19.8.3c-15.3.2-19.9 0-20.2-1m177.7 0c-.9-.9-1.2-7.6-1.2-24v-22.7l-6.8-.3-6.7-.3v-14l20.4-.3c23.9-.3 23.3-.5 22.9 8.2l-.3 6.1-6.7.3-6.8.3v22.7c0 16.4-.3 23.1-1.2 24-1.6 1.6-12 1.6-13.6 0M114 1183.5c0-.8-.4-2.3-.9-3.3l-2.1-4.7-1.2-3-2.5 4.8c-1.3 2.7-2.2 5.5-1.9 6.3.8 2 8.6 1.9 8.6-.1m479.5.5q.5-1-.3-2.3c-.5-.7-1.3-2.7-1.7-4.4s-1-3.5-1.5-3.8c-1.1-.7-6.2 9.3-5.4 10.6s8.1 1.1 8.9-.1m175.5-.2c0-1.9-3.4-9.8-4.2-9.8-.4 0-1.6 1.7-2.6 3.8-1.6 3.2-1.9 4.6-1.3 6.7.3 1.2 8.1.4 8.1-.7M8.4 1111.6c-.3-.8-.4-2.3-.2-3.3.3-1.7 24.1-1.8 651.8-1.8h651.5v6l-651.3.3c-566.6.2-651.3 0-651.8-1.2m919.1-397.2c-16.1-9.1-42-22.3-52.4-26.7-11.3-4.7-8-4.9 38-2.2l76.4 4.5c18.7 1.1 40.1 2.4 47.5 3 15.7 1.2 19.4 1.4 56 3.5 15.1.9 29.1 2 31 2.4l3.5.7 1.7 10.9c.9 6 1.4 11.3 1.2 11.7-.3.4-42.7.8-94.2.7h-93.7zM386.7 170.3c-.4-.3-.7-1.8-.7-3.3 0-2.5-.5-2.8-7.4-4.4-13-3.1-12.4-5.4 3.5-13.6a76 76 0 0 0 10.4-6c.4-.6-3.3-5.4-8.1-10.8-4.8-5.3-10.2-12-11.9-14.7s-5.6-7.5-8.4-10.5l-8.5-9.1c-1.9-2-5.8-5.5-8.7-7.7A233 233 0 0 1 317 60.9c0-.7-1.2-2.5-2.6-4-2.4-2.5-2.6-3.2-2-8.3.4-3.1 1.2-5.8 1.7-6.2.5-.3 3.9 2.2 7.4 5.5 11.9 11.1 33.3 23.8 62.2 36.9 8.9 4 15.2 10.7 19.9 20.9 3.5 7.6 10.3 15.3 13.5 15.3 1 0 3.3-.9 5.1-2 6.2-3.7 10.3-2.4 14.8 4.8 3.3 5.3 3.1 6.2-1.3 6.3-7.8.1 1.4 1.6 10.4 1.7 11.8 0 12.6.3 31.3 13.1 12.2 8.2 15.9 10.2 19.8 10.7 6.8.9 9.3 2.9 5.5 4.3-6.6 2.5-25.7-.7-53.7-8.9-20.6-6.1-25.8-6.3-31.1-1.5a52 52 0 0 1-9.1 6.1c-5.2 2.6-13.9 8.6-18.9 13.1-1.4 1.3-2.8 2-3.2 1.6m335 896.9c-2.7-3-2.6-180.1.1-182.5 2.6-2.4 83.1-2.5 94.1-.2 39.7 8.3 74.5 58.1 69.3 99.1-4.9 38.9-35.2 76.1-68.4 83.9-10.5 2.5-92.9 2.2-95.1-.3m90.5-44.5c28.8-14.2 32.9-65.1 7-88.8-7.7-7.1-11.4-7.9-34.9-7.9H765v100.1l20.8-.3c20.3-.3 20.8-.3 26.4-3.1m-38.3-377.8C744.1 585.5 738.8 528 759.5 487c20-39.7 63.8-67.9 124.5-80.5 4.1-.8 8.2-1.8 9-2.2.8-.3 2.4-.7 3.5-.8l9.7-1.4c4.3-.7 8.2-1 8.7-.6.6.3 1.9 0 2.9-.6 2.2-1.4 5.6-.5 5 1.4-.4 1.1-6.4 6.3-16.8 14.7-50.2 40.3-76.2 84.7-71.9 122.8a71 71 0 0 0 8.9 28.1c0 .7 1.6 3.6 3.5 6.5s3.5 5.6 3.5 6c0 2.9 23 26.4 32 32.7a106 106 0 0 1 7.4 5.7c2.2 1.7 4.3 3.2 4.8 3.2s3.4 2 6.7 4.5a26 26 0 0 0 7.3 4.5c.7 0 2.4.9 3.8 2s3 2 3.6 2c1.8 0 6.9 5.9 5.8 6.9-.5.5-5.8.3-12.4-.5-10.9-1.3-41.2-3.9-53-4.6-13.6-.8-45.1-.1-52 1.1-10.9 1.9-19 6-21.9 11-1.2 2.3-2.6 4.1-3.2 4.1-.5 0-2.7-3.7-5-8.1m-262.7 422.8c-1.2-1.3-2.2-3.2-2.2-4.3 0-2.9 17.2-40.4 53-115.9l26.6-56.2c3.8-8.1 7.2-11.3 11.8-11.3 4.9 0 7.6 3.6 17.2 23.5l16.1 33.5a12099 12099 0 0 1 42.3 89.5c6.5 13.9 16 36.1 16 37.4 0 .7-1.1 2.3-2.5 3.6-2.4 2.5-2.6 2.5-20.8 2.5-22.1 0-21.7.2-27.8-12.8l-5.6-12-1.6-3.2-34.1.2-34.1.3-1.7 3.5c-.9 1.9-2.9 6.6-4.4 10.5-1.6 3.8-4 8.3-5.5 10l-2.7 3-18.9.3c-18.7.3-18.9.3-21.1-2.1m103.9-67c-.6-.8-3.5-7.4-6.4-14.8s-6-14.7-6.9-16.2l-1.4-2.9-2.7 6-8.2 17.6-5.4 11.6h16.1c13.3 0 15.9-.2 14.9-1.3M459.6 827.9c-26.2-3-53-12-76.2-25.6l-4.2-2.4-14.8 7.5a183 183 0 0 1-114.9 17.7c-19.2-2.8-49.5-10.7-49.5-12.8a56 56 0 0 1 7.8-8.6l7.9-7.8 6.2 1.6c54.4 14.1 110.4 8.1 151.8-16.2l4.4-2.6 12.7 6.1a199 199 0 0 0 177.4 0l12.6-6 9.4 5a196 196 0 0 0 162.3 8.6 331 331 0 0 0 19.7-8.6l10.8-5.1 13.7 6.5a187 187 0 0 0 85.8 20c23.6.1 55.2-5.1 70.7-11.6l3.7-1.6 8.1 6.2c4.4 3.3 8 6.5 8 6.9 0 1.2-8.1 5.1-17 8.3-60.9 21.9-121.1 18-165.5-10.7l-6.9-4.5-2.7 2.2c-11.3 9.5-38.7 19.8-65.9 24.7-18.1 3.3-50 3.3-68 0-20.4-3.7-50.4-14.9-62.3-23.3l-2.7-2-4.8 3.2c-27.7 18.5-79 29.4-117.6 24.9M25.1 1078.6c-3.8-4-2.1-4.6 13-4.6 21.7 0 20.9 1.4 20.9-36 0-16.3.4-27.9 1-29 .9-1.8 2-1.8 14.8-1.3 26.6 1.1 43.2-6.8 56.8-27.3a68 68 0 0 0 11.1-49.7c-1.5-11.6-1-13.3 2.8-9.7 6.4 6 10.3 30.1 7.1 44.9a67 67 0 0 1-39 46.8c-5.2 1.9-24.8 2.7-37.9 1.6l-9.8-.9.1 32 .1 32-2.3 1.8c-2 1.5-4.6 1.8-19.4 1.8-16.8 0-17.1 0-19.3-2.4m915.5-.5c-2.5-2.7-.4-3.7 9.4-4.5 10-.8 11-.3 7.3 3.6-3.4 3.6-13.8 4.2-16.7.9m-13-10.2-2.6-2V885.2l2.5-1.6c3.8-2.5 36.3-2.4 39.4.2l2.1 1.7.1 90v90l-2.6 2.3c-3.9 3.3-34.7 3.4-38.9.1M58.1 954.7q-1.2-1.3-.9-13.3l.3-11.9 12.2-.3c10.1-.2 12.7 0 14.8 1.4 4 2.6 2.8 4.7-2.5 4.9l-9.7.3-5.2.2-.3 9.8-.3 9.7-3.6.3q-3.5.3-4.8-1.1"></path><path fill="#e4e4e4" d="M364 1080c-3.4-3.4-1.5-4 12.3-4 21.6 0 21.7-.1 21.7-41 0-32 .2-33.1 5.8-29.9l2.7 1.5v34.4c0 25.9-.3 35-1.2 36.7-1.9 3.3-7.3 4.3-24.1 4.3-14 0-15.4-.2-17.2-2m854 .8c-21.3-.6-24.6-.9-25.7-2.4-.7-.9-1-2.1-.7-2.5.3-.5 24.1-.9 52.9-.9h52.4l3.5-3.6 3.5-3.7.3-14.6.3-14.6 2.4.3c5.7.6 6.1 2 6.1 20.8v17.4l-2.7 1.7c-3.3 2.2-51.4 3.3-92.3 2.1m-760.4-1.7c-2.6-2.8-.7-3.4 9.2-2.6 17.7 1.3 27.4-1.8 28-9.1.3-4.2-.8-6.5-23.4-49.8-10.7-20.4-10.8-17.9.6-26.6a55 55 0 0 0 23-33 74 74 0 0 0 .2-31.8c-1.7-10.5 3.3-5.6 7.4 7.2 8.4 26.5-1.4 52.5-25.9 68.3l-6.7 4.4 8 15.2c16.3 30.7 26 50.7 26 53.5 0 5.8-1.5 6.2-24.2 6.2-18.9 0-20.6-.2-22.2-1.9m769.8-57.3a55 55 0 0 1-.2-19c.8-1.7 3.2-1.8 29.2-1.8h28.3l2.2-2.4c2.1-2.2 2.2-3.1 2-16.4-.2-15.2.3-17.2 4.7-17.2 5.6 0 6.4 2.5 6.4 20.3 0 23 3.7 20.7-34 20.7h-30.9l-.3 8.2-.3 8.3-3.2.3c-1.8.2-3.5-.2-3.9-1m-827.9-66.9c-1.1-1.7-1.3-22-.3-24.1.8-1.6 2.7-1.8 19.1-1.8 19.2 0 22.8.7 21.4 4.4-.6 1.4-2.7 1.6-17.1 1.6h-16.5l-.3 10.2-.3 10.3-2.7.3c-1.4.2-2.9-.2-3.3-.9m827.8-7.1a40 40 0 0 1 .1-16.6c.5-.9 8.9-1.2 34.5-1.2h33.7l4.2-4.3 4.1-4.2.3-14.4c.3-15.9.7-16.7 5.7-12.6l3.1 2.7v16.3c0 14.9-.2 16.4-2.1 18.9l-2 2.6H1235v5.8c0 3.2-.5 6.3-1.2 7-1.6 1.6-5.3 1.5-6.5 0M518 1077.5c-2.3-2.8.2-3.4 17.1-3.7 14.5-.3 17-.5 18.7-2.1a57 57 0 0 0 9.7-19c.4-2.1 1.5-4.1 2.4-4.5 2.1-1 64.3-.8 65.9.2q1.3.7.2 2.7c-1 1.8-2.4 1.9-28.5 1.9h-27.4l-1.6 3.1c-.9 1.7-3.2 6.7-5 11.1-5.4 12.7-3.3 11.8-28.5 11.8-18.4 0-22-.2-23-1.5m141.7-.3c-2.7-2.9-1.3-3.2 14.9-3.2a98 98 0 0 0 17.8-1c7.1-2.7 2.2-15.1-42.2-108L630 923q-14.6-29.7-13.1-31.3c2.4-2.4 20.5 31.3 44.8 83.8 28.4 61.3 42.3 92.9 42.3 96.3 0 1.1-.9 3.1-2.1 4.6l-2 2.6h-19.3c-17.4 0-19.5-.2-20.9-1.8M589.5 996a59 59 0 0 1 8-18c2.1-1.7 5.7 3.4 6.3 8.8.7 7.5-1.5 10.2-8.4 10.2-2.9 0-5.6-.5-5.9-1"></path><path fill="#e4e4e4" d="M1247.5 1081q-.4-1 .7-1.5c2.6-1 45.8 0 45.8 1a257 257 0 0 1-46.5.5m-56-5q-.4-1 .7-1.5c2.6-1 105.3 0 105.3 1 0 1.4-105.1 1.9-106 .5m-794-11.1c-1-2.7-.1-58.4 1-58.2 1.4.4 1.9 57.3.5 58.7q-.9.9-1.5-.5m-6-2a687 687 0 0 1 1-66.4c1.4 0 1.9 65.5.5 66.9q-.9.9-1.5-.5m-197-11.9q-.5-1 .5-2.6c1.5-1.7 67.5-1.7 67.5.1 0 .6-11.6 1.1-32.4 1.3a226 226 0 0 0-33.7 1.3q-1.2 1-1.9-.1m1031.9-48.1c-1.4-2.3 3.9-2.8 30.7-2.9h29.3q.7.2-.4 1.5c-1.2 1.5-58.7 2.8-59.6 1.4M399 955.5q-1.3-1.6-.3-2.6 1.2-1.1 1.7 0a3 3 0 0 0 2.2 1.1c1.1 0 1.4-1.9 1.4-9.4q0-9.6 1.3-10.4c1-.9 25.8-1.7 35.1-1.2q.7.2-.4 1.5c-1 1.2-4.2 1.5-17.1 1.5H407v9.3c0 5.9-.4 9.7-1.2 10.5-1.7 1.7-5.3 1.5-6.8-.3m827.4-23.6q-.2-.7 1-1.8c1.8-1.5 69.2-1.1 68.9.4-.3 1.1-69.2 2.5-69.9 1.4M392.5 923q-.4-1 .7-1.5c2.6-1 43.3 0 43.3 1 0 1.4-43.1 1.9-44 .5m331-39q-.4-1 .7-1.5c2.6-1 77.3 0 77.1 1-.4 1.4-76.9 1.9-77.8.5"></path><path fill="#e4e4e4" d="M58.7 1066.3c-1.6-1.5-.8-57 .8-58.3q1.3-1.1 1.5-.4c.5 8.6-.3 58.1-.9 58.7a1 1 0 0 1-1.4 0m-7.1-1a474 474 0 0 1 .8-64.2c1.8-1.5 38.6-1.1 38.6.4 0 .6-7 1.1-18.5 1.3l-18.5.2v31c0 28-.4 33.3-2.4 31.3m915.9-2.4c-1-2.7 0-175.9 1-176.2.7-.1 1.1 29.7 1.3 87.7.2 81.6-.1 94.2-2.3 88.5m252-35.1c-.3-.8-.4-8.8-.3-17.8l.3-16.5h31.3c20 0 31.3.4 31.4 1 .2.6-10.4 1.1-30 1.3l-30.2.2v16c0 14.4-.9 20-2.5 15.8m-240-15.9c-1-2.7-.1-116.9 1-116.9 1.4 0 1.9 116 .5 117.4q-.9.9-1.5-.5M50 885a245 245 0 0 1-34.5-1.5c0-1.3 70.5-1.9 71.8-.6 2.2 2.2-4.7 2.6-37.3 2.1"></path><path fill="#e4e4e4" d="M64.5 1075.9c-1.3-3.3 0-64.4 1.3-64.4 1.1 0 1.3 6.3 1.2 32 0 28.9-.7 37.1-2.5 32.4m1113-12c-1-2.7 0-174.9 1-175.2.7-.1 1.1 29.6 1.3 87.2.2 81.1-.1 93.7-2.3 88m-612-21.9q-.4-1 .7-1.5c2.6-1 69.3 0 69.1 1-.4 1.4-68.9 1.9-69.8.5m408.2-9.7c-.9-1.7.8-51.8 1.8-51.5 1.5.3 1.4 51.4-.2 51.9q-1 .3-1.6-.4m246.4-2.6q-1-1.4-.7-1.8c1-.9 74.6.6 74.9 1.6.4 1.7-72.8 1.9-74.2.2m-.6-103.7q-.5-1 .5-2.6c1.5-1.7 75.5-1.7 75.5.1 0 .6-13 1.1-36.4 1.3s-36.9.6-37.7 1.3q-1.2 1-1.9-.1"></path><path fill="#e4e4e4" d="M1177.1 1066.7c-1.7-2.1-1.1-180.2.7-180.2 1.1 0 2 180 .9 181.2q-.4.2-1.6-1m-252.6-1.8c-1-2.7-.1-178.4 1-178.2.7.2 1.1 30.9 1.3 89 .2 82.3-.1 94.9-2.3 89.2m296-35.9q-.4-1 .7-1.5c2.6-1 74.3 0 74.3 1 0 1.4-74.1 1.9-75 .5m0-104q-.4-1 .7-1.5c2.6-1 73.3 0 73.3 1a651 651 0 0 1-74 .5m-927.3 280.8c-.8-.8-1.2-5.2-1.2-12.1v-10.8l-12.2.2c-9.8.1-12.3-.1-12.3-1.2 0-1.9 25-2.6 27.1-.8 1.1.9 1.4 4.1 1.4 13 0 11.6-.6 13.9-2.8 11.7m72.3.3q-.4-1 1-1.8c1.2-.7 1.5-4.6 1.7-23.1.2-13.9.7-22.2 1.3-22.2 1.5 0 1.9 44.8.4 46.6-1.3 1.6-3.5 1.8-4.4.5m284-1.2c-1-2.6-.1-59.9 1-60.2 1.4-.3 1.9 59.3.5 60.7q-.9.9-1.5-.5m516 0c-1-2.6-.1-59.9 1-60.2 1.4-.3 1.9 59.3.5 60.7q-.9.9-1.5-.5M268 1168.5q-1.1-1.3-.4-1.6l12.6.1 11.8.1v-10.4c0-9.9 1.2-14.2 3.3-12a75 75 0 0 1-.5 24.1 64 64 0 0 1-26.8-.3M151.5 1078q-.4-1 .7-1.5c2.6-1 41.3 0 41.3 1 0 1.4-41.1 1.9-42 .5m583.1-2.9c-1.5-2.4 3.8-2.8 39.4-2.7 32.6.1 37.5.3 37.5 1.6 0 1.7-75.9 2.8-76.9 1.1M206.5 1052q-.4-1 .7-1.5c2.6-1 54.3 0 54.1 1-.4 1.4-53.9 1.9-54.8.5m565.2-32.6c-1.1-1.1-.8-90.2.2-90.9 1.9-1.1 2 2 2.1 46.1.1 40.9-.2 46.9-2.3 44.8M104.5 1185c-1.8-2-1.8-2.1.5-7 3.3-7 4.3-7.7 6.9-4.4a10 10 0 0 1 2.1 4c0 .8.6 2.3 1.2 3.4 3.1 4.9-6.6 8.5-10.7 4m479.1.1c-1.6-1.8-1.6-2.1.3-5.7 1.2-2.1 2.1-4.4 2.1-5.1s.8-1.7 1.9-2.2c2.3-1.3 4.6.9 5.7 5.4.4 1.7 1.1 3.6 1.7 4.3 3.2 4-8.2 7.2-11.7 3.3m175.8-.2c-1-1.2-1.8-2.3-1.7-2.5l2.8-5.5c3.2-6.2 5.1-6.1 8.2.1 2.5 5.2 2.8 7.1 1.1 8.8-2 2-8.3 1.5-10.4-.9m-749.9-120c-1-2.7 0-178.9 1-178.9.7 0 1.1 30.6 1.3 89.2.2 82.7-.1 95.4-2.3 89.7"></path><path fill="#e4e4e4" d="M1179.1 1068.6q-1-1.3-.4-1.8c2.1-.8 115.8.8 115.8 1.7 0 1.8-114 1.9-115.4.1m40.4-113.6q-.5-.9-.2-1.8c.8-1.1 62.7.1 62.7 1.3 0 1.4-61.6 1.9-62.5.5m-871 109.9c-1-2.7 0-178.9 1-178.9.7 0 1.1 30.6 1.3 89.2.2 82.7-.1 95.4-2.3 89.7m371-1c-1-2.7 0-175.9 1-176.2.7-.1 1.1 29.7 1.3 87.7.2 81.6-.1 94.2-2.3 88.5"></path></svg>
+    </a>
+    </div>
+    <span style="width: 1px; height: 32px; background: rgba(236,230,214,0.3);"></span>
     <div style="display: flex; gap: 20px; align-items: center;">
       <a href="https://facebook.com/YachtCelestine" target="_blank" rel="noopener" aria-label="S/Y Celestine on Facebook" style="display: flex; align-items: center; justify-content: center; color: rgba(236,230,214,0.6); text-decoration: none; transition: color 0.2s; width: 24px; height: 24px;">
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
@@ -953,7 +1003,46 @@ class Component extends DCLogic {
     const cur = this.state.slideIndex;
     const galOpt = (i, w) => "assets/opt/gal" + String(i + 1).padStart(2, "0") + "-" + w + ".webp";
     const galSet = (i) => [240, 800, 1600].map(w => galOpt(i, w) + " " + w + "w").join(", ");
+    const blocks = [
+      ["2026-07-15", "2026-10-31", "unavailable"],
+      ["2026-11-01", "2026-11-30", "hold"],
+      ["2026-12-11", "2026-12-18", "booked"],
+      ["2026-12-27", "2026-12-27", "unavailable"],
+      ["2026-12-28", "2027-01-04", "booked"],
+      ["2027-01-06", "2027-01-13", "booked"],
+      ["2027-01-15", "2027-01-20", "booked"],
+      ["2027-01-23", "2027-01-30", "booked"],
+      ["2027-02-08", "2027-02-15", "booked"],
+      ["2027-02-24", "2027-03-03", "booked"]
+    ];
+    const statusOf = (y, m, d) => {
+      const key = y + "-" + String(m + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+      for (const [a, b, s] of blocks) if (key >= a && key <= b) return s;
+      return "open";
+    };
+    const palette = {
+      open: { bg: "rgba(0,32,91,0.06)", fg: "#00102d" },
+      booked: { bg: "#6E9CC2", fg: "#ffffff" },
+      hold: { bg: "#d4e8f7", fg: "#3A5E7E" },
+      unavailable: { bg: "rgba(0,16,45,0.03)", fg: "rgba(0,16,45,0.28)" }
+    };
+    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const calendarMonths = [];
+    for (let i = 0; i < 9; i++) {
+      const y = 2026 + Math.floor((10 + i) / 12);
+      const m = (10 + i) % 12;
+      const first = new Date(y, m, 1).getDay();
+      const total = new Date(y, m + 1, 0).getDate();
+      const cells = [];
+      for (let k = 0; k < first; k++) cells.push({ key: "b" + k, label: "", bg: "transparent", fg: "transparent" });
+      for (let d = 1; d <= total; d++) {
+        const p = palette[statusOf(y, m, d)];
+        cells.push({ key: "d" + d, label: String(d), bg: p.bg, fg: p.fg });
+      }
+      calendarMonths.push({ key: y + "-" + m, name: monthNames[m] + " " + y, cells });
+    }
     return {
+      calendarMonths,
       menuOpen: this.state.menuOpen,
       toggleMenu,
       menuOpen: this.state.menuOpen,

@@ -145,10 +145,10 @@
     [data-stats] > div > div:first-child { font-size: 34px !important; }
     [data-gallery-stage] { width: 100vw; max-width: 100vw; margin-left: calc(-50vw + 50%); }
     header { align-items: flex-start !important; height: 67vh !important; min-height: 470px !important; padding-top: 100px !important; }
-    header > img, header > picture > [data-hero-img] { object-position: 78% bottom !important; height: 67vh !important; min-height: 470px !important; }
+    header > img, header > picture > [data-hero-img] { object-position: 63% bottom !important; height: 67vh !important; min-height: 470px !important; }
     [data-hero-copy] { padding: 0 24px !important; margin-top: 13vh !important; }
     footer { justify-content: center !important; text-align: center; padding: 36px 24px 96px !important; }
-    [data-cal-grid] { grid-template-columns: repeat(2, 1fr) !important; gap: 24px 16px !important; }
+    [data-cal-grid] { grid-template-columns: repeat(2, 1fr) !important; gap: 28px 26px !important; }
     [data-copyright] { margin-top: 24px !important; order: 4; }
     [data-float-cta] { flex-direction: row !important; left: 0; right: 0; bottom: 0 !important; gap: 0 !important; }
     [data-float-cta] > a { flex: 1; min-width: 0 !important; padding: 20px 12px !important; letter-spacing: 3px !important; }
@@ -182,6 +182,12 @@
     #rates > div:nth-child(2) { grid-template-columns: 1fr !important; }
   }
   .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  @media (max-width: 430px) {
+    [data-cal-grid] { grid-template-columns: 1fr !important; gap: 30px !important; }
+  }
+  @media (min-width: 769px) {
+    header > picture > [data-hero-img] { transform: translateX(3%) scale(1.45); }
+  }
   @media (min-width: 900px) {
     header > img { object-position: bottom !important; }
   }
@@ -252,7 +258,7 @@
   <header style="position: relative; height: 100vh; max-height: 80vh; min-height: 500px; display: flex; align-items: flex-start; padding-top: 120px; overflow: hidden;">
     <picture>
       <source type="image/webp" srcSet="{{ heroSrcSet }}" sizes="100vw">
-      <img data-hero-img="" src="{{ heroImage }}" alt="S/Y Celestine under sail" fetchPriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% bottom;">
+      <img data-hero-img="" src="{{ heroImage }}" alt="S/Y Celestine under sail" fetchPriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center bottom;">
     </picture>
     <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.16);"></div>
     <div style="position: absolute; inset: 0; background: rgba(0, 32, 91, 0.1);"></div>
@@ -321,7 +327,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/queenCabin-480.webp" srcSet="assets/opt/queenCabin-480.webp 480w, assets/opt/queenCabin-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Queen cabin interior" onClick="{{ zoomQueenCabin }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge queen cabin photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-4.9deg); --rot: -4.9deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 10px; right: -2px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Five Queen Cabins</h3>
@@ -332,7 +338,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/indoorOutdoor-480.webp" srcSet="assets/opt/indoorOutdoor-480.webp 480w, assets/opt/indoorOutdoor-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon with open doors to cockpit" onClick="{{ zoomIndoorOutdoor }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge salon photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-1.8deg); --rot: -1.8deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 10px; right: -2px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Seamless Indoor-Outdoor Flow</h3>
@@ -343,7 +349,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/aftDeck-480.webp" srcSet="assets/opt/aftDeck-480.webp 480w, assets/opt/aftDeck-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Aft deck with seating" onClick="{{ zoomAftDeck }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge aft deck photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(1.9deg); --rot: 1.9deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 10px; right: -2px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Four Social Zones</h3>
@@ -354,7 +360,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/kitchenComforts-480.webp" srcSet="assets/opt/kitchenComforts-480.webp 480w, assets/opt/kitchenComforts-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Salon kitchen with views" onClick="{{ zoomKitchenComforts }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge salon kitchen photo" style="width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center; transform: rotate(-2.1deg); --rot: -2.1deg; cursor: zoom-in;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 10px; right: -2px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">High-End Comforts</h3>
@@ -365,7 +371,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/chefPlating-480.webp" srcSet="assets/opt/chefPlating-480.webp 480w, assets/opt/chefPlating-960.webp 960w" sizes="240px" loading="lazy" decoding="async" alt="Onboard chef plating a steak dinner" onClick="{{ zoomChefPlating }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge chef plating photo" style="cursor: zoom-in; width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); object-fit: cover; object-position: center 78%; transform: rotate(4.7deg); --rot: 4.7deg">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 10px; right: -2px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Onboard Private Chef</h3>
@@ -376,7 +382,7 @@
         <div style="display: flex; gap: 44px; align-items: flex-start;">
           <div style="position: relative; width: 240px; height: 240px; flex-shrink: 0;">
           <img data-polaroid="" class="reveal" src="assets/opt/waterToys-480.webp" srcSet="assets/opt/waterToys-480.webp 480w, assets/opt/waterToys-960.webp 960w" sizes="240px" loading="lazy" onClick="{{ zoomWaterToys }}" onKeyDown="{{ keyActivate }}" role="button" tabIndex="0" aria-label="Enlarge water toys photo" decoding="async" alt="Water toys and equipment" style="cursor: zoom-in; width: 240px; height: 240px; flex-shrink: 0; border-radius: 2px; background: #f5f5f0; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); object-fit: cover; object-position: center; transform: rotate(2.2deg); --rot: 2.2deg;">
-          <div style="position: absolute; bottom: 22px; right: 22px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
+          <div style="position: absolute; bottom: 10px; right: -2px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,16,45,0.72); display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ece6d6" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"></circle><line x1="20" y1="20" x2="14.5" y2="14.5"></line></svg></div>
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Water Toys</h3>

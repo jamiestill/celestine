@@ -109,6 +109,8 @@
   [data-float-cta][data-cta-shown="yes"] { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; }
   ::selection { background: #6E9CC2; color: #00102d; }
   html { scroll-behavior: smooth; }
+  section[id], #book { scroll-margin-top: 112px; }
+  @media (max-width: 768px) { section[id], #book { scroll-margin-top: 58px; } }
   .nav-links { display: flex; gap: 40px; align-items: center; }
   .nav-burger { display: none; flex-direction: column; gap: 6px; cursor: pointer; background: none; border: none; padding: 8px; }
   .nav-burger span { width: 24px; height: 2px; background: #273f54; transition: all 0.3s; }
@@ -232,7 +234,7 @@
       <a href="#yacht" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">The Yacht</a>
       <a href="#destinations" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Destinations</a>
       <a href="#gallery" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Gallery</a>
-      <a href="#tour" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">360° Tour</a>
+      <a href="#tour" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">TOUR</a>
       <a href="#crew" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Crew</a>
       <a href="#rates" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Rates</a>
       <a href="#availability" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Availability</a>
@@ -477,7 +479,7 @@
     <div style="position: relative; z-index: 10; max-width: 1000px; margin: 0 auto;">
       <div class="reveal" style="margin-bottom: 60px; text-align: center;">
         <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #9DBFD9; margin-bottom: 20px; font-family: 'Jost', sans-serif">Explore</div>
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">360° Virtual Tour</h2>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Virtual Tour</h2>
       </div>
       <div style="border-radius: 2px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.2); margin-bottom: 80px;">
         <iframe title="360-degree virtual tour of S/Y Celestine" loading="lazy" src="https://kuula.co/share/collection/7MZD0?logo=-1&amp;info=0&amp;fs=1&amp;vr=1&amp;initload=0&amp;thumbs=-1" style="width: 100%; aspect-ratio: 16 / 10; max-height: 700px; border: none; display: block;"></iframe>

@@ -87,7 +87,6 @@
     100% { transform: rotate(-9deg) translateX(0) scale(1); }
   }
   header > picture { position: absolute; inset: 0; overflow: hidden; clip-path: inset(0); }
-  header > picture > [data-hero-img] { position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100vh !important; max-height: 80vh !important; min-height: 500px !important; }
   [data-hero-img] { opacity: 0; transition: opacity 1.2s ease; }
   [data-hero-img][data-loaded="yes"] { opacity: 1; }
   [data-palm] { animation: palmSway 9s ease-in-out infinite; }
@@ -109,7 +108,7 @@
   [data-float-cta][data-cta-shown="yes"] { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; }
   ::selection { background: #6E9CC2; color: #00102d; }
   html { scroll-behavior: smooth; }
-  section[id], #book { scroll-margin-top: 112px; }
+  section[id], #book, #availability { scroll-margin-top: 89px; }
   @media (max-width: 768px) { section[id], #book { scroll-margin-top: 58px; } }
   .nav-links { display: flex; gap: 40px; align-items: center; }
   .nav-burger { display: none; flex-direction: column; gap: 6px; cursor: pointer; background: none; border: none; padding: 8px; }
@@ -125,10 +124,12 @@
   nav.scrolled a { color: #ece6d6 !important; opacity: 0.85 !important; }
   nav.scrolled span { background: #ece6d6 !important; }
   nav.scrolled img { filter: brightness(0) invert(1) !important; height: 46px !important; }
-  @media (max-width: 768px) {
-    nav.scrolled { padding: 12px 24px; }
+  @media (max-width: 920px) {
     .nav-burger { display: flex; }
     .nav-links { display: none !important; }
+  }
+  @media (max-width: 768px) {
+    nav.scrolled { padding: 12px 24px; }
     #yacht > .reveal { text-align: center; }
     [data-yacht-head] { justify-content: center; text-align: center; }
     [data-yacht-head] h2 { flex-basis: 100%; }
@@ -155,6 +156,7 @@
     [data-float-cta] { flex-direction: row !important; left: 0; right: 0; bottom: 0 !important; gap: 0 !important; }
     [data-float-cta] > a { flex: 1; min-width: 0 !important; padding: 20px 12px !important; letter-spacing: 3px !important; }
     [data-weather] { border-left: none !important; border-right: none !important; border-top: 1px solid rgba(236,230,214,0.18) !important; border-bottom: 1px solid rgba(236,230,214,0.18) !important; padding: 16px 0 !important; width: 100%; justify-content: center; order: 2; }
+    footer > span { display: none !important; }
     footer a[href^="mailto:"] { justify-content: center !important; order: 3; margin-top: 0 !important; }
 
     [data-hero-badge] { left: 24px !important; right: 24px !important; font-size: 11px !important; letter-spacing: 3px !important; text-align: center; }
@@ -187,11 +189,8 @@
   @media (max-width: 430px) {
     [data-cal-grid] { grid-template-columns: 1fr !important; gap: 30px !important; }
   }
-  @media (min-width: 769px) {
-    header > picture > [data-hero-img] { transform: translateX(3%) scale(1.45); }
-  }
   @media (min-width: 900px) {
-    header > img { object-position: bottom !important; }
+    header > picture > [data-hero-img] { object-position: 20% bottom !important; }
   }
   @media (min-width: 1000px) {
     [data-yacht-features] { display: grid !important; grid-template-columns: 1fr 1fr; max-width: 1240px !important; column-gap: 56px; }
@@ -233,8 +232,7 @@
     <div class="nav-links">
       <a href="#yacht" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">The Yacht</a>
       <a href="#destinations" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Destinations</a>
-      <a href="#gallery" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Gallery</a>
-      <a href="#tour" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">TOUR</a>
+      <a href="#gallery" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Tour</a>
       <a href="#crew" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Crew</a>
       <a href="#rates" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Rates</a>
       <a href="#availability" style="color: #273f54; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Availability</a>
@@ -246,9 +244,8 @@
     <div id="mobile-menu" data-menu="" role="dialog" aria-modal="true" aria-label="Site menu" style="position: fixed; inset: 0; z-index: 30; background: #00205b; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 30px; padding: 56px;">
       <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="position: absolute; top: 30px; right: 40px; background: none; border: none; color: #ece6d6; font-size: 32px; line-height: 1; cursor: pointer;">×</button>
       <a href="#yacht" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">The Yacht</a>
-      <a href="#tour" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">360° Tour</a>
       <a href="#destinations" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Destinations</a>
-      <a href="#gallery" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Gallery</a>
+      <a href="#gallery" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Tour</a>
       <a href="#crew" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Crew</a>
       <a href="#rates" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Rates</a>
       <a href="#availability" onClick="{{ toggleMenu }}" style="color: #ece6d6; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Availability</a>
@@ -262,7 +259,6 @@
       <source type="image/webp" srcSet="{{ heroSrcSet }}" sizes="100vw">
       <img data-hero-img="" src="{{ heroImage }}" alt="S/Y Celestine under sail" fetchPriority="high" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center bottom;">
     </picture>
-    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.16);"></div>
     <div style="position: absolute; inset: 0; background: rgba(0, 32, 91, 0.1);"></div>
     <div data-hero-copy="" style="position: relative; z-index: 10; padding: 0 56px; margin-top: 8vh;">
       <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; color: #ece6d6; max-width: 900px; text-wrap: balance; text-shadow: 0 4px 24px rgba(0,16,45,0.65), 0 1px 4px rgba(0,16,45,0.5);">Catch the breeze, find your ease.</h1>
@@ -302,7 +298,7 @@
       <div data-yacht-head="" style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
         <div style="flex: 1 1 340px; min-width: 0;">
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1.02; margin-bottom: 24px;">Sailboat fun. Amenities you expect. Luxury you want.</h2>
-        <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.75; color: #273f54; max-width: 680px; text-shadow: 0 0 12px rgba(236,230,214,0.95), 0 0 4px rgba(236,230,214,0.9);">Built in South Africa and lovingly maintained, <i>Celestine</i> pairs the romance of a sailing yacht with the modern amenities you expect, all in an irresistibly luxurious package.</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.75; color: #273f54; max-width: 680px; text-shadow: 0 0 12px rgba(236,230,214,0.95), 0 0 4px rgba(236,230,214,0.9);">Built in South Africa and lovingly maintained, <i>Celestine</i> pairs the romance of a sailing yacht with the modern amenities you expect, all in an irresistibly luxurious package.</p>
         </div>
         <img src="assets/opt/sailboatPhoto-640.webp" srcSet="assets/opt/sailboatPhoto-640.webp 640w, assets/opt/sailboatPhoto-1200.webp 1200w" sizes="(max-width: 768px) 90vw, 420px" loading="lazy" decoding="async" alt="Celestine at anchor" style="width: 240px; height: 240px; border-radius: 999px; flex-shrink: 0; object-fit: cover; object-position: left; box-shadow: 0 8px 32px rgba(0,0,0,0.12); order: 2;">
       </div>
@@ -333,7 +329,7 @@
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Five Queen Cabins</h3>
-            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54; position: relative">Five similarly sized upscale staterooms, each with its own private ensuite head (electric toilet), private shower, sink, vanity, and dedicated under-bed storage and wardrobe.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54; position: relative">Five similarly sized upscale staterooms, each with its own private ensuite head (electric toilet), private shower, sink, vanity, and dedicated under-bed storage and wardrobe.</p>
           </div>
         </div>
 
@@ -344,7 +340,7 @@
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Seamless Indoor-Outdoor Flow</h3>
-            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">An electronic window and door connect the indoor salon directly to the forward bow cockpit.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54;">An electronic window and door connect the indoor salon directly to the forward bow cockpit.</p>
           </div>
         </div>
 
@@ -355,7 +351,7 @@
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Four Social Zones</h3>
-            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Guests can gather across a sun-drenched forward cockpit, a shaded aft deck for open-air dining, a bright panoramic salon, and a spacious flybridge with sunset views.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54;">Guests can gather across a sun-drenched forward cockpit, a shaded aft deck for open-air dining, a bright panoramic salon, and a spacious flybridge with sunset views.</p>
           </div>
         </div>
 
@@ -366,7 +362,7 @@
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">High-End Comforts</h3>
-            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Equipped with full air conditioning (11 total units), a watermaker, an icemaker, a salon TV/audio entertainment system, two dishwashers, and seven refrigerators.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54;">Equipped with full air conditioning (11 total units), a watermaker, an icemaker, a salon TV/audio entertainment system, two dishwashers, and seven refrigerators.</p>
           </div>
         </div>
 
@@ -377,7 +373,7 @@
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Onboard Private Chef</h3>
-            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">A dedicated chef prepares restaurant-quality meals tailored to your tastes, from plated dinners to casual island fare.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54;">A dedicated chef prepares restaurant-quality meals tailored to your tastes, from plated dinners to casual island fare.</p>
           </div>
         </div>
 
@@ -388,7 +384,7 @@
           </div>
           <div>
             <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #00102d; margin-bottom: 12px;">Water Toys</h3>
-            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54;">Two paddleboards, an e-foil, an underwater Seabob, an inflatable Hangout, and a tender make exploration and adventure effortless. Every anchorage becomes your playground.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54;">Two paddleboards, an e-foil, an underwater Seabob, an inflatable Hangout, and a tender make exploration and adventure effortless. Every anchorage becomes your playground.</p>
           </div>
         </div>
       </div>
@@ -408,7 +404,7 @@
         <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #9DBFD9; margin-bottom: 20px;">Destinations</div>
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Where will&nbsp;<i>Celestine</i>&nbsp;take you?</h2>
       </div>
-      <p style="max-width: 320px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; line-height: 1.65; opacity: 0.8;">Every itinerary is planned around you — hidden coves, pristine harbors, and the best food in the islands.</p>
+      <p style="max-width: 320px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 18px; line-height: 1.65; opacity: 0.8;">Every itinerary is planned around you — hidden coves, pristine harbors, and the best food in the islands.</p>
     </div>
     <div data-dest-grid="" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 820px; margin: 0 auto;">
       <sc-for list="{{ destinations }}" as="d" hint-placeholder-count="2">
@@ -426,7 +422,7 @@
               <div style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #9DBFD9; margin-top: 4px;">{{ d.region }}</div>
             </div>
           </div>
-          <p style="margin-top: 18px; font-weight: 300; font-size: 15px; line-height: 1.65; opacity: 0.82;">{{ d.blurb }}</p>
+          <p style="margin-top: 18px; font-weight: 300; font-size: 17px; line-height: 1.65; opacity: 0.82;">{{ d.blurb }}</p>
         </article>
       </sc-for>
     </div>
@@ -481,8 +477,10 @@
         <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #9DBFD9; margin-bottom: 20px; font-family: 'Jost', sans-serif">Explore</div>
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Virtual Tour</h2>
       </div>
-      <div style="border-radius: 2px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.2); margin-bottom: 80px;">
-        <iframe title="360-degree virtual tour of S/Y Celestine" loading="lazy" src="https://kuula.co/share/collection/7MZD0?logo=-1&amp;info=0&amp;fs=1&amp;vr=1&amp;initload=0&amp;thumbs=-1" style="width: 100%; aspect-ratio: 16 / 10; max-height: 700px; border: none; display: block;"></iframe>
+      <div data-tour-embed="" style="border-radius: 2px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.2); margin-bottom: 80px; width: 100%; aspect-ratio: 16 / 10; max-height: 700px; background: #001433;">
+        <sc-if value="{{ tourInView }}" hint-placeholder-val="{{ false }}">
+          <iframe title="360-degree virtual tour of S/Y Celestine" src="https://kuula.co/share/collection/7MZD0?logo=-1&amp;info=0&amp;fs=1&amp;vr=1&amp;initload=1&amp;thumbs=-1" style="width: 100%; height: 100%; border: none; display: block;"></iframe>
+        </sc-if>
       </div>
 
       <div data-tour-videos="" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
@@ -532,14 +530,14 @@
     <div style="position: relative; z-index: 1; text-align: center;">
       <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px">The Crew</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1; color: #273f54;">People who make it happen.</h2>
-      <p style="margin: 22px auto 0; text-align: center; max-width: 560px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.7; color: #273f54;">Three professionals live aboard&nbsp;<i>Celestine</i>, ready to make your vacation special.</p>
+      <p style="margin: 22px auto 0; text-align: center; max-width: 560px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.7; color: #273f54;">Three professionals live aboard&nbsp;<i>Celestine</i>, ready to make your vacation special.</p>
     </div>
     <div data-crew-grid="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 900px; margin: 60px auto 0;">
       <div class="reveal" style="text-align: center;">
         <img src="assets/opt/captain-560.webp" srcSet="assets/opt/captain-560.webp 560w, assets/opt/captain-1000.webp 1000w" sizes="(max-width: 768px) 66vw, 280px" loading="lazy" decoding="async" alt="Captain Jamie Still aboard S/Y Celestine" style="aspect-ratio: 1; width: 100%; border-radius: 999px; object-fit: cover; object-position: center top; margin-bottom: 24px;">
         <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; color: #00102d;">Jamie Still</div>
         <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-top: 6px; font-family: 'Jost', sans-serif">Captain</div>
-        <p style="margin-top: 16px; font-weight: 300; font-size: 15px; line-height: 1.7; color: #273f54; font-family: 'Jost', sans-serif">With more than 30,000 miles at sea, Jamie is consistently top-rated by guests, with reviews citing calm, steady command, local knowledge, and flexibility around guest priorities.</p>
+        <p style="margin-top: 16px; font-weight: 300; font-size: 17px; line-height: 1.7; color: #273f54; font-family: 'Jost', sans-serif">With more than 30,000 miles at sea, Jamie is consistently top-rated by guests, with reviews citing calm, steady command, local knowledge, and flexibility around guest priorities.</p>
       </div>
       <div class="reveal" style="text-align: center; transition-delay: 100ms;">
         <div style="aspect-ratio: 1; width: 100%; border-radius: 999px; background: #dedfe1; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
@@ -547,7 +545,7 @@
         </div>
         <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; color: #00102d;"></div>
         <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-top: 6px; font-family: 'Jost', sans-serif">Chef</div>
-        <p style="margin-top: 16px; font-weight: 300; font-size: 15px; line-height: 1.7; color: #273f54;"></p>
+        <p style="margin-top: 16px; font-weight: 300; font-size: 17px; line-height: 1.7; color: #273f54;"></p>
       </div>
       <div class="reveal" style="text-align: center; transition-delay: 200ms;">
         <div style="aspect-ratio: 1; width: 100%; border-radius: 999px; background: #dedfe1; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
@@ -555,7 +553,7 @@
         </div>
         <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; color: #00102d;"></div>
         <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-top: 6px; font-family: 'Jost', sans-serif">Stewardess</div>
-        <p style="margin-top: 16px; font-weight: 300; font-size: 15px; line-height: 1.7; color: #273f54;"></p>
+        <p style="margin-top: 16px; font-weight: 300; font-size: 17px; line-height: 1.7; color: #273f54;"></p>
       </div>
     </div>
     
@@ -567,7 +565,7 @@
     <div class="reveal" style="position: relative; z-index: 1; margin-bottom: 60px;">
       <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px">Layout</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1.02; margin-bottom: 24px; color: #273f54;">Thoughtfully designed spaces.</h2>
-      <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.75; color: #273f54; max-width: 680px; text-shadow: 0 0 12px rgba(236,230,214,0.95), 0 0 4px rgba(236,230,214,0.9);">Every cabin, salon, and gathering space flows naturally, maximizing comfort and natural light. Equal-sized cabins are ideal for couples traveling together.</p>
+      <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.75; color: #273f54; max-width: 680px; text-shadow: 0 0 12px rgba(236,230,214,0.95), 0 0 4px rgba(236,230,214,0.9);">Every cabin, salon, and gathering space flows naturally, maximizing comfort and natural light. Equal-sized cabins are ideal for couples traveling together.</p>
     </div>
     <div style="position: relative; z-index: 1; display: flex; flex-direction: column; gap: 40px; max-width: 1100px; margin: 0 auto;">
       <div class="reveal" data-slide-in="left" style="position: relative;">
@@ -592,28 +590,29 @@
   <section id="rates" aria-label="Weekly charter rates" style="padding: 56px 56px; background: #ece6d6 url('assets/opt/ratesBg-1920.webp') center/cover; background-attachment: scroll; position: relative;">
     <div style="position: absolute; inset: 0; background: rgba(236,230,214,0.55)"></div>
     <div style="position: relative; z-index: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 24px;">
         <div>
           <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px">Rates</div>
           <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1; color: #00102d;">Weekly charter rates</h2>
         </div>
-        <p style="max-width: 340px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; line-height: 1.65; color: #273f54;">All-inclusive of crew, meals, standard beverages, fuel, and water toys. Priced per week for up to 10 guests.</p>
       </div>
+
+      <div style="max-width: 700px; margin: 0 0 60px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.7; color: #273f54;"><div>A week aboard <i>Celestine</i>, split among couples, rivals upscale cruise ship cabin prices and is comparable to an Airbnb + dining for families. It's all-inclusive (covering crew, meals, drinks, fuel, water toys) and tailored to your itinerary.</div></div>
 
     <ul data-rate-cards="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; list-style: none;">
       <sc-for list="{{ rates }}" as="r" hint-placeholder-count="3">
         <li class="reveal" style="background: #ece6d6; border-top: 3px solid {{ r.border }}; padding: 40px 36px; display: flex; flex-direction: column; transition-delay: {{ $index }}00ms;">
           <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); font-family: 'Jost', sans-serif;">{{ r.season }}</div>
           <div style="font-size: 14px; font-weight: 300; color: #273f54; margin-top: 8px; font-family: 'Jost', sans-serif">{{ r.months }}</div>
-          <div style="margin-top: 28px; font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: #00102d;">{{ r.price }}</div>
-          <div style="font-size: 13px; letter-spacing: 1px; color: #273f54; margin-top: 8px; font-family: 'Cormorant Garamond', serif;">per week · up to 10 guests</div>
-          <p style="margin-top: 22px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 14px; line-height: 1.7; color: #273f54;">{{ r.note }}</p>
+          <div style="margin-top: 28px; font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: #00102d;">{{ r.perCouple }}</div>
+          <div style="font-size: 13px; letter-spacing: 1px; color: #273f54; margin-top: 6px; font-family: 'Cormorant Garamond', serif;">per couple, for the week</div>
+          <div style="font-size: 17px; color: #273f54; margin-top: 10px; font-family: 'Jost', sans-serif; font-weight: 400;">{{ r.price }} total per week</div>
+          <p style="margin-top: 22px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; line-height: 1.7; color: #273f54;">{{ r.note }}</p>
         </li>
       </sc-for>
     </ul>
 
-    
-    <p style="max-width: 1000px; margin: 22px auto 0; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 300; line-height: 1.6; color: #55575f; position: relative; z-index: 2;">Special Christmas and New Year's charter rates apply. <br>The low season runs from May to August during summer, while the high season is from December to April, covering winter and spring.</p>
+    <p style="max-width: 1000px; margin: 22px auto 0; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 300; line-height: 1.6; color: #55575f; position: relative; z-index: 2;">Special Christmas and New Year's charter rates apply. <br>The low season runs from May to August during summer, while the high season is from December to April, covering winter and spring. <br>A 20% crew gratuity is customary and not included in the base charter rate.</p>
     
     <div style="margin-top: 56px; max-width: 900px; margin-left: auto; margin-right: auto; position: relative; z-index: 2;font-family: 'Cormorant Garamond', serif">
       <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, #3A5E7E); margin-bottom: 20px; font-family: 'Jost', sans-serif">Meal Plans</div>
@@ -621,8 +620,8 @@
       <div data-meal-plans="" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
         <div style="background: #d4e8f7; padding: 24px; border-radius: 14px;">
           <h4 style="font-family: 'Jost', sans-serif; font-weight: 400; font-size: 22px; color: #00102d; margin-bottom: 16px;">Half-Board Plan</h4>
-          <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54; margin-bottom: 16px;">Ideal for guests who enjoy dining ashore</p>
-          <ul style="font-weight: 300; font-size: 14px; line-height: 1.8; color: #273f54; margin: 0 0 20px; padding-left: 20px;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54; margin-bottom: 16px;">Ideal for guests who enjoy dining ashore</p>
+          <ul style="font-weight: 300; font-size: 16px; line-height: 1.8; color: #273f54; margin: 0 0 20px; padding-left: 20px;">
             <li>7 breakfasts, 4 lunches and 3 dinners onboard</li>
             <li>3 lunches and 4 dinners ashore (guest expense)</li>
           </ul>
@@ -630,8 +629,8 @@
         </div>
         <div style="background: #d4e8f7; padding: 24px; border-radius: 14px;">
           <h4 style="font-family: 'Jost', sans-serif; font-weight: 400; font-size: 22px; color: #00102d; margin-bottom: 16px;">Local Fare Meal Plan</h4>
-          <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 15px; line-height: 1.65; color: #273f54; margin-bottom: 16px;">A taste of Caribbean cuisine</p>
-          <ul style="font-weight: 300; font-size: 14px; line-height: 1.8; color: #273f54; margin: 0 0 20px; padding-left: 20px;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: #273f54; margin-bottom: 16px;">A taste of Caribbean cuisine</p>
+          <ul style="font-weight: 300; font-size: 16px; line-height: 1.8; color: #273f54; margin: 0 0 20px; padding-left: 20px;">
             <li>7 breakfasts, 5 lunches and 6 dinners onboard</li>
             <li>2 lunches and 1 dinner ashore (guest expense)</li>
           </ul>
@@ -639,16 +638,26 @@
         </div>
       </div>
     </div>
+
+    <div style="margin-top: 56px; max-width: 900px; margin-left: auto; margin-right: auto; position: relative; z-index: 2; background: #00102d; border-radius: 16px; padding: 40px 40px 40px 136px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap;">
+      <img src="assets/charter-smarter-mark.svg" alt="Charter Smarter" style="position: absolute; left: 0; top: 50%; transform: translate(-33%, -50%) rotate(-15deg); height: 140px; width: 140px; flex-shrink: 0; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));">
+      <div style="flex: 1 1 320px; min-width: 0;">
+        <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #9DBFD9; margin-bottom: 10px;">In Partnership With Charter Smarter</div>
+        <h4 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 26px; color: #ece6d6; margin-bottom: 10px;">Pay for your charter over time.</h4>
+        <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: rgba(236,230,214,0.8);">Our partner Charter Smarter's Yacht Vacation Layaway lets you secure <i>Celestine</i> with a 15% deposit, then spread the balance across equal monthly payments — with up to 5 guests splitting the cost.</p>
+      </div>
+      <a href="https://chartersmarter.com/yacht-vacation-layaway/" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: #6E9CC2; color: #00102d; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 28px; flex-shrink: 0; white-space: nowrap;">Learn More</a>
+    </div>
     </div></section>
   
 
 
   <!-- AVAILABILITY -->
-  <section aria-label="Availability calendar" style="padding: 90px 56px; background: #ece6d6;">
-      <div id="availability" style="max-width: 1000px; margin: 0 auto; text-align: left;">
+  <section id="availability" aria-label="Availability calendar" style="padding: 90px 56px; background: #ece6d6;">
+      <div style="max-width: 1000px; margin: 0 auto; text-align: left;">
         <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: #3A5E7E; margin-bottom: 18px; text-align: center;">Availability</div>
         <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 6vw, 44px); line-height: 1.1; margin: 0 0 14px; text-align: center; color: #00102d;">Open weeks at a glance</h3>
-        <p style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.6; color: #55575f; margin: 0 auto 40px; max-width: 460px; text-align: center;">Dates shown are current as of August 2026. <a href="mailto:bookings@paradiseyachtmanagement.com">Contact us</a> for the latest.</p>
+        <p style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.6; color: #55575f; margin: 0 auto 40px; max-width: 460px; text-align: center;">Dates shown are current as of August 2026. <a href="mailto:bookings@paradiseyachtmanagement.com">Contact us</a> for the latest.</p>
 
         <div style="display: flex; gap: 26px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #273f54;">
           <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: rgba(0,32,91,0.06); border: 1px solid rgba(0,32,91,0.25);"></span>Open</div>
@@ -725,6 +734,7 @@
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path></svg>
       </a>
     </div>
+    <span style="width: 1px; height: 32px; background: rgba(236,230,214,0.3);"></span>
     <div data-weather="" data-wx-faded="{{ wxFaded }}" style="display: flex; align-items: center; gap: 14px; padding: 0 22px; width: 260px; flex: none; box-sizing: border-box; transition: opacity 0.5s ease;">
       <div style="font-family: 'Jost', sans-serif; font-size: 24px; line-height: 1.15; color: #9DBFD9; white-space: nowrap;">{{ wxTemp }}<span style="font-size: 13px; opacity: 0.6;"> / {{ wxTempC }}</span></div>
       <div style="display: flex; flex-direction: column; gap: 4px; font-family: 'Jost', sans-serif;">
@@ -894,8 +904,9 @@ class Component extends DCLogic {
       this.markHeroLoaded();
     }
     const upgradeHero = () => this.setState({ heroHiRes: true });
-    if (document.readyState === "complete") upgradeHero();
-    else window.addEventListener("load", upgradeHero, { once: true });
+    const afterLoad = () => { upgradeHero(); this.setState({ tourInView: true }); };
+    if (document.readyState === "complete") afterLoad();
+    else window.addEventListener("load", afterLoad, { once: true });
     this._observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -944,6 +955,7 @@ class Component extends DCLogic {
     this.syncReveals();
     this.markHeroLoaded();
   }
+
 
   scrollThumbs(i) {
     setTimeout(() => {
@@ -1085,6 +1097,7 @@ class Component extends DCLogic {
         ? "assets/opt/hero-640.webp 640w, assets/opt/hero-1280.webp 1280w, assets/opt/hero-1920.webp 1920w, assets/opt/hero-2560.webp 2560w, assets/opt/hero-3840.webp 3840w"
         : "assets/opt/hero-640.webp 640w, assets/opt/hero-1280.webp 1280w, assets/opt/hero-1920.webp 1920w",
       menuExpanded: this.state.menuOpen ? "true" : "false",
+      tourInView: !!this.state.tourInView,
       vid1: this.state.vid1,
       vid1Off: !this.state.vid1,
       vid1Play: () => this.setState({ vid1: true }),
@@ -1128,9 +1141,9 @@ class Component extends DCLogic {
         { name: "British Virgin Islands", popular: true, region: "Caribbean", photo: "assets/opt/destBVI-900.jpg", webp: "assets/opt/destBVI-420.webp 420w, assets/opt/destBVI-640.webp 640w, assets/opt/destBVI-900.webp 900w, assets/opt/destBVI-1200.webp 1200w", blurb: "Celestine easily hops between Tortola, Virgin Gorda's granite Baths, Norman Island's Bight, and White Bay's white sands. Turquoise anchorages and beach bars accessible only by boat are within your reach." },
       ],
       rates: [
-        { season: "2 Guests", months: "Low Season", price: "$35,500", border: "#cbbc96", note: "High Season / Up to $40,500+" },
-        { season: "6 Guests", months: "Low Season", price: "$37,500", border: this.props.accent ?? "#4D7EA8", note: "High Season / $42,500" },
-        { season: "10 Guests", months: "Low Season", price: "$41,000", border: "#cbbc96", note: "High Season / $46,000" },
+        { season: "Low Season", months: "10 Guests, five couples", price: "$41,000", perCouple: "$8,200", border: "#cbbc96", note: "High Season / $46,000" },
+        { season: "Low Season", months: "6 Guests, three couples", price: "$37,500", perCouple: "$12,500", border: this.props.accent ?? "#4D7EA8", note: "High Season / $42,500" },
+        { season: "High Season", months: "6 Guests, three couples", price: "$42,500", perCouple: "$14,167", border: "#cbbc96", note: "Low Season / $37,500" },
       ],
       rateIncludes: [
         "Full professional crew",

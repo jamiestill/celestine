@@ -111,11 +111,11 @@
   section[id], #book, #availability { scroll-margin-top: 89px; }
   @media (max-width: 768px) { section[id], #book { scroll-margin-top: 58px; } }
   .nav-links { display: flex; gap: 40px; align-items: center; }
-  .nav-burger { display: none; flex-direction: column; gap: 6px; cursor: pointer; background: none; border: none; padding: 8px; }
-  .nav-burger span { width: 24px; height: 2px; background: #273f54; transition: all 0.3s; }
-  .nav-burger.active span:nth-child(1) { transform: rotate(45deg) translate(10px, 10px); }
+  .nav-burger { display: none; flex-direction: column; gap: 3px; cursor: pointer; background: none; border: none; padding: 8px; }
+  .nav-burger span { width: 26px !important; height: 8px !important; background: #273f54; transition: all 0.3s; -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 8'><path d='M0 4 Q6.5 0.5 13 4 T26 4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/></svg>") center / 26px 8px no-repeat; mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 8'><path d='M0 4 Q6.5 0.5 13 4 T26 4' fill='none' stroke='black' stroke-width='1.9' stroke-linecap='round'/></svg>") center / 26px 8px no-repeat; }
+  .nav-burger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
   .nav-burger.active span:nth-child(2) { opacity: 0; }
-  .nav-burger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+  .nav-burger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
   .nav-burger.scrolled span { background: #ece6d6 !important; }
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 20; transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease; padding: 30px 56px; background: rgba(183, 187, 192, 0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
   nav.scrolled { background: #00205b; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); padding: 21px 56px; border-bottom: 1px solid rgba(236,230,214,0.18); }
@@ -128,7 +128,11 @@
     .nav-burger { display: flex; }
     .nav-links { display: none !important; }
   }
+  @media (max-width: 500px) {
+    [data-hero-title] { background: rgba(204,210,213,0.92) !important; display: block !important; margin: 0 -24px !important; padding: 0.2em 24px !important; box-decoration-break: clone !important; -webkit-box-decoration-break: clone !important; }
+  }
   @media (max-width: 768px) {
+    nav { padding: 30px 24px; }
     nav.scrolled { padding: 12px 24px; }
     #yacht > .reveal { text-align: center; }
     [data-charter-smarter-card] { padding: 96px 32px 32px !important; justify-content: center; text-align: center; overflow: visible; }
@@ -270,7 +274,7 @@
     </picture>
     <div style="position: absolute; inset: 0; background: rgba(0, 32, 91, 0.1);"></div>
     <div data-hero-copy="" style="position: relative; z-index: 10; padding: 0 56px; margin-top: 8vh;">
-      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; color: #ece6d6; max-width: 900px; text-wrap: balance; text-shadow: 0 4px 24px rgba(0,16,45,0.65), 0 1px 4px rgba(0,16,45,0.5);">Catch the breeze, find your ease.</h1>
+      <h1 data-hero-title="" style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; color: #00205b; max-width: 900px; text-wrap: balance; text-shadow: none;">Catch the breeze, find your ease.</h1>
       <p style="display: none; margin-top: 26px; max-width: 480px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(16px, 4vw, 18px); line-height: 1.6; color: rgba(236,230,214,0.92); text-shadow: 0 2px 12px rgba(0,16,45,5); padding: 1em; background: rgba(0, 32, 91, 0.5)">A 59-foot sailing yacht and her seasoned crew, at your service for bespoke voyages across the world's most beautiful waters.</p>
     </div>
     <div data-hero-badge="" style="position: absolute; left: 56px; bottom: 2rem; z-index: 10; background: #00102d; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: #ece6d6; padding: 10px 18px;">PRIVATE YACHT VACATIONS IN THE US AND BRITISH VIRGIN ISLANDS</div>
@@ -760,7 +764,7 @@
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 17px; height: 17px; flex: none;"><rect x="2" y="4.5" width="20" height="15" rx="2"></rect><path d="m2.6 6 9.4 6.6L21.4 6"></path></svg>
       <span>bookings@paradiseyachtmanagement.com</span>
     </a>
-    <div data-copyright="" style="width: 100%; margin-top: -14px; color: #9DBFD9; font-size: 12px; letter-spacing: 1px; font-family: 'Jost', sans-serif; font-weight: 300;">Copyright © {{ currentYear }}. <span data-copyright-break=""></span>Website designed and developed by <a href="https://www.linkedin.com/in/jamiestill/">Jamie Still</a>.</div>
+    <div data-copyright="" style="width: 100%; margin-top: -14px; color: #9DBFD9; font-size: 12px; letter-spacing: 1px; font-family: 'Jost', sans-serif; font-weight: 300;">Copyright © {{ currentYear }}. <span data-copyright-break=""></span>Website by <a href="https://www.linkedin.com/in/jamiestill/">Jamie Still</a>.</div>
   </footer>
 
   <div data-float-cta="" data-cta-shown="{{ ctaShown }}" style="position: fixed; right: 0; bottom: 40px; z-index: 90; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease;">

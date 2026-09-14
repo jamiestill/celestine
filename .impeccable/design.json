@@ -232,7 +232,7 @@
       "nav-glass": {
         "role": "neutral",
         "displayName": "Nav Glass",
-        "canonical": "rgba(183, 187, 192, 0.5)",
+        "canonical": "rgba(183, 187, 192, 0.72)",
         "tonalRamp": [
           "#2f3138",
           "#55575f",
@@ -462,7 +462,9 @@
       "Don't round action buttons into pills; pills are for icon-only controls.",
       "Don't use bold weights or set body copy in the serif.",
       "Don't add white or cool-gray section backgrounds in place of Sailcloth.",
-      "Don't set ivory or white text on Harbor Coral or Harbor Sky fills."
+      "Don't set ivory or white text on Harbor Coral or Harbor Sky fills.",
+      "Don't put an uppercase eyebrow label above a section heading; the heading carries the section.",
+      "Don't hide where an external action goes: label it (\"Book with Charter Smarter\") and give it an accessible name that says it opens a new tab."
     ]
   }
 }

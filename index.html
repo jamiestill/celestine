@@ -133,7 +133,7 @@
   nav.menu-open span { background: var(--sailcloth) !important; }
   nav.menu-open img { visibility: hidden; }
   nav.menu-open .nav-links { visibility: hidden; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 20; transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease; padding: 30px 56px; background: var(--nav-glass); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 20; transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease; padding: 30px 56px; background: var(--nav-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
   nav.scrolled { background: var(--navy-core); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); padding: 21px 56px; border-bottom: 1px solid rgba(236,230,214,0.18); }
   nav a { text-shadow: 0 0 12px rgba(236,230,214,0.9), 0 0 4px rgba(236,230,214,0.8); }
   nav.scrolled a { text-shadow: none; }
@@ -152,7 +152,7 @@
     nav.scrolled { padding: 12px 24px; }
     #yacht > .reveal { text-align: center; }
     [data-charter-smarter-card] { margin-top: 120px !important; padding: 96px 32px 32px !important; justify-content: center; text-align: center; overflow: visible; }
-    [data-charter-smarter-mark] { position: absolute !important; left: 50% !important; top: -56px !important; height: 130px !important; width: 130px !important; transform: translate(-50%, 0) rotate(-15deg) !important; }
+    [data-charter-smarter-mark] { position: absolute !important; left: 50% !important; top: -52px !important; height: 104px !important; width: 104px !important; transform: translate(-50%, 0) !important; }
     [data-yacht-head] { justify-content: center; text-align: center; }
     [data-yacht-head] h2 { flex-basis: 100%; }
     [data-yacht-head] img { width: calc(100% + 112px) !important; margin-left: -56px !important; margin-right: -56px !important; height: 260px !important; border-radius: 0 !important; box-shadow: none !important; margin-bottom: 32px; object-position: center !important; }
@@ -271,10 +271,19 @@
     --sky-tint: #9dbfd9; --harbor-sky: #6e9cc2; --pale-sky: #d4e8f7;
     --sailcloth: #ece6d6; --sailcloth-light: #f5efe2; --sailcloth-deep: #ded4c0; --brass-tint: #cbbc96;
     --harbor-coral: #ff5a5f; --gray-mid-dark: #55575f;
-    --nav-glass: rgba(183, 187, 192, 0.5); --sailcloth-mist: rgba(214, 205, 186, 0.55); --sailcloth-mist-clear: rgba(214, 205, 186, 0);
+    --nav-glass: rgba(183, 187, 192, 0.72); --sailcloth-mist: rgba(214, 205, 186, 0.55); --sailcloth-mist-clear: rgba(214, 205, 186, 0);
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Jost', system-ui, sans-serif;
     --ease-reveal: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  @media (max-width: 768px) {
+    [data-rate-table] { padding: 24px 16px 20px !important; }
+    [data-rate-table] th, [data-rate-table] td { padding-left: 6px !important; padding-right: 6px !important; }
+    [data-rate-table] tbody th { white-space: nowrap; }
+    [data-before-book] { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 480px) {
+    [data-book-actions] > a { width: 100%; padding: 18px 16px !important; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -317,7 +326,7 @@
       <a href="#crew" onClick="{{ toggleMenu }}" style="color: var(--sailcloth); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Crew</a>
       <a href="#rates" onClick="{{ toggleMenu }}" style="color: var(--sailcloth); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Rates</a>
       <a href="#availability" onClick="{{ toggleMenu }}" style="color: var(--sailcloth); text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 34px;">Availability</a>
-      <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--harbor-coral); color: var(--navy-deep); text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s;" style-hover="background: var(--sailcloth);"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 15px; height: 15px; flex: none;"><rect x="3" y="5" width="18" height="16" rx="1.5"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span>Book</span></a>
+      <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" aria-label="Book with Charter Smarter (opens in a new tab)" style="font-family: 'Jost', sans-serif; background: var(--harbor-coral); color: var(--navy-deep); text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s;" style-hover="background: var(--sailcloth);"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 15px; height: 15px; flex: none;"><rect x="3" y="5" width="18" height="16" rx="1.5"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span>Book</span></a>
     </div>
   </sc-if>
 
@@ -329,7 +338,7 @@
     </picture>
     <div style="position: absolute; inset: 0; background: rgba(0, 32, 91, 0.1);"></div>
     <div data-hero-copy="" style="position: relative; z-index: 10; padding: 0 56px; margin-top: 8vh;">
-      <h1 data-hero-title="" style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; color: var(--navy-core); max-width: 900px; text-wrap: balance; text-shadow: 0 2px 4px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.85), 0 0 46px rgba(255,255,255,0.7), 0 0 90px rgba(255,255,255,0.5);">Catch the breeze, find your ease.</h1>
+      <h1 data-hero-title="" style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 8vw, 92px); line-height: 0.98; color: var(--navy-core); max-width: 900px; text-wrap: balance; text-shadow: 0 1px 2px rgba(236,230,214,0.7), 0 0 28px rgba(236,230,214,0.6);">Catch the breeze, find your ease.</h1>
       <p style="display: none; margin-top: 26px; max-width: 480px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(16px, 4vw, 18px); line-height: 1.6; color: rgba(236,230,214,0.92); text-shadow: 0 2px 12px rgba(0,16,45,5); padding: 1em; background: rgba(0, 32, 91, 0.5)">A 59-foot sailing yacht and her seasoned crew, at your service for bespoke voyages across the world's most beautiful waters.</p>
     </div>
     <div data-hero-badge="" style="position: absolute; left: 56px; bottom: 2rem; z-index: 10; background: var(--navy-deep); font-size: 15px; letter-spacing: 1px; color: var(--sailcloth); padding: 10px 18px;">Private yacht vacations in the US and British Virgin Islands</div>
@@ -341,19 +350,19 @@
   <section data-stats="" style="background: var(--navy-core); color: var(--sailcloth); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;">
     <div style="padding: 46px 40px; border-right: 1px solid rgba(236,230,214,0.12);">
       <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, var(--steel-blue)); line-height: 1;">59 ft</div>
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">VESSEL LENGTH</div>
+      <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-top: 12px; opacity: 0.8;">VESSEL LENGTH</div>
     </div>
     <div style="padding: 46px 40px; border-right: 1px solid rgba(236,230,214,0.12);">
-      <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, var(--steel-blue)); line-height: 1;">5</div>
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">COUPLES / CABINS</div>
+      <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, var(--steel-blue)); line-height: 1;">10</div>
+      <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-top: 12px; opacity: 0.8;">Guests · 5 queen cabins</div>
     </div>
     <div style="padding: 46px 40px; border-right: 1px solid rgba(236,230,214,0.12);">
       <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, var(--steel-blue)); line-height: 1;">3</div>
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Professional crew</div>
+      <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-top: 12px; opacity: 0.8;">Professional crew</div>
     </div>
     <div style="padding: 46px 40px;">
       <div style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 46px; color: var(--accent, var(--steel-blue)); line-height: 1;">2020</div>
-      <div style="font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; opacity: 0.7;">Year built</div>
+      <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-top: 12px; opacity: 0.8;">Year built</div>
     </div>
   </section>
 
@@ -362,7 +371,6 @@
     <img data-palm="" src="assets/opt/palm-620.webp" loading="lazy" decoding="async" alt="" style="position: absolute; top: -10%; right: -8%; width: min(46%, 620px); opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform-origin: 85% 0%; z-index: 0;">
     <img data-palm="" data-palm-alt="" src="assets/opt/palm-620.webp" loading="lazy" decoding="async" alt="" style="position: absolute; bottom: -10%; right: 18%; width: min(46%, 620px); opacity: 0.85; mix-blend-mode: multiply; pointer-events: none; transform-origin: 50% 50%; z-index: 0;">
     <div class="reveal" style="margin-bottom: 60px;">
-      <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-bottom: 20px;">The Yacht</div>
       <div data-yacht-head="" style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
         <div style="flex: 1 1 340px; min-width: 0;">
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1.02; margin-bottom: 24px;">Sailboat fun. Amenities you expect. Luxury you want.</h2>
@@ -469,7 +477,6 @@
     <div style="position: relative; z-index: 1;">
     <div class="reveal" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 24px;">
       <div>
-        <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--sky-tint); margin-bottom: 20px;">Destinations</div>
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Where will&nbsp;<i>Celestine</i>&nbsp;take you?</h2>
       </div>
       <p style="max-width: 320px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 18px; line-height: 1.65; opacity: 0.8;">Every itinerary is planned around you — hidden coves, pristine harbors, and the best food in the islands.</p>
@@ -500,7 +507,6 @@
   <!-- GALLERY -->
   <section id="gallery" aria-label="Gallery" style="padding: 56px 56px; background: var(--sailcloth);">
     <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-      <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-bottom: 20px;">Gallery</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Meet <i>Celestine.</i></h2>
     </div>
       <div data-gallery-stage="" class="reveal" role="button" tabIndex="0" aria-label="Open photo full screen" onKeyDown="{{ keyActivate }}" style="position: relative; aspect-ratio: 16/10; background: var(--sailcloth-deep); overflow: hidden; cursor: zoom-in;" onClick="{{ openCurrent }}">
@@ -542,7 +548,6 @@
     <div style="position: absolute; inset: 0; background: transparent;"></div>
     <div style="position: relative; z-index: 10; max-width: 1000px; margin: 0 auto;">
       <div class="reveal" style="margin-bottom: 60px; text-align: center;">
-        <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--sky-tint); margin-bottom: 20px; font-family: 'Jost', sans-serif">Explore</div>
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1;">Virtual Tour</h2>
       </div>
       <div data-tour-embed="" style="border-radius: 2px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.2); margin-bottom: 80px; width: 100%; aspect-ratio: 16 / 10; max-height: 700px; background: var(--navy-deep);">
@@ -596,32 +601,15 @@
   <section id="crew" aria-label="Crew" style="padding: 56px 56px; background: var(--sailcloth) url('assets/opt/crewBg-1920.webp') center/cover; background-attachment: scroll; position: relative;">
     <div style="position: absolute; inset: 0; background: rgba(236,230,214,0.65)"></div>
     <div style="position: relative; z-index: 1; text-align: center;">
-      <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-bottom: 20px">The Crew</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1; color: var(--steel-ink);">People who make it happen.</h2>
       <p style="margin: 22px auto 0; text-align: center; max-width: 560px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.7; color: var(--steel-ink);">Three professionals live aboard&nbsp;<i>Celestine</i>, ready to make your vacation special.</p>
     </div>
-    <div data-crew-grid="" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 900px; margin: 60px auto 0;">
+    <div data-crew-grid="" style="display: grid; grid-template-columns: minmax(0, 320px); justify-content: center; gap: 48px; max-width: 900px; margin: 60px auto 0;">
       <div class="reveal" style="text-align: center;">
         <img src="assets/opt/captain-560.webp" srcSet="assets/opt/captain-560.webp 560w, assets/opt/captain-1000.webp 1000w" sizes="(max-width: 768px) 66vw, 280px" loading="lazy" decoding="async" alt="Captain Jamie Still aboard S/Y Celestine" style="aspect-ratio: 1; width: 100%; border-radius: 999px; object-fit: cover; object-position: center top; margin-bottom: 24px;">
         <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; color: var(--navy-deep);">Jamie Still</div>
         <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-top: 6px; font-family: 'Jost', sans-serif">Captain</div>
         <p style="margin-top: 16px; font-weight: 300; font-size: 17px; line-height: 1.7; color: var(--steel-ink); font-family: 'Jost', sans-serif">With more than 30,000 miles at sea, Jamie is consistently top-rated by guests, with reviews citing calm, steady command, local knowledge, and flexibility around guest priorities.</p>
-      </div>
-      <div class="reveal" style="text-align: center; transition-delay: 100ms;">
-        <div style="aspect-ratio: 1; width: 100%; border-radius: 999px; background: #dedfe1; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-          <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-mid-dark); font-family: 'Jost', sans-serif">Photo coming soon</span>
-        </div>
-        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; color: var(--navy-deep);"></div>
-        <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-top: 6px; font-family: 'Jost', sans-serif">Chef</div>
-        <p style="margin-top: 16px; font-weight: 300; font-size: 17px; line-height: 1.7; color: var(--steel-ink);"></p>
-      </div>
-      <div class="reveal" style="text-align: center; transition-delay: 200ms;">
-        <div style="aspect-ratio: 1; width: 100%; border-radius: 999px; background: #dedfe1; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-          <span style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-mid-dark); font-family: 'Jost', sans-serif">Photo coming soon</span>
-        </div>
-        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 30px; color: var(--navy-deep);"></div>
-        <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-top: 6px; font-family: 'Jost', sans-serif">Stewardess</div>
-        <p style="margin-top: 16px; font-weight: 300; font-size: 17px; line-height: 1.7; color: var(--steel-ink);"></p>
       </div>
     </div>
     
@@ -631,7 +619,6 @@
   <section id="layout" aria-label="Layout" style="position: relative; overflow: hidden; padding: 56px 56px; background: var(--sailcloth);">
     <div style="position: absolute; inset: 0; opacity: 0.35; background-image: url('assets/orthographic-views.svg'); background-size: cover; background-repeat: no-repeat; background-position: center; pointer-events: none;"></div>
     <div class="reveal" style="position: relative; z-index: 1; margin-bottom: 60px;">
-      <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-bottom: 20px">Layout</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1.02; margin-bottom: 24px; color: var(--steel-ink);">Thoughtfully designed spaces.</h2>
       <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.75; color: var(--steel-ink); max-width: 680px; text-shadow: 0 0 12px rgba(236,230,214,0.95), 0 0 4px rgba(236,230,214,0.9);">Every cabin, salon, and gathering space flows naturally, maximizing comfort and natural light. Equal-sized cabins are ideal for couples traveling together.</p>
     </div>
@@ -660,35 +647,57 @@
     <div style="position: relative; z-index: 1;">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 24px;">
         <div>
-          <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-bottom: 20px">Rates</div>
           <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 58px); line-height: 1; color: var(--navy-deep);">Weekly charter rates</h2>
         </div>
       </div>
 
-      <div style="max-width: 700px; margin: 0 0 60px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.7; color: var(--steel-ink);"><div>A week aboard <i data-om-id="83a5e8da:321">Celestine</i>, split among couples, rivals upscale cruise ship cabin prices and is comparable to hotels/vacation rentals + dining for families. It's all-inclusive (covering crew, meals, drinks, fuel, water toys) and tailored to your itinerary.</div></div>
+      <div style="max-width: 700px; margin: 0 0 60px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 19px; line-height: 1.7; color: var(--steel-ink);"><div>One all-inclusive weekly rate charters the whole yacht: crew, meals, standard beverages, fuel and water toys, with an itinerary shaped around your group. The more guests aboard, the lower the cost per person.</div></div>
 
-    <ul data-rate-cards="" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; list-style: none;">
-      <sc-for list="{{ rates }}" as="r" hint-placeholder-count="3">
-        <li class="reveal" style="background: var(--sailcloth); border-top: 3px solid {{ r.border }}; padding: 36px 28px; min-width: 0; display: flex; flex-direction: column; transition-delay: {{ $index }}00ms;">
-          <div style="font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); font-family: 'Jost', sans-serif;">{{ r.season }}</div>
-          <div style="font-size: 14px; font-weight: 300; color: var(--steel-ink); margin-top: 8px; font-family: 'Jost', sans-serif">{{ r.months }}</div>
-          <div style="margin-top: 28px; font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: var(--navy-deep);">{{ r.perPerson }}</div>
-          <div style="font-size: 13px; letter-spacing: 1px; color: var(--steel-ink); margin-top: 6px; font-family: 'Cormorant Garamond', serif;">per person, for the week</div>
-          <div style="font-size: 17px; color: var(--steel-ink); margin-top: 10px; font-family: 'Jost', sans-serif; font-weight: 400;">{{ r.price }} total per week</div>
-          <p style="margin-top: 22px; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; line-height: 1.7; color: var(--steel-ink);">{{ r.note }}</p>
-        </li>
-      </sc-for>
-    </ul>
+    <div class="reveal" data-rate-table="" style="max-width: 1000px; margin: 0 auto; background: var(--sailcloth); border-top: 3px solid var(--brass-tint); padding: 32px 36px 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+      <table style="width: 100%; border-collapse: collapse; font-family: 'Jost', sans-serif; color: var(--navy-deep); font-variant-numeric: lining-nums tabular-nums;">
+        <caption style="caption-side: bottom; text-align: left; padding-top: 18px; font-size: 15px; font-weight: 300; line-height: 1.6; color: var(--steel-ink);">Weekly rates for the whole yacht. Per-person figures divide the weekly rate by the number of guests aboard.</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="text-align: left; padding: 0 12px 16px 0; font-size: 12px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--steel-shade); border-bottom: 1px solid rgba(0,16,45,0.18); vertical-align: bottom;">Guests</th>
+            <th scope="col" style="text-align: right; padding: 0 12px 16px; font-size: 12px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--steel-shade); border-bottom: 1px solid rgba(0,16,45,0.18); vertical-align: bottom;">Low season<span style="display: block; margin-top: 4px; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 300; color: var(--steel-ink);">May – August</span></th>
+            <th scope="col" style="text-align: right; padding: 0 0 16px 12px; font-size: 12px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--steel-shade); border-bottom: 1px solid rgba(0,16,45,0.18); vertical-align: bottom;">High season<span style="display: block; margin-top: 4px; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 300; color: var(--steel-ink);">December – April</span></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 18px 12px 18px 0; border-bottom: 1px solid rgba(0,16,45,0.1); font-weight: 400; font-size: 17px; color: var(--navy-deep);">2 guests<span style="display: block; margin-top: 4px; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 300; color: var(--steel-ink);">1 couple</span></th>
+              <td style="text-align: right; padding: 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.1; color: var(--navy-deep);">$35,500</span><span style="display: block; margin-top: 4px; font-size: 13px; font-weight: 300; color: var(--steel-ink);">$17,750 per person</span></td>
+              <td style="text-align: right; padding: 18px 0 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-size: 15px; font-weight: 300; color: var(--steel-ink);">On request</span></td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 18px 12px 18px 0; border-bottom: 1px solid rgba(0,16,45,0.1); font-weight: 400; font-size: 17px; color: var(--navy-deep);">6 guests<span style="display: block; margin-top: 4px; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 300; color: var(--steel-ink);">3 couples</span></th>
+              <td style="text-align: right; padding: 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.1; color: var(--navy-deep);">$37,500</span><span style="display: block; margin-top: 4px; font-size: 13px; font-weight: 300; color: var(--steel-ink);">$6,250 per person</span></td>
+              <td style="text-align: right; padding: 18px 0 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.1; color: var(--navy-deep);">$42,500</span><span style="display: block; margin-top: 4px; font-size: 13px; font-weight: 300; color: var(--steel-ink);">$7,083 per person</span></td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 18px 12px 18px 0; border-bottom: 1px solid rgba(0,16,45,0.1); font-weight: 400; font-size: 17px; color: var(--navy-deep);">8 guests<span style="display: block; margin-top: 4px; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 300; color: var(--steel-ink);">4 couples</span></th>
+              <td style="text-align: right; padding: 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.1; color: var(--navy-deep);">$39,000</span><span style="display: block; margin-top: 4px; font-size: 13px; font-weight: 300; color: var(--steel-ink);">$4,875 per person</span></td>
+              <td style="text-align: right; padding: 18px 0 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.1; color: var(--navy-deep);">$44,000</span><span style="display: block; margin-top: 4px; font-size: 13px; font-weight: 300; color: var(--steel-ink);">$5,500 per person</span></td>
+            </tr>
+            <tr>
+              <th scope="row" style="text-align: left; padding: 18px 12px 18px 0; border-bottom: 1px solid rgba(0,16,45,0.1); font-weight: 400; font-size: 17px; color: var(--navy-deep);">10 guests<span style="display: block; margin-top: 4px; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 300; color: var(--steel-ink);">5 couples</span></th>
+              <td style="text-align: right; padding: 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.1; color: var(--navy-deep);">$41,000</span><span style="display: block; margin-top: 4px; font-size: 13px; font-weight: 300; color: var(--steel-ink);">$4,100 per person</span></td>
+              <td style="text-align: right; padding: 18px 0 18px 12px; border-bottom: 1px solid rgba(0,16,45,0.1);"><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 32px); line-height: 1.1; color: var(--navy-deep);">$46,000</span><span style="display: block; margin-top: 4px; font-size: 13px; font-weight: 300; color: var(--steel-ink);">$4,600 per person</span></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <ul style="max-width: 1000px; margin: 22px auto 0; padding-left: 20px; list-style: disc; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 300; line-height: 1.6; color: var(--gray-mid-dark); position: relative; z-index: 2; display: flex; flex-direction: column; gap: 6px;">
-      <li>Special Christmas and New Year's charter rates apply.</li>
-      <li>The low season runs from May to August during summer, while the high season is from December to April, covering winter and spring.</li>
-      <li>A 20% crew gratuity is customary and not included in the base charter rate.</li>
-    </ul>
-    
+    <div class="reveal" data-before-book="" style="max-width: 1000px; margin: 48px auto 0; position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 48px; font-family: 'Jost', sans-serif; color: var(--steel-ink);">
+      <h3 style="grid-column: 1 / -1; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 5vw, 36px); line-height: 1.1; color: var(--navy-deep);">Before you book</h3>
+      <div><h4 style="font-size: 17px; font-weight: 400; color: var(--navy-deep); margin-bottom: 6px;">Included in the rate</h4><p style="font-weight: 300; font-size: 16px; line-height: 1.65;">Professional crew, all meals prepared aboard, standard beverages, fuel and water toys.</p></div>
+      <div><h4 style="font-size: 17px; font-weight: 400; color: var(--navy-deep); margin-bottom: 6px;">Crew gratuity</h4><p style="font-weight: 300; font-size: 16px; line-height: 1.65;">A 20% crew gratuity is customary and is not included in the charter rate.</p></div>
+      <div><h4 style="font-size: 17px; font-weight: 400; color: var(--navy-deep); margin-bottom: 6px;">Christmas and New Year's</h4><p style="font-weight: 300; font-size: 16px; line-height: 1.65;">Special holiday rates apply. Ask for them when you book.</p></div>
+      <div><h4 style="font-size: 17px; font-weight: 400; color: var(--navy-deep); margin-bottom: 6px;">Questions</h4><p style="font-weight: 300; font-size: 16px; line-height: 1.65; overflow-wrap: anywhere;">Paradise Yacht Management handles Celestine's charters: <a href="tel:+18442049846">(844) 204-9846</a> or <a href="mailto:bookings@paradiseyachtmanagement.com?subject=Inquiry%20about%20S%2FY%20Celestine%20for%20charter">bookings@paradiseyachtmanagement.com</a>.</p></div>
+    </div>
+
     <div style="margin-top: 56px; max-width: 900px; margin-left: auto; margin-right: auto; position: relative; z-index: 2;font-family: 'Cormorant Garamond', serif">
-      <div style="font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-deep, var(--steel-shade)); margin-bottom: 20px; font-family: 'Jost', sans-serif">Meal Plans</div>
-      <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(30px, 7vw, 42px); line-height: 1.1; color: var(--navy-deep); margin-bottom: 40px;">Optional Dining Enhancements</h3>
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(30px, 7vw, 42px); line-height: 1.1; color: var(--navy-deep); margin-bottom: 40px;">Dine ashore more, pay less</h3>
       <div data-meal-plans="" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
         <div style="background: var(--pale-sky); padding: 24px; border-radius: 14px;">
           <h4 style="font-family: 'Jost', sans-serif; font-weight: 400; font-size: 22px; color: var(--navy-deep); margin-bottom: 16px;">Half-Board Plan</h4>
@@ -712,13 +721,13 @@
     </div>
 
     <div data-charter-smarter-card="" style="margin-top: 56px; max-width: 900px; margin-left: auto; margin-right: auto; position: relative; z-index: 2; background: var(--navy-deep); border-radius: 16px; padding: 40px 40px 40px 136px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap;">
-      <img data-charter-smarter-mark="" src="assets/charter-smarter-mark.svg" alt="Charter Smarter" style="position: absolute; left: 0; top: 50%; transform: translate(-33%, -50%) rotate(-15deg); height: 140px; width: 140px; flex-shrink: 0; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));">
+      <img data-charter-smarter-mark="" src="assets/charter-smarter-mark.svg" alt="Charter Smarter" style="position: absolute; left: 0; top: 50%; transform: translate(-40%, -50%); height: 112px; width: 112px; flex-shrink: 0;">
       <div style="flex: 1 1 320px; min-width: 0;">
         <div style="font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--sky-tint); margin-bottom: 10px;">In Partnership With Charter Smarter</div>
         <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 26px; color: var(--sailcloth); margin-bottom: 10px;">Pay for your charter over time.</h3>
         <p style="font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 17px; line-height: 1.65; color: rgba(236,230,214,0.8);">Our partner Charter Smarter's Yacht Vacation Layaway lets you secure <i>Celestine</i> with a 15% deposit, then spread the balance across equal monthly payments — with up to 5 guests splitting the cost.</p>
       </div>
-      <a href="https://chartersmarter.com/yacht-vacation-layaway/" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--harbor-sky); color: var(--navy-deep); text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 28px; flex-shrink: 0; white-space: nowrap;">Learn More</a>
+      <a href="https://chartersmarter.com/yacht-vacation-layaway/" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--harbor-sky); color: var(--navy-deep); text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 28px; flex-shrink: 0; white-space: nowrap;">Learn about layaway</a>
     </div>
     </div></section>
   
@@ -727,14 +736,13 @@
   <!-- AVAILABILITY -->
   <section id="availability" aria-label="Availability calendar" style="padding: 90px 56px; background: var(--sailcloth);">
       <div style="max-width: 1000px; margin: 0 auto; text-align: left;">
-        <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: var(--steel-shade); margin-bottom: 18px; text-align: center;">Availability</div>
         <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 6vw, 44px); line-height: 1.1; margin: 0 0 14px; text-align: center; color: var(--navy-deep);">Open weeks at a glance</h2>
         <p style="font-family: 'Jost', sans-serif; font-weight: 300; font-size: 17px; line-height: 1.6; color: var(--gray-mid-dark); margin: 0 auto 40px; max-width: 460px; text-align: center;">Dates shown are current as of August 2026. <a href="mailto:bookings@paradiseyachtmanagement.com">Contact us</a> for the latest.</p>
 
         <div style="display: flex; gap: 26px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--steel-ink);">
-          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: rgba(0,32,91,0.06); border: 1px solid rgba(0,32,91,0.25);"></span>Open</div>
-          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: var(--harbor-sky);"></span>Booked</div>
-          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: var(--pale-sky);"></span>On hold</div>
+          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: var(--navy-core);"></span>Open</div>
+          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: repeating-linear-gradient(135deg, var(--pale-sky) 0 3px, rgba(110,156,194,0.6) 3px 5px);"></span>On hold</div>
+          <div style="display: flex; align-items: center; gap: 9px;"><span style="width: 14px; height: 14px; background: rgba(0,16,45,0.06); border: 1px solid rgba(0,16,45,0.2);"></span>Booked or unavailable</div>
           
         </div>
 
@@ -747,7 +755,7 @@
               </div>
               <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px;">
                 <sc-for list="{{ month.cells }}" as="day" hint-placeholder-count="35">
-                  <div style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 400; background: {{ day.bg }}; color: {{ day.fg }};">{{ day.label }}</div>
+                  <div style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 400; background: {{ day.bg }}; color: {{ day.fg }}; text-decoration: {{ day.deco }};">{{ day.label }}</div>
                 </sc-for>
               </div>
             </div>
@@ -763,19 +771,13 @@
     </div>
     <div style="position: absolute; inset: 0; background: rgba(0,32,91,0.85)"></div>
     <div style="position: relative; z-index: 2;">
-      <div style="font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; color: var(--sky-tint); margin-bottom: 22px;">WATER YOU WAITING FOR?</div>
       <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(38px, 9vw, 68px); line-height: 1.02; max-width: 760px; margin: 0 auto;">Begin planning your <i>Celestine</i> voyage.</h2>
-      <div style="font-family: 'Jost', sans-serif; margin: 26px auto 40px; max-width: 480px; font-weight: 300; font-size: 18px; line-height: 1.65; opacity: 0.85;"><p data-pm-slice="0 0 []">Connect with a <a href="https://www.crewedyachtsbvi.com/accredited-brokers">knowledgeable broker</a> who can get you on board <i>Celestine</i> right away. Your future self thanks you.</p></div>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        
-        
-      </div><div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://www.crewedyachtsbvi.com/accredited-brokers" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--harbor-sky); color: var(--navy-deep); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">BROKER PARTNERS</a>
-        <a href="tel:+18442049846" style="font-family: 'Jost', sans-serif; border: 1px solid rgba(236,230,214,0.5); color: var(--sailcloth); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">(844) 204-9846</a>
-      </div><div style="display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 1rem;">
-        <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--harbor-coral); color: var(--navy-deep); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px;">START DREAMING</a>
-        
+      <p style="font-family: 'Jost', sans-serif; margin: 26px auto 40px; max-width: 520px; font-weight: 300; font-size: 18px; line-height: 1.65; opacity: 0.85;">Book online through our partner Charter Smarter, or call Paradise Yacht Management to talk through dates, your group and where you'd like to sail.</p>
+      <div data-book-actions="" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" aria-label="Book with Charter Smarter (opens in a new tab)" style="font-family: 'Jost', sans-serif; background: var(--harbor-coral); color: var(--navy-deep); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 36px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; transition: background 0.25s;" style-hover="background: var(--sailcloth);">Book with Charter Smarter<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; flex: none;"><path d="M7 17 17 7M9 7h8v8"></path></svg></a>
+        <a href="tel:+18442049846" style="font-family: 'Jost', sans-serif; border: 1px solid rgba(236,230,214,0.5); color: var(--sailcloth); text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 36px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.25s;" style-hover="background: rgba(236,230,214,0.12);">Call (844) 204-9846</a>
       </div>
+      <p style="font-family: 'Jost', sans-serif; margin: 40px auto 0; max-width: 560px; font-weight: 300; font-size: 15px; line-height: 1.7; color: rgba(236,230,214,0.8); overflow-wrap: anywhere;">Prefer to work with a charter broker? <a href="https://www.crewedyachtsbvi.com/accredited-brokers" target="_blank" rel="noopener">Find an accredited BVI broker</a>. Brokers can reach Paradise Yacht Management at <a href="mailto:bookings@paradiseyachtmanagement.com?subject=Broker%20inquiry%3A%20S%2FY%20Celestine">bookings@paradiseyachtmanagement.com</a>.</p>
 
     </div>
   </section>
@@ -831,7 +833,7 @@
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 15px; height: 15px; flex: none;"><rect x="2" y="4.5" width="20" height="15" rx="2"></rect><path d="m2.6 6 9.4 6.6L21.4 6"></path></svg>
       <span>Email</span>
     </a>
-    <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" style="font-family: 'Jost', sans-serif; background: var(--harbor-sky); color: var(--navy-deep); text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s;" style-hover="background: var(--sailcloth);">
+    <a href="https://chartersmarter.com/step-form/?pid=1965" target="_blank" rel="noopener" aria-label="Book with Charter Smarter (opens in a new tab)" style="font-family: 'Jost', sans-serif; background: var(--harbor-coral); color: var(--navy-deep); text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s;" style-hover="background: var(--sailcloth);">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 15px; height: 15px; flex: none;"><rect x="3" y="5" width="18" height="16" rx="1.5"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
       <span>Book</span>
     </a>
@@ -1027,7 +1029,10 @@ class Component extends DCLogic {
     const yachtEl = document.getElementById("yacht");
     const yr = yachtEl && yachtEl.getBoundingClientRect();
     const pastYachtHalf = !!yr && yr.top + yr.height / 2 <= window.innerHeight * 0.5;
-    const showCta = pastYachtHalf && !bookInView;
+    const availEl = document.getElementById("availability");
+    const ar = availEl && availEl.getBoundingClientRect();
+    const availInView = !!ar && ar.top < window.innerHeight * 0.6 && ar.bottom > window.innerHeight * 0.4;
+    const showCta = pastYachtHalf && !bookInView && !availInView;
     if (showCta !== this.state.ctaVisible) this.setState({ ctaVisible: showCta });
     const atBottom = max > 0 && max - window.scrollY < 600;
     if (atBottom && !this.state.planeFlown) {
@@ -1181,10 +1186,10 @@ class Component extends DCLogic {
       return "open";
     };
     const palette = {
-      open: { bg: "rgba(0,32,91,0.06)", fg: "#00102d" },
-      booked: { bg: "#6E9CC2", fg: "#00102d" },
-      hold: { bg: "#d4e8f7", fg: "#3A5E7E" },
-      unavailable: { bg: "rgba(0,16,45,0.03)", fg: "rgba(0,16,45,0.28)" }
+      open: { bg: "var(--navy-core)", fg: "var(--sailcloth)", deco: "none" },
+      booked: { bg: "rgba(0,16,45,0.06)", fg: "rgba(0,16,45,0.55)", deco: "line-through" },
+      hold: { bg: "repeating-linear-gradient(135deg, var(--pale-sky) 0 4px, rgba(110,156,194,0.45) 4px 7px)", fg: "var(--navy-deep)", deco: "none" },
+      unavailable: { bg: "rgba(0,16,45,0.03)", fg: "rgba(0,16,45,0.4)", deco: "none" }
     };
     const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     const calendarMonths = [];
@@ -1194,10 +1199,10 @@ class Component extends DCLogic {
       const first = new Date(y, m, 1).getDay();
       const total = new Date(y, m + 1, 0).getDate();
       const cells = [];
-      for (let k = 0; k < first; k++) cells.push({ key: "b" + k, label: "", bg: "transparent", fg: "transparent" });
+      for (let k = 0; k < first; k++) cells.push({ key: "b" + k, label: "", bg: "transparent", fg: "transparent", deco: "none" });
       for (let d = 1; d <= total; d++) {
         const p = palette[statusOf(y, m, d)];
-        cells.push({ key: "d" + d, label: String(d), bg: p.bg, fg: p.fg });
+        cells.push({ key: "d" + d, label: String(d), bg: p.bg, fg: p.fg, deco: p.deco });
       }
       calendarMonths.push({ key: y + "-" + m, name: monthNames[m] + " " + y, cells });
     }
@@ -1279,11 +1284,6 @@ class Component extends DCLogic {
       destinations: [
         { name: "US Virgin Islands", region: "Caribbean", photo: "assets/opt/destUSVI-900.jpg", webp: "assets/opt/destUSVI-420.webp 420w, assets/opt/destUSVI-640.webp 640w, assets/opt/destUSVI-900.webp 900w, assets/opt/destUSVI-1200.webp 1200w", blurb: "Start in St. Thomas and drift to the empty white sand of St. John, where two thirds of the island is protected national park and the snorkelling begins right off the beach." },
         { name: "British Virgin Islands", popular: true, region: "Caribbean", photo: "assets/opt/destBVI-900.jpg", webp: "assets/opt/destBVI-420.webp 420w, assets/opt/destBVI-640.webp 640w, assets/opt/destBVI-900.webp 900w, assets/opt/destBVI-1200.webp 1200w", blurb: "Celestine easily hops between Tortola, Virgin Gorda's granite Baths, Norman Island's Bight, and White Bay's white sands. Turquoise anchorages and beach bars accessible only by boat are within your reach." },
-      ],
-      rates: [
-        { season: "Low Season", months: "8 Guests, four couples", price: "$39,000", perPerson: "$4,875", border: "#cbbc96", note: "High Season / $44,000" },
-        { season: "Low Season", months: "6 Guests, three couples", price: "$37,500", perPerson: "$6,250", border: this.props.accent ?? "#4D7EA8", note: "High Season / $42,500" },
-        { season: "High Season", months: "10 Guests, five couples", price: "$46,000", perPerson: "$4,600", border: "#cbbc96", note: "Low Season / $41,000" },
       ],
       rateIncludes: [
         "Full professional crew",

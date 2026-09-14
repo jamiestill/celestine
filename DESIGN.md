@@ -17,7 +17,7 @@ colors:
   brass-tint: "#cbbc96"
   harbor-coral: "#ff5a5f"
   gray-mid-dark: "#55575f"
-  nav-glass: "rgba(183, 187, 192, 0.5)"
+  nav-glass: "rgba(183, 187, 192, 0.72)"
   sailcloth-mist: "rgba(214, 205, 186, 0.55)"
 typography:
   display:
@@ -107,15 +107,15 @@ The page moves in full-bleed sections that alternate between the two worlds: nav
 A brand-defined nautical palette of navy, steel blue, and sailcloth ivory, with a single warm coral for conversion.
 
 ### Primary
-- **Celestine Navy** (navy-core): the brand anchor. Hero headline color on light imagery, stats band, destinations and booking section fields, theme color.
+- **Celestine Navy** (navy-core): the brand anchor. Hero headline color on light imagery, stats band, destinations and booking section fields, open days in the availability calendar (the strongest calendar state), theme color.
 - **Night Watch** (navy-shade) and **Midnight Hull** (navy-deep): darker navy steps for the virtual tour's diagonal stripe, dark buttons, overlays (`rgba(0,16,45,0.72–0.92)`), and body text on ivory.
 
 ### Secondary
 - **Steel Blue** (steel-blue): supporting accent and the site-wide focus ring (3px outline, 3px offset).
 - **Harbor Steel** (steel-shade) and **Chart Ink** (steel-ink): secondary text, navigation links (full opacity for legibility over the hero photo), and fine linework.
-- **Shallow Water** (sky-tint): light blue highlights and eyebrow labels on navy fields.
-- **Harbor Sky** (harbor-sky): secondary action fill (Broker Partners, Learn More, floating Book) with Midnight Hull text; booked days in the availability calendar; text selection.
-- **Pale Sky** (pale-sky): meal-plan panels and on-hold calendar days on Sailcloth.
+- **Shallow Water** (sky-tint): light blue highlights on navy fields.
+- **Harbor Sky** (harbor-sky): secondary action fill (Learn about layaway) with Midnight Hull text; the stripe in on-hold calendar days; text selection.
+- **Pale Sky** (pale-sky): meal-plan panels and the base of the striped on-hold calendar days.
 
 ### Tertiary
 - **Harbor Coral** (harbor-coral): the conversion accent. Use it for the primary booking/inquiry action only, always with Midnight Hull text (6.2:1); ivory on coral fails contrast (2.7:1).
@@ -227,3 +227,5 @@ Navy fields covered with blueprint/chart artwork (`assets/opt/blueprint1`, `blue
 - **Don't** use bold weights or set body copy in the serif.
 - **Don't** add white or cool-gray section backgrounds in place of Sailcloth.
 - **Don't** set ivory or white text on Harbor Coral or Harbor Sky fills.
+- **Don't** put an uppercase eyebrow label above a section heading; the heading carries the section.
+- **Don't** hide where an external action goes: label it ("Book with Charter Smarter") and give it an accessible name that says it opens a new tab.

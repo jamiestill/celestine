@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T23:10:00Z",
+  "title": "Design System: S/Y Celestine",
+  "extensions": {
+    "colorMeta": {
+      "navy-core": {
+        "role": "primary",
+        "displayName": "Celestine Navy",
+        "canonical": "#00205b",
+        "tonalRamp": [
+          "#00102d",
+          "#001844",
+          "#00205b",
+          "#2b4a7d",
+          "#5a74a0",
+          "#9aacc0",
+          "#d6deea",
+          "#eef2f7"
+        ]
+      },
+      "navy-shade": {
+        "role": "primary",
+        "displayName": "Night Watch",
+        "canonical": "#001844",
+        "tonalRamp": [
+          "#000a1e",
+          "#00102d",
+          "#001844",
+          "#1c3561",
+          "#465c85",
+          "#8395b1",
+          "#c3cddc",
+          "#e9edf3"
+        ]
+      },
+      "navy-deep": {
+        "role": "primary",
+        "displayName": "Midnight Hull",
+        "canonical": "#00102d",
+        "tonalRamp": [
+          "#00050f",
+          "#000a1e",
+          "#00102d",
+          "#16284a",
+          "#3d4f6d",
+          "#7a879d",
+          "#bcc3cf",
+          "#e6e9ee"
+        ]
+      },
+      "steel-blue": {
+        "role": "secondary",
+        "displayName": "Steel Blue",
+        "canonical": "#4d7ea8",
+        "tonalRamp": [
+          "#1a2c3b",
+          "#273f54",
+          "#3a5e7e",
+          "#4d7ea8",
+          "#6e9cc2",
+          "#a5c0d3",
+          "#dde7ee",
+          "#f1f5f8"
+        ]
+      },
+      "steel-shade": {
+        "role": "secondary",
+        "displayName": "Harbor Steel",
+        "canonical": "#3a5e7e",
+        "tonalRamp": [
+          "#13202c",
+          "#1f3345",
+          "#2c4861",
+          "#3a5e7e",
+          "#5d7f9c",
+          "#8fa8bd",
+          "#c6d4df",
+          "#ecf1f5"
+        ]
+      },
+      "steel-ink": {
+        "role": "secondary",
+        "displayName": "Chart Ink",
+        "canonical": "#273f54",
+        "tonalRamp": [
+          "#0e1720",
+          "#18283a",
+          "#273f54",
+          "#3f5870",
+          "#62788d",
+          "#95a5b4",
+          "#c9d2da",
+          "#edf0f3"
+        ]
+      },
+      "sky-tint": {
+        "role": "secondary",
+        "displayName": "Shallow Water",
+        "canonical": "#9dbfd9",
+        "tonalRamp": [
+          "#1f3445",
+          "#35536b",
+          "#557a97",
+          "#779fbd",
+          "#9dbfd9",
+          "#bdd5e7",
+          "#d4e8f7",
+          "#eef6fb"
+        ]
+      },
+      "harbor-coral": {
+        "role": "tertiary",
+        "displayName": "Harbor Coral",
+        "canonical": "#ff5a5f",
+        "tonalRamp": [
+          "#4a1113",
+          "#7a1d21",
+          "#b32e33",
+          "#e3444a",
+          "#ff5a5f",
+          "#ff8a8d",
+          "#ffc0c2",
+          "#ffecec"
+        ]
+      },
+      "brass-tint": {
+        "role": "tertiary",
+        "displayName": "Brass Tint",
+        "canonical": "#cbbc96",
+        "tonalRamp": [
+          "#53492e",
+          "#7c6d45",
+          "#a6915b",
+          "#b9a778",
+          "#cbbc96",
+          "#ded4c0",
+          "#ece6d6",
+          "#f7f4ec"
+        ]
+      },
+      "sailcloth": {
+        "role": "neutral",
+        "displayName": "Sailcloth",
+        "canonical": "#ece6d6",
+        "tonalRamp": [
+          "#4a463c",
+          "#77715f",
+          "#a59e88",
+          "#cbc3ac",
+          "#ded4c0",
+          "#ece6d6",
+          "#f5efe2",
+          "#fbf8f1"
+        ]
+      },
+      "sailcloth-light": {
+        "role": "neutral",
+        "displayName": "Sailcloth Light",
+        "canonical": "#f5efe2",
+        "tonalRamp": [
+          "#4d493f",
+          "#7b7564",
+          "#a9a28d",
+          "#d0c8b3",
+          "#e4dcc9",
+          "#ece6d6",
+          "#f5efe2",
+          "#fcfaf5"
+        ]
+      },
+      "gray-mid-dark": {
+        "role": "neutral",
+        "displayName": "Cool Gray 10",
+        "canonical": "#55575f",
+        "tonalRamp": [
+          "#141216",
+          "#2f3138",
+          "#55575f",
+          "#808289",
+          "#abaeb3",
+          "#dedfe1",
+          "#f5f5f6",
+          "#fbfbfc"
+        ]
+      },
+      "harbor-sky": {
+        "role": "secondary",
+        "displayName": "Harbor Sky",
+        "canonical": "#6e9cc2",
+        "tonalRamp": [
+          "#1d3346",
+          "#2e4d68",
+          "#46709a",
+          "#5a86b0",
+          "#6e9cc2",
+          "#9dbfd9",
+          "#d4e8f7",
+          "#eef6fb"
+        ]
+      },
+      "pale-sky": {
+        "role": "secondary",
+        "displayName": "Pale Sky",
+        "canonical": "#d4e8f7",
+        "tonalRamp": [
+          "#2a4052",
+          "#4a6b85",
+          "#6e9cc2",
+          "#9dbfd9",
+          "#bdd5e7",
+          "#d4e8f7",
+          "#e6f1fa",
+          "#f5fafd"
+        ]
+      },
+      "sailcloth-deep": {
+        "role": "neutral",
+        "displayName": "Sailcloth Deep",
+        "canonical": "#ded4c0",
+        "tonalRamp": [
+          "#4a4436",
+          "#746b56",
+          "#9d937a",
+          "#c3b99e",
+          "#ded4c0",
+          "#ece6d6",
+          "#f5efe2",
+          "#fbf8f1"
+        ]
+      },
+      "nav-glass": {
+        "role": "neutral",
+        "displayName": "Nav Glass",
+        "canonical": "rgba(183, 187, 192, 0.5)",
+        "tonalRamp": [
+          "#2f3138",
+          "#55575f",
+          "#808289",
+          "#abaeb3",
+          "#b7bbc0",
+          "#dedfe1",
+          "#eceef0",
+          "#f5f5f6"
+        ]
+      },
+      "sailcloth-mist": {
+        "role": "neutral",
+        "displayName": "Sailcloth Mist",
+        "canonical": "rgba(214, 205, 186, 0.55)",
+        "tonalRamp": [
+          "#4a4436",
+          "#746b56",
+          "#9d937a",
+          "#c3b99e",
+          "#d6cdba",
+          "#e4dccb",
+          "#efe9dd",
+          "#f8f5ef"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only, balanced wrap, white glow over photography."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Feature names, card headings, mobile menu links."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptive paragraphs, light weight, ~680px measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase tracked navigation, stats captions, and button text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "float",
+        "value": "0 8px 24px rgba(0,0,0,0.15)",
+        "purpose": "Cards and floating panels."
+      },
+      {
+        "name": "lift",
+        "value": "0 8px 32px rgba(0,0,0,0.2)",
+        "purpose": "Raised overlays and larger panels."
+      },
+      {
+        "name": "control",
+        "value": "0 4px 18px rgba(0,0,0,0.35)",
+        "purpose": "Lightbox close button over imagery."
+      },
+      {
+        "name": "stage",
+        "value": "0 30px 80px rgba(0,0,0,0.5)",
+        "purpose": "Zoomed lightbox imagery."
+      },
+      {
+        "name": "sailcloth-glow",
+        "value": "0 0 12px rgba(236,230,214,0.95), 0 0 4px rgba(236,230,214,0.9)",
+        "purpose": "Text glow for taglines over busy backgrounds."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-reveal",
+        "value": "cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "purpose": "Section reveal transforms."
+      },
+      {
+        "name": "duration-reveal",
+        "value": "0.9s",
+        "purpose": "Scroll reveals (range 0.6–1.2s)."
+      },
+      {
+        "name": "duration-state",
+        "value": "0.25s",
+        "purpose": "Button background/color swaps."
+      },
+      {
+        "name": "duration-link",
+        "value": "0.2s",
+        "purpose": "Link color transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "430px"
+      },
+      {
+        "name": "sm",
+        "value": "500px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "920px"
+      },
+      {
+        "name": "xl",
+        "value": "1000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Harbor Coral conversion action; one per view.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book Now</a>",
+      "css": ".ds-btn-primary { font-family: 'Jost', system-ui, sans-serif; background: #ff5a5f; color: #00102d; text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.25s; } .ds-btn-primary:hover { background: #e3444a; } .ds-btn-primary:focus-visible { outline: 3px solid #4d7ea8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Secondary action; inverts to sailcloth on hover.",
+      "html": "<a class=\"ds-btn-dark\" href=\"#\">Email Us</a>",
+      "css": ".ds-btn-dark { font-family: 'Jost', system-ui, sans-serif; background: rgba(0,16,45,0.92); color: #ece6d6; text-decoration: none; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px 26px; min-width: 132px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.25s, color 0.25s; } .ds-btn-dark:hover { background: #ece6d6; color: #00102d; } .ds-btn-dark:focus-visible { outline: 3px solid #4d7ea8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Outlined action on navy fields.",
+      "html": "<div style=\"background:#00205b;padding:24px\"><a class=\"ds-btn-ghost\" href=\"#\">Call +1 844 204 9846</a></div>",
+      "css": ".ds-btn-ghost { font-family: 'Jost', system-ui, sans-serif; border: 1px solid rgba(236,230,214,0.5); color: #ece6d6; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px; display: inline-block; transition: background 0.25s, border-color 0.25s; } .ds-btn-ghost:hover { background: rgba(236,230,214,0.12); border-color: #ece6d6; } .ds-btn-ghost:focus-visible { outline: 3px solid #4d7ea8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Round Icon Control",
+      "kind": "button",
+      "refersTo": "icon-button-round",
+      "description": "Carousel previous/next over imagery.",
+      "html": "<div style=\"background:#3a5e7e;padding:24px\"><button class=\"ds-icon-round\" aria-label=\"Next\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M9 5l7 7-7 7\"/></svg></button></div>",
+      "css": ".ds-icon-round { background: rgba(0,32,91,0.45); border: 1px solid rgba(236,230,214,0.4); color: #ece6d6; width: 52px; height: 52px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.25s; } .ds-icon-round:hover { background: rgba(0,32,91,0.75); } .ds-icon-round:focus-visible { outline: 3px solid #4d7ea8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Desktop bar with uppercase tracked links.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">Celestine</span><a href=\"#\">Yacht</a><a href=\"#\">Destinations</a><a href=\"#\">Gallery</a><a href=\"#\">Crew</a><a href=\"#\">Rates</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 28px; background: #ece6d6; padding: 18px 32px; } .ds-nav-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; letter-spacing: 3px; text-transform: uppercase; color: #00205b; margin-right: 24px; } .ds-nav a { color: #273f54; text-decoration: none; font-family: 'Jost', system-ui, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s, color 0.2s; } .ds-nav a:hover { opacity: 1; color: #00205b; } .ds-nav a:focus-visible { outline: 3px solid #4d7ea8; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Stats Band",
+      "kind": "custom",
+      "refersTo": "stats-band",
+      "description": "Navy four-column fact strip with serif numerals.",
+      "html": "<section class=\"ds-stats\"><div><strong>59ft</strong><span>Sailing Yacht</span></div><div><strong>5</strong><span>Queen Cabins</span></div><div><strong>10</strong><span>Guests</span></div><div><strong>4</strong><span>Social Zones</span></div></section>",
+      "css": ".ds-stats { background: #00205b; color: #ece6d6; display: grid; grid-template-columns: repeat(4, 1fr); } .ds-stats div { padding: 32px 16px; text-align: center; border-left: 1px solid rgba(236,230,214,0.18); } .ds-stats div:first-child { border-left: none; } .ds-stats strong { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 46px; line-height: 1; } .ds-stats span { display: block; margin-top: 8px; font-family: 'Jost', system-ui, sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.8; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Chartroom Logbook",
+    "overview": "Celestine reads like a navigator's chart table made elegant: deep navy fields printed with blueprint and orthographic yacht drawings, alternating with warm sailcloth-ivory pages. Cormorant Garamond sets headlines like entries in a well-kept log, and small, widely tracked uppercase Jost labels act as the instrument annotations. The sailing-yacht character is technical and crafted, never glossy motor-yacht chrome.\n\nThe page moves in full-bleed sections that alternate between the two worlds: navy/blueprint for atmosphere (stats, destinations, virtual tour, booking) and sailcloth for detail and decision-making (gallery, crew, layout, rates, availability). Density is generous: 56px section gutters, large serif headlines, and light-weight body copy. Motion is slow and calm: reveals over 0.8–1.2s with a soft ease-out, and all of it respects reduced-motion preferences.",
+    "keyCharacteristics": [
+      "Two-world rhythm: navy blueprint sections and sailcloth ivory sections.",
+      "Serif display headlines (Cormorant Garamond, 400) over light sans body text (Jost, 300).",
+      "Uppercase tracked labels (2–4px letter-spacing) for navigation, stats, and actions.",
+      "Technical drawings (blueprints, orthographic views, cutaways) used as texture and proof.",
+      "Square-cornered action buttons; circular controls only for icon-only carousel/lightbox navigation.",
+      "Harbor Coral reserved for the primary conversion action."
+    ],
+    "rules": [
+      {
+        "name": "The Two Worlds Rule",
+        "body": "Every section is either Navy (text in Sailcloth) or Sailcloth (text in Navy or Chart Ink). Don't introduce white or gray section backgrounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Coral Rule",
+        "body": "Harbor Coral marks the single most important action in a view. Never use it for decoration, text, or more than one competing button.",
+        "section": "colors"
+      },
+      {
+        "name": "The Brand Sheet Rule",
+        "body": "New colors come from the Celestine Brand Palette (uploads/Celestine_Brand_Palette.pdf); Harbor Coral is the only approved addition.",
+        "section": "colors"
+      },
+      {
+        "name": "The Logbook Voice Rule",
+        "body": "Serif for things you'd say; tracked uppercase sans for things you'd annotate. Never set labels in Cormorant or headlines in Jost.",
+        "section": "typography"
+      },
+      {
+        "name": "The Light Hand Rule",
+        "body": "Body copy stays at weight 300 and headlines at 400. Bold weights are not part of the system.",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper, Not Plastic Rule",
+        "body": "Sections sit flat. Only elements that float over content (overlays, lightbox, controls on imagery) get shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do alternate Navy and Sailcloth sections, each with 56px padding.",
+      "Do set headlines in Cormorant Garamond 400 and labels in uppercase Jost with 2–4px tracking.",
+      "Do use the blueprint, orthographic, and cutaway drawings as texture and proof of the vessel.",
+      "Do keep action buttons square, with Harbor Coral for the single primary action and Dark or Ghost for the rest.",
+      "Do keep the 3px Steel Blue focus ring, and give every new animation a prefers-reduced-motion counterpart (no looping sway, no slide; a short opacity fade at most).",
+      "Do keep reveal motion slow and soft (0.6–1.2s, cubic-bezier(0.22, 0.61, 0.36, 1)).",
+      "Do keep functional labels at 12px or larger, at 0.72 opacity or more."
+    ],
+    "donts": [
+      "Don't add colors outside the Celestine Brand Palette besides Harbor Coral.",
+      "Don't use more than one coral action competing in the same view.",
+      "Don't round action buttons into pills; pills are for icon-only controls.",
+      "Don't use bold weights or set body copy in the serif.",
+      "Don't add white or cool-gray section backgrounds in place of Sailcloth.",
+      "Don't set ivory or white text on Harbor Coral or Harbor Sky fills."
+    ]
+  }
+}

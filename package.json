@@ -1,0 +1,12 @@
+{
+  "name": "celestine-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "puppeteer browsers install chrome",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^25.10.0"
+  }
+}
